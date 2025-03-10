@@ -15,6 +15,18 @@
     color: black !important;
 }
 
+.general-border-style{
+    border-style:solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    border-radius: 5px;
+}
+
+.message-module-border{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #e8e8e8;
+}
 .list-item {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -40,5 +52,5 @@
 }
 
 .transparente {
-    box-shadow: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
 }
