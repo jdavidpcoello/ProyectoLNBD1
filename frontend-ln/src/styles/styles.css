@@ -40,5 +40,5 @@
 }
 
 .transparente {
-    background: rgba(0, 0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0);
 }
