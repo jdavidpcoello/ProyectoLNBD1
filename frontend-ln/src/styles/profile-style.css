@@ -48,7 +48,7 @@ body{
     margin-left: 20px;
     padding: 5px;
     background-color: #e1e1e1; 
-    background-image: url('../img/DefaultImage.png');
+    background-image: url('../Image/DefaultImage.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -69,7 +69,7 @@ body{
     border: 2px solid #005dc1;
     color: #005dc1;
     font-size: 3em;
-    background-image: url('../img/ButtonIcon.png');
+    background-image: url('../Image/ButtonIcon.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -136,13 +136,13 @@ body{
 }
 
 .add-btn{
-    background-image: url('../img/ButtonIcon2.png');
+    background-image: url('../Image/ButtonIcon2.png');
     background-size: cover;
     background-position: center;
 }
 
 .edit-btn{
-    background-image: url('../img/ButtonIcon3.png');
+    background-image: url('../Image/ButtonIcon3.png');
     background-size: cover;
     background-position: center;
     opacity: 60%;
