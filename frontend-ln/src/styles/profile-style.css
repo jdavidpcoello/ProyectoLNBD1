@@ -1,0 +1,190 @@
+body{
+    background-color: #f4f2ee;
+}
+.profile-photo{
+    width: 100%px;
+    border-radius: 50%;
+    margin-top: -75px;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.profile-photo h1{
+    font-size: 28px;
+    font-weight: 600;
+    color: #222;
+}
+
+.profile-page-container{
+    padding: 10px  60px;
+    display: inline-flex;
+}
+
+.main-container{
+    width: 800px;
+    background-color: white;
+    margin-left: 210px;
+    margin-top:10px;
+    border-radius: 10px;
+    border:1px solid #e1e1e1;
+}
+
+.background-container{
+    width:100%;
+    background-color: #2f2f2f;
+    height: 200px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-profile-container {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: -75px;
+    margin-left: 20px;
+    padding: 5px;
+    background-color: #e1e1e1; 
+    background-image: url('../img/DefaultImage.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-img-container{
+    margin-top:-60px;
+    margin-left: 130px;
+}
+
+.edit-img-button{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: 2px solid #005dc1;
+    color: #005dc1;
+    font-size: 3em;
+    background-image: url('../img/ButtonIcon.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-profile-container{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.name-title{
+    font-size: 1.5em;
+    font-weight: 600;
+    color:black;
+}
+
+.location-container{
+    margin-right: 10px;
+    color:#7d7d7d;
+}
+
+.location-contact-container{
+    display: flex;
+    margin: 10px 0px;
+    font-size: 0.8em;
+}
+
+.contact-container{
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.subtitle-container h2{
+    font-size: 1.3em;
+    font-weight: 600;
+    color: black;
+    display: flexbox;
+}
+
+.sub-container{
+    padding: 15px;
+}
+
+.container-header-items {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+}
+
+.buttons-container {
+    display: flex; 
+}
+
+
+.btn-style{
+    background-color: transparent;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+}
+
+.add-btn{
+    background-image: url('../img/ButtonIcon2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.edit-btn{
+    background-image: url('../img/ButtonIcon3.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 60%;
+}
+
+.side-container{
+    margin-left: 25px;
+}
+
+.side-info-container{
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    border:1px solid #e1e1e1;
+    padding: 5px;
+}
+
+.side-info-sub-container{
+    margin: 5px;
+}
+
+.side-info-sub-container h4{
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.side-info-sub-container span{
+    color: #7d7d7d;
+    font-size: 0.9em;
+}
+
+.title-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-whos-hiring img{
+    margin-top: 15px;
+    border: 1px solid #cdcdc2;
+    border-radius: 10px;
+    width: 300px;
+}
