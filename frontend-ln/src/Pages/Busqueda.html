@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Busqueda</title>
+        <link rel="stylesheet" href="../styles/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      
+        <link rel="stylesheet" href="../styles/styles-in.css">
+      </head>
+      
+      <body>
+          <div id="menu-container"></div>
+
+    <!-- Filtros de búsqueda -->
+    <div class="container mt-3">
+      <div class="d-flex justify-content-center align-items-center flex-wrap">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-light border-1 active">Publicaciones</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Personas</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Empresas</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Grupos</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Empleos</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Productos</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Servicios</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Eventos</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Cursos</button>
+          <button type="button" class="btn btn-sm btn-light border-1">Todos los filtros</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container mt-3">
+      <div class="row">
+        <!-- Columna izquierda -->
+        <div class="col-md-3 d-none d-md-block">
+          <div class="general-border-style mb-3">
+            <div class="p-3">
+              <h6 class="sidebar-heading">En esta página</h6>
+              <div class="sidebar-item">
+                <a href="#" class="text-decoration-none text-dark fw-bold">Publicaciones</a>
+              </div>
+              <div class="sidebar-item">
+                <a href="#" class="text-decoration-none text-dark">Personas</a>
+              </div>
+              <div class="sidebar-item">
+                <a href="#" class="text-decoration-none text-dark">Empresas</a>
+              </div>
+              <div class="sidebar-item">
+                <a href="#" class="text-decoration-none text-dark">Grupos</a>
+              </div>
+              <div class="sidebar-item">
+                <a href="#" class="text-decoration-none text-dark">Más publicaciones</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Columna central -->
+        <div class="col-md-6">
+          <!-- Publicación destacada -->
+          <div class="general-border-style">
+            <div class="p-3 post-module-border">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex align-items-center">
+                  <img src="../Image/LinkedIn_icon.svg.png" alt="Organizador" class="me-2" style="width: 40px; height: 40px;">
+                  <div>
+                    <div class="fw-bold">12, 19 y 26 de abril</div>
+                    <div class="text-muted small">10, 17 y 24 de mayo</div>
+                    <div class="text-muted small">06:00 - 09:00 p.m.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <p class="mb-2">Para registro seguir el enlace:</p>
+                <p class="mb-1 text-primary">https://forms.gle/zssoMzJtHK</p>
+                <p class="mb-0 text-primary">vUPNEpvSA</p>
+              </div>
+              <div class="d-flex align-items-center">
+                <span class="me-2">
+                  <img src="../Image/LinkedIn_icon.svg.png" alt="Like" style="width: 16px; height: 16px;">
+                </span>
+                <span class="small text-muted">11</span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between p-2">
+              <button class="interaction-button">
+                <i class="bi bi-hand-thumbs-up me-1"></i> Recomendar
+              </button>
+              <button class="interaction-button">
+                <i class="bi bi-chat-text me-1"></i> Comentar
+              </button>
+              <button class="interaction-button">
+                <i class="bi bi-arrow-repeat me-1"></i> Compartir
+              </button>
+              <button class="interaction-button">
+                <i class="bi bi-send me-1"></i> Enviar
+              </button>
+            </div>
+          </div>
+
+          <!-- Ver todos los resultados -->
+          <div class="text-center my-3">
+            <a href="#" class="text-decoration-none">Ver todos los resultados de publicaciones</a>
+          </div>
+
+          <!-- Sección de personas -->
+          <div class="mt-4">
+            <h5 class="mb-3">Personas</h5>
+            <div class="tab-pills">
+              <ul class="nav nav-pills mb-3">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">1er</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">2°</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">3er y demás</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Resultados de personas -->
+            <div class="general-border-style">
+              <!-- Persona 1 -->
+              <div class="p-3 search-result-card">
+                <div class="d-flex">
+                  <img src="../Image/LinkedIn_icon.svg.png" alt="Perfil" class="me-3 profile-pic">
+                  <div>
+                    <h6 class="mb-1">Miembro de LinkedIn</h6>
+                    <p class="mb-1 small">Universidad Nacional Autónoma de Honduras (UNAH)</p>
+                    <p class="mb-0 small text-muted">Tegucigalpa</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Persona 2 -->
+              <div class="p-3 search-result-card">
+                <div class="d-flex">
+                  <img src="../Image/LinkedIn_icon.svg.png" alt="Perfil" class="me-3 profile-pic">
+                  <div>
+                    <h6 class="mb-1">Miembro de LinkedIn</h6>
+                    <p class="mb-1 small">Jefe de Recursos Humanos || Relaciones laborales || Reclutamiento</p>
+                    <p class="mb-0 small text-muted">Tegucigalpa</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Persona 3 -->
+              <div class="p-3 search-result-card">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <img src="../Image/LinkedIn_icon.svg.png" alt="Perfil" class="me-3 profile-pic">
+                    <div>
+                      <h6 class="mb-1">Colegio de Biólogos de Honduras CBH · 3er+</h6>
+                      <p class="mb-1 small">Colegio Profesional en Universidad Nacional Autónoma de Honduras</p>
+                      <p class="mb-0 small text-muted">Honduras</p>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm">Conectar</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Ver todos los resultados de personas -->
+            <div class="text-center my-3">
+              <a href="#" class="text-decoration-none">Ver todos los resultados de personas</a>
+            </div>
+          </div>
+          
+          <!-- Sección de empresas -->
+          <div class="mt-4">
+            <h5 class="mb-3">Empresas</h5>
+            <div class="general-border-style">
+              <div class="p-3 search-result-card">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <img src="../Image/LinkedIn_icon.svg.png" alt="Empresa" class="me-3 company-logo">
+                    <div>
+                      <h6 class="mb-1">Universidad Nacional Autónoma de Honduras (UNAH)</h6>
+                      <p class="mb-1 small text-muted">Tegucigalpa • Empresa privada</p>
+                      <p class="mb-0 small text-muted">
+                        Cuenta oficial de la Universidad Nacional Autónoma de Honduras. UNAH. @UniversidadUNAH #UNAH
+                      </p>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-primary btn-sm">Enviar mensaje</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Columna derecha -->
+        <div class="col-md-3 d-none d-md-block">
+          <div class="premium-ad">
+            <img src="../Image/WhosHiring.png" alt="Premium Ad" class="img-fluid rounded mb-3">
+            <h6>See who's hiring on LinkedIn</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../JS/loadMenu.js"></script>
+  </body>
+</html>
