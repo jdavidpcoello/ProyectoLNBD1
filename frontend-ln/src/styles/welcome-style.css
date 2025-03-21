@@ -1,0 +1,100 @@
+a {
+    text-decoration: none;
+}
+
+.linkedin-logo{
+    width: 100px;
+}
+
+.linkedin-nav{
+    padding: 10px;
+    margin: 5px 15px;
+}
+
+.all-nav-items-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.all-nav-items-container, .items-container{
+    display: flex;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+.items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-items {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
+
+.btn-items {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-items li{
+    font-size: 15px;
+    margin: 0px 10px;
+}
+
+.anchor-items a{
+    background-color: white;
+    border-radius: 40px;
+    font-weight: 600;
+}
+
+li a{
+    color: rgb(70, 70, 70);
+}
+
+#signin-btn{
+    padding: 10px 20px;
+    border: 1px solid #005dc1;;
+    color: #005dc1;
+}
+
+#login-btn{
+    padding:  0px 20px;
+    border: none;
+    color: rgb(70, 70, 70);
+}
+
+.blue-span{
+    color: #005dc1;
+}
+
+.welcome-title{
+    font-size: 50px;
+    color: rgb(95, 95, 95);
+}
+
+.main-container{
+    margin: auto;
+    margin-top: 100px;
+    width: 700px;
+    padding: 20px;
+    text-align: center;
+}
+.policy-container{
+    margin-top: 20px;
+}
+
+.policy-container p{
+    color: gray;
+}
