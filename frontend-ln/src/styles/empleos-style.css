@@ -1,0 +1,15 @@
+body{
+    background-color: #f4f2ee;
+}
+
+.img-left{
+    width: 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -80px;
+    /* border: 0.3rem solid white; */
+}
+
+.div-img{
+    height: 1rem;
+}

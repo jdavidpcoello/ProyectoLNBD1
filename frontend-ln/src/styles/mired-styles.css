@@ -20,25 +20,13 @@ body{
 }
 
 
-.sombreado-btn{
+.btn-sombreado{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
     border-radius: 50%;
     background-color: rgba(37, 32, 32, 0.8);
-}.sombreado-btn:hover{
+}.btn-sombreado:hover{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6); 
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.btn-conectar{
-    background-color: transparent;
-    
-    border-color: rgb(10, 102, 194);
-    color: rgb(10, 102, 194);
-    transition: background-color 0.3s ease, color 0.3s ease;
-}.btn-conectar:hover{
-    background-color: rgba(10, 102, 194, 0.175);
-    color: #004182;
-    border-color: #004182;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .text-small{

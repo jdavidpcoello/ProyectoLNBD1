@@ -1,73 +1,121 @@
 <div class="container-fluid fixed-top general-border-style d-flex flex-row justify-content-around bg-white" style="height: 60px;">
-    <div class="container row align-items-center w-100">
+    <div class="container row w-100">
         
-        <div class="col-md-4 p-2 ">
-            <div class="d-flex align-items-center gap-2 w-100">
-                <a class="navbar-brand ms-3" href="#">
-                    <img src="../Image/LinkedIn_icon.svg.png" width="30" height="30" alt="">
+        <div class="col-md-3 p-2 ">
+            <div class="d-flex align-items-start gap-2 w-100">
+                <a class="d-flex justify-content-around" href="#">
+                    <img src="../Image/LinkedIn_icon.svg.png" width="36px" alt="">
                 </a>
-                <form class="form-group d-flex input-group">
-                    <div class="input-group-text bg-light">
-                        <i class="bi bi-search border-end-0"></i>
+                <div class="dropdown">
+                    <form class="form-group d-flex input-group">
+                        <div class="input-group-text bg-light">
+                            <i class="bi bi-search border-end-0"></i>
+                        </div>
+
+                        <input type="search" class="form-control border-start-0 bg-light" placeholder="Buscar" aria-label="Buscar" aria-label="Buscar" id="searchInput" data-bs-toggle="dropdown" aria-expanded="false">
+                    </form>
+                    <div class="dropdown-menu w-100" aria-labelledby="searchInput">
+                        <div id="sugerencias">
+                            <h6 class="dropdown-header">Sugerencias</h6>
+                            <button class="dropdown-item" type="button">Sugerencia 1</button>
+                            <button class="dropdown-item" type="button">Sugerencia 2</button>
+                        </div>
+                        <div id="search-history">
+                            <h6 class="dropdown-header">Búsquedas antiguas</h6>
+                            <button class="dropdown-item" type="button">Búsqueda 1</button>
+                            <button class="dropdown-item" type="button">Búsqueda 2</button>
+                        </div>
                     </div>
-                    <input type="search" class="form-control border-start-0 bg-light" placeholder="Buscar" aria-label="Buscar">
-                </form>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-5">
-            <ul class="navbar-nav d-flex flex-row ">
-                <li class="nav-item mx-2 ms-3">
+        <div class="col-md-6 border-right border-info">
+            <ul class="navbar-nav d-flex flex-row justify-content-end ">
+                <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center hover-black" href="#">
                         <i class="bi bi-house-door-fill icono-grey"></i>
                         <p class="text-muted m-0 p-0"><small>Inicio</small></p>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link d-flex flex-column align-items-center hover-black" href="MiRed.html">
+                <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center hover-black" href="mynetwork.html">
                         <i class="bi bi-people-fill icono-grey"></i>
                         <p class="text-muted m-0 p-0"><small>Mi red</small></p>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link d-flex flex-column align-items-center hover-black" href="Empleos.html">
+                <li class="nav-item mx-3">
+                    <a class="nav-link d-flex flex-column align-items-center hover-black" href="jobs.html">
                         <i class="bi bi-briefcase-fill icono-grey"></i>
                         <p class="text-muted m-0 p-0"><small>Empleos</small></p>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
+                <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center hover-black" href="messages.html">
                         <i class="bi bi-chat-right-dots-fill icono-grey"></i>
                         <p class="text-muted m-0 p-0"><small>Mensajes</small></p>
                     </a>
                 </li>
-                <li class="nav-item mx-2">
+                <li class="nav-item mx-3">
                     <a class="nav-link d-flex flex-column align-items-center hover-black" href="notifications.html">
                         <i class="bi bi-bell-fill icono-grey"></i>
                         <p class="text-muted m-0 p-0"><small>Notificaciones</small></p>
                     </a>
                 </li>
-                <li class="nav-item mx-2 me-2">
-                    <div class="dropdown">
-                        <button class="nav-link dropdown-toggle icono-grey hover-black" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item mx-3">
+                    <div class="btn group">
+                        <button class="nav-link dropdown-toggle icono-grey hover-black p-0" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="d-flex flex-column hover-black">
-                                <i class="bi bi-circle-fill icono-grey"></i>
+                                <!-- <i class="bi bi-circle-fill icono-grey"></i> -->
+                                <img src="../Image/elsa.jpg" class="border rounded-circle" style="width: 24px;" alt="">
                             </div>
                             <span class="text-muted m-0 p-0"><small>Yo</small></span>
                         </button>
-                        <div class="dropdown-menu">
-                          <!-- Contenido del menú desplegable -->
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuYo" style="width: 300px;">
+                          
+                            <div class="m-3">
+                                <div class="d-flex flex-row flex-grow-1 p-0">
+                                    <div class="col-md-2 m-0">
+                                        <img src="../Image/elsa.jpg" class="border rounded-circle w-100" alt="">
+                                    </div>
+                                    <div class="d-flex flex-grow-1 flex-column ms-2">
+                                        <p class="fw-bold mb-0">Elsa Capunta</p>
+                                        <p class="mb-0">Fue a Universidad Nacional Autónoma de Honduras (UNAH)</p>
+                                    </div>
+                                </div>
+                                <a class="btn btn-azul btn-sm rounded-pill w-100 mt-2" href="../Pages/profile.html">
+                                    <span>Ver perfil</span>
+                                </a>
+                                <hr>
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0 fw-bold">Cuenta</p>
+                                    <a href="#" class="text-decoration-none text-dark">Prueba 1 mes de Premium por 0 HNL</a>
+                                    <a href="#" class="text-decoration-none text-muted"> Ajustes y privacidad</a>
+                                    <a href="#" class="text-decoration-none text-muted"> Ayuda</a>
+                                    <a href="#" class="text-decoration-none text-muted"> Idioma</a>
+                                </div>
+                                <hr>
+                                <div class="d-flex flex-column">
+                                    <p class="mb-0 fw-bold">Gestionar</p>
+                                    <a href="#" class="text-decoration-none text-muted">Publicaciones y actividades</a>
+                                    <a href="#" class="text-decoration-none text-muted">Cuenta de anuncios de empleo</a>
+                                </div>
+                                <hr>
+                                <div>
+                                    <a href="#" class="text-decoration-none text-muted">Cerrar sesión</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
             </ul>        
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 p-0">
             <ul class="navbar-nav d-flex flex-row justify-content-end gap-3">
                 <li class="nav-item mx-2">
-                    <div class="dropdown">
-                        <button class="nav-link dropdown-toggle align-items-center icono-grey hover-black" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="btn group">
+                        <button class="nav-link dropdown-toggle align-items-center icono-grey hover-black p-0" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="d-flex flex-column hover-black">    
                                 <i class="bi bi-grid-3x3-gap-fill icono-grey"></i>
                             </div>
@@ -75,8 +123,12 @@
                                 <small>Para negocios</small>
                             </spam>
                         </button>
-                        <div class="dropdown-menu">
-                          <!-- Contenido del menú desplegable -->
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuYo" style="width: 600px;">
+                          <div class="col-md-3">
+
+                          </div>
+                          <div class="col-md-9"></div>
+                            
                         </div>
                     </div>
                 </li>
