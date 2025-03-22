@@ -97,7 +97,6 @@ const likeCounts = {
         // Insertar la respuesta después del contenedor de respuesta
         commentDiv.insertBefore(replyDiv, replyContainer.nextSibling);
         
-        // Eliminar el contenedor de respuesta
         replyContainer.remove();
         
         // Incrementar contador de comentarios
