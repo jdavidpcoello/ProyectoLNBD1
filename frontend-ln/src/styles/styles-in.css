@@ -346,4 +346,101 @@ body {
 
 
 
+/* Estilos Busqueda*/
+
+.btn-group .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  .btn-group .btn.active {
+    background-color: #f3f2ef;
+    font-weight: 600;
+    border-bottom: 2px solid #0a66c2;
+  }
+  
+  .sidebar-heading {
+    font-weight: 600;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
+    margin-bottom: 12px;
+  }
+  
+  .sidebar-item {
+    padding: 8px 0;
+  }
+  
+  .sidebar-item:not(:last-child) {
+    border-bottom: 1px solid #f3f2ef;
+  }
+
+  .search-result-card {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .search-result-card:last-child {
+    border-bottom: none;
+  }
+  
+  .search-result-card:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .profile-pic, .company-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .company-logo {
+    border-radius: 8px;
+  }
+
+  .post-module-border {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .tab-pills .nav-pills .nav-link {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: transparent;
+    border-radius: 16px;
+    padding: 4px 12px;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+  
+  .tab-pills .nav-pills .nav-link.active {
+    background-color: #f3f2ef;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 600;
+  }
+  
+  .premium-ad {
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .premium-ad h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  
+  @media (max-width: 768px) {
+    .btn-group .btn {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+    
+    .profile-pic, .company-logo {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+
+
 

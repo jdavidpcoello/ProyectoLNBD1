@@ -7,114 +7,20 @@
     <title>Nombre Apellido | LinkedIn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../styles/styles-in.css">
     <link rel="stylesheet" href="../styles/profile-style.css" />
     type <link rel="icon" href="../Image/linkedin-svg.svg ico" type="image/x-icon"/>
 </head>
 
 <body>
-    <div class="menu-container">
-        <div class="row align-items-center bg-white py-1 rounded">
-
-            <div class="col-md-4 p-2 ">
-                <div class="d-flex align-items-center gap-2 w-100">
-                    <a class="navbar-brand ms-3" href="#">
-                        <img src="../Image/LinkedIn_icon.svg.png" width="30" height="30" alt="">
-                    </a>
-                    <form class="form-group d-flex input-group w-100">
-                        <div class="input-group-text bg-light">
-                            <i class="bi bi-search border-end-0"></i>
-                        </div>
-                        <input type="search" class="form-control border-start-0 bg-light" placeholder="Buscar"
-                            aria-label="Buscar">
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-md-5">
-                <ul class="navbar-nav d-flex flex-row justify-content-around">
-                    <li class="nav-item mx-2 ms-3">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="#">
-                            <i class="bi bi-house-door-fill icono-grey"></i>
-                            <p class="text-muted m-0 p-0"><small>Inicio</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="MiRed.html">
-                            <i class="bi bi-people-fill icono-grey"></i>
-                            <p class="text-muted m-0 p-0"><small>Mi red</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="Empleos.html">
-                            <i class="bi bi-briefcase-fill icono-grey"></i>
-                            <p class="text-muted m-0 p-0"><small>Empleos</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="messages.html">
-                            <i class="bi bi-chat-right-dots-fill icono-grey"></i>
-                            <p class="text-muted m-0 p-0"><small>Mensajes</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="notifications.html">
-                            <i class="bi bi-bell-fill icono-grey"></i>
-                            <p class="text-muted m-0 p-0"><small>Notificaciones</small></p>
-                        </a>
-                    </li>
-                    <li class="nav-item mx-2 me-2">
-                        <div class="dropdown">
-                            <button class="nav-link dropdown-toggle icono-grey hover-black" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="d-flex flex-column hover-black">
-                                    <i class="bi bi-circle-fill icono-grey"></i>
-                                </div>
-                                <span class="text-muted m-0 p-0"><small>Yo</small></span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <!-- Contenido del menú desplegable -->
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <ul class="navbar-nav d-flex flex-row justify-content-end gap-3">
-                    <li class="nav-item mx-2">
-                        <div class="dropdown">
-                            <button class="nav-link dropdown-toggle align-items-center icono-grey hover-black"
-                                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="d-flex flex-column hover-black">
-                                    <i class="bi bi-grid-3x3-gap-fill icono-grey"></i>
-                                </div>
-                                <span class="text-muted m-0 p-0">
-                                    <small>Para negocios</small>
-                                    </spam>
-                            </button>
-                            <div class="dropdown-menu">
-                                <!-- Contenido del menú desplegable -->
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link d-flex flex-column align-items-center hover-black" href="#">
-                            <i class="bi bi-square-fill icono-golden"></i>
-                            <p class="text-muted m-0 p-0 nowrap"><small>Probar Premium por 0 HNL</small></p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <div id="menu-container"></div>
     <!--PROFILE PAGE HTML-->
     <div class="profile-page-container">
         <div class="personal-info-container">
             <div class="main-container">
                 <div class="background-container">
-                    <div class="img-background-container">
-                    </div>
                 </div>
                 <div class="profile-container">
                     <div class="img-profile-container">
@@ -125,12 +31,10 @@
                 </div>
                 <div class="text-profile-container">
                     <div class="name-container">
-                        <h1 class="name-title">Nombre Apellido</h1>
+                        <h1 class="name-title">Elsa Capunta</h1>
                     </div>
                     <div class="description-container">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo autem deserunt perferendis, sunt
-                        quo corrupti aspernatur error dignissimos asperiores mollitia tempora sed culpa possimus
-                        nesciunt qui in ducimus, quisquam soluta.
+                        Desarrolladora en ensamblador | Experta en lenguajes de máquina | Depuro directamente en código de operación porque los debuggers son para novatos | Solo programo en papel 
                     </div>
                     <div class="location-contact-container">
                         <div class="location-container">
@@ -138,6 +42,9 @@
                         </div>
                         <a class="contact-container" href="">Informacion de contacto</a>
                     </div>
+                </div>
+                <div class="edit-info-container">
+                    <button data-bs-toggle="modal" data-bs-target="#edit-presentation" class="btn-style edit-btn"></button>
                 </div>
             </div>
 
@@ -199,6 +106,47 @@
                 <img src="../Image/WhosHiring.png" alt="">
             </div>
         </div>
+
+
+        <!--MODALES-->
+        <div class="modal modal-lg" id="edit-presentation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="title-presentation">Editar presentación</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                          <label class="form-label">Nombre</label>
+                          <input type="text" class="form-control" >
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Apellidos</label>
+                          <input type="text" class="form-control" >
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre Adicional</label>
+                            <input type="text" class="form-control" >
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Titular</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button>Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>          
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../JS/loadMenu.js"></script>
 </body>
 
 </html>
+
