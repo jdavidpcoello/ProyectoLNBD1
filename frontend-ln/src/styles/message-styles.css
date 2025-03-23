@@ -8,6 +8,6 @@
     border-color: rgb(7, 7, 7);
 }
 
-.scroll-hidden::-webkit-scrollbar {
-    display: none;
-  }
+.selected-msg-indicator{
+    border-left: solid 5px rgb(4, 105, 0);
+}
