@@ -103,3 +103,11 @@ object-fit: cover;
     border-radius: 5px; /* Bordes redondeados */
     text-decoration: underline black;
 }
+
+  .scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-hidden-mozilla{
+    scrollbar-width: none;
+  }

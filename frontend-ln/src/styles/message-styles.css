@@ -1,0 +1,13 @@
+.menu-item{
+    border:1px solid;
+    border-color: rgb(141, 141, 141);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.menu-item:hover{
+    border-color: rgb(7, 7, 7);
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
