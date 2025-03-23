@@ -1,28 +1,273 @@
 <!DOCTYPE html>
 <html lang="es">
     
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>(9) Grupos | LinkedIn</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupos | LinkedIn</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="../Image/favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+
+  <style>
+    body {
+      background-color: #f3f2ef;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    .main-container {
+      max-width: 1128px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      gap: 24px;
+    }
+    
+    .groups-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      flex: 2;
+    }
+    
+    .suggestions-card {
+      flex: 1;
+      max-width: 300px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      padding: 16px;
+    }
+    
+    .nav-tabs {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+    }
+    
+    .nav-tabs .nav-link {
+      color: rgba(0, 0, 0, 0.6);
+      border: none;
+      padding: 16px 0;
+      margin-right: 24px;
+      font-weight: 500;
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: #0a66c2;
+      font-weight: 600;
+      border-bottom: 2px solid #0a66c2;
+      background-color: transparent;
+    }
+    
+    .create-btn {
+      background-color: white;
+      color: #0a66c2;
+      border: 1px solid #0a66c2;
+      border-radius: 24px;
+      padding: 6px 16px;
+      font-weight: 600;
+    }
+    
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .empty-state img {
+      width: 120px;
+      margin-bottom: 24px;
+    }
+    
+    .empty-state h2 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .empty-state p {
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 24px;
+      max-width: 450px;
+    }
+    
+    .search-btn {
+      background-color: #0a66c2;
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 8px 24px;
+      font-weight: 600;
+    }
+    
+    .suggestions-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .group-item {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    .group-item:last-child {
+      border-bottom: none;
+    }
+    
+    .group-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      margin-right: 12px;
+      object-fit: cover;
+    }
+    
+    .group-info {
+      flex: 1;
+    }
+    
+    .group-name {
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    
+    .group-members {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 12px;
+    }
+    
+    .join-btn {
+      background-color: white;
+      color: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      border-radius: 24px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .footer-links a {
+      color: rgba(0, 0, 0, 0.6);
+      text-decoration: none;
+    }
+    
+    .linkedin-logo {
+      color: #0a66c2;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="menu-container"></div>
+  
+  <div class="main-container">
+    <div class="groups-card">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <ul class="nav nav-tabs border-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Tus grupos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Solicitados</a>
+          </li>
+        </ul>
         
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <button class="create-btn">
+          Crear grupo
+        </button>
+      </div>
+      
+      <div class="empty-state">
+        <img src="../Image/LinkedIn_icon.svg.png" style="width: 40px;" alt="Usuario"/>
+        <h2>Buscar grupos</h2>
+        <p>Encuentra otras comunidades que te ayudan a alcanzar tus objetivos.</p>
+        
+        <button class="search-btn">
+          Buscar
+        </button>
+      </div>
+    </div>
+    
+    <div class="suggestions-card">
+      <h2 class="suggestions-title">Grupos que podrían interesarte</h2>
+      
+      <div class="group-item">
+        <img src="../Image/LinkedIn_icon.svg.png"  alt="Grupo de empleo" class="group-img"/>
+        <div class="group-info">
+          <h3 class="group-name">Buscas Empleo?</h3>
+          <p class="group-members">40.120 miembros</p>
+          <button class="join-btn">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="group-item">
+        <img src="../Image/LinkedIn_icon.svg.png"  alt="Grupo de empleo" class="group-img"/>
+        <div class="group-info">
+          <h3 class="group-name">Oportunidades Laborales en Gastronomía Turismo y Hotelería</h3>
+          <p class="group-members">99.893 miembros</p>
+          <button class="join-btn">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="group-item">
+        <img src="../Image/LinkedIn_icon.svg.png"  alt="Grupo de empleo" class="group-img"/>
+        <div class="group-info">
+          <h3 class="group-name">Oportunidades laborales en migraciones internacionales en Colombia</h3>
+          <p class="group-members">11.728 miembros</p>
+          <button class="join-btn">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="group-item">
+        <img src="../Image/LinkedIn_icon.svg.png"  alt="Grupo de empleo" class="group-img"/>
+        <div class="group-info">
+          <h3 class="group-name">Ofertas Laborales Ecuador - Human Consulting Strategies</h3>
+          <p class="group-members">8.950 miembros</p>
+          <button class="join-btn">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="ad-card">
+        <img src="../Image/WhosHiring.png" alt="Ver quién está contratando en LinkedIn" 
+             class="img-fluid rounded">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-        <link rel="icon" type="image/x-icon" href="../Image/favicon.png">
-
-        <link rel="stylesheet" href="../styles/mired-styles.css">
-        <link rel="stylesheet" href="../styles/styles.css">
-
-    </head>
-
-    <body>
-        <div id="menu-container"></div>
-
-        <script src="../JS/loadContactosMiRed.js"></script>
-        <script src="../JS/loadMenu.js"></script>
-        <script src="../JS/loadFooter.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
+             <div class="w-100 " id="footer-container">
+            </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../JS/loadMenu.js"></script>
+  <script src="../JS/loadFooter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>
