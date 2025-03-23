@@ -84,3 +84,11 @@ body{
     border-top: 1px solid #ddd;
     padding-top: 10px;
   }
+
+  .scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-hidden-mozilla{
+    scrollbar-width: none;
+  }
