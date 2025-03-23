@@ -183,3 +183,42 @@ body{
     left: 739px;
 }
 
+.modal-body{
+    padding: 10px 20px;
+}
+
+.title-presentation{
+    font-size: 1.2em;
+    font-weight: 600;
+    color:#222
+}
+
+.info-input-info{
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: solid 1px gray;
+    font-size: 0.9em;
+}
+
+.info-input-info__textarea{
+    border: 1px solid gray;
+}
+
+.info-input-info-label{
+    font-size: 0.9em;
+    color: #505050;
+}
+
+.adding-info-anchor{
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-description{
+    font-size: 0.9em;
+}
+
+.plus-svg{
+    font-size: 1.5em;
+}
