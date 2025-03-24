@@ -232,3 +232,8 @@ body{
     border-radius: 20px;
     font-weight: 600;
 }
+
+.subtitle-presentation{
+    font-size: 1.2em;
+    color:black;
+}
