@@ -222,3 +222,18 @@ body{
 .plus-svg{
     font-size: 1.5em;
 }
+
+.modal-btn-style{
+    background-color: #005dc1;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1em;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.subtitle-presentation{
+    font-size: 1.2em;
+    color:black;
+}
