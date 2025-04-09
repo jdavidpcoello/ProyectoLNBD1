@@ -68,7 +68,7 @@ header{
 
 .sign-in-input{
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 3px;
     padding: 12px;
     border: solid #626262 1px;
     border-radius: 0.1cm;
@@ -130,3 +130,30 @@ header{
     align-items: center; 
     font-size: 0.9em;
 }
+
+.invalid-input-div{
+    margin-top: 0px;
+}
+
+.invalid-input-text{
+    color:red;
+    font-size: 0.9em;
+}
+
+.invalid-input{
+    border: solid red 2px;
+}
+
+.invalid-input-label {
+    color: red !important;
+}
+
+.email-container{
+    margin-bottom: 25px;
+}
+
+#sign-in-form{
+    margin-bottom: 15px;
+}
+
+
