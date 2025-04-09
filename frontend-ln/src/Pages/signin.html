@@ -21,7 +21,7 @@
         <main>
             <div class="sign-in-container shadow">
                 <div class="header-title">
-                    <h1 id="sign-in-title">Sign in</h1>
+                    <h1 id="sign-in-title">Iniciar sesión</h1>
                 </div>
                 <div class="alt-sign-in-form">
                     <button class="alt-sign-in">
@@ -38,27 +38,29 @@
                 </div>
                 <form id="sign-in-form">
                     <div class="email-container form-floating">
-                        <input type="text" id="input1" required class="sign-in-input form-control" placeholder="name@example.com">
-                        <label for="input1">Email or phone</label>
+                        <input type="text" id="input1" class="sign-in-input form-control" placeholder="name@example.com">
+                        <label class="input-label email-label" for="input1">Email or teléfono</label>
+                        <div class="invalid-input-text invalid-email"></div>
                     </div>
                     <div class="password-container form-floating">
-                        <input type="password"  id="input2" required class="sign-in-input form-control" placeholder="Password">
-                        <label for="input2">Password</label>
+                        <input type="password"  id="input2" class="sign-in-input form-control" placeholder="Password">
+                        <label class="input-label password-label" for="input2">Contraseña</label>
+                        <div class="invalid-input-text invalid-password"></div>
                     </div>
                 </form>
                 <div class="forgot-password-container">
-                    <a class="anchor-styling" href="">Forgot password?</a>
+                    <a class="anchor-styling" href="">¿Has olvidado tu contraseña?</a>
                 </div>
                 <div class="remember-me-container">
                     <input type="checkbox" class="remember-me-checkbox">
-                    <label>Keep me logged in</label>
+                    <label>Recuerdame</label>
                 </div>
                 <div class="btn-sign-in-container">
-                    <button id="sign-in-btn" type="submit" form="sign-in-form" class="sign-in-btn">Sign in</button>
+                    <button id="sign-in-btn" type="submit" form="sign-in-form" class="sign-in-btn">Iniciar sesión</button>
                 </div>
             </div>
             <div class="join-now-container">
-                New to Linkedin? <a href="login-1.html" class="anchor-styling">Join now</a>
+                ¿Estás empezando a usar LinkedIn? <a href="login-1.html" class="anchor-styling">Unirse ahora</a>
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -67,3 +69,4 @@
         <script src="../JS/SigninManager.js"></script>
     </body>
 </html>
+
