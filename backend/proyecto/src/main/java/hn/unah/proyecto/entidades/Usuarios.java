@@ -1,5 +1,7 @@
 package hn.unah.proyecto.entidades;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,5 +32,23 @@ public class Usuarios {
 
     @Column(name = "nombre_adicional")
     private String nombreAdicional;
+
+    private String titular;
+
+    private String sector;
+
+    @Column(name = "url_perfil")
+    private String urlPerfil;
+
+    private String telefono;
+
+    private String direccion;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
+    private String email;
+
+    private String contrasenia;
 
 }
