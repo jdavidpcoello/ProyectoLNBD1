@@ -5,14 +5,48 @@ const signInButton = document.querySelector('#sign-in-button');
 const emailLabel = document.querySelector('.email-label');
 const passwordLabel = document.querySelector('.password-label');
 
+
 signInForm.addEventListener('submit', submitSignin);
 
-function submitSignin(event) {
+async function submitSignin(event) {
     event.preventDefault();
     
+    const url = 'http://localhost:8080/api/usuarios/signin';
     const validez = validateForm();
     if (validez) {
-        window.location.href = '../Pages/Inicio.html';
+        
+        const data = {
+            email : emailField.value,
+            password : passwordField.value
+        };
+
+        try{
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams (data)
+            });
+
+            const responseData = await response.json();
+
+            if(responseData === true){
+                window.location.href = '../Pages/Inicio.html';
+            }
+            else if(responseData === false ) {
+                const invalidCredentials = document.querySelector('.invalid-credentials');
+                invalidCredentials.classList.remove('hidden');
+                emailField.classList.add('invalid-input');
+                emailLabel.classList.add('invalid-input-label');
+                passwordField.classList.add('invalid-input');
+                passwordLabel.classList.add('invalid-input-label');
+            }
+        }
+        catch (error){
+            alert('error de backend sos una inutil');
+            console.log(error);
+        }
     }
 }
 
@@ -45,6 +79,12 @@ function validateForm(){
         invalidPasswordDiv.innerHTML = 'Introduce una contraseña.';
         passwordField.classList.add('invalid-input');
         passwordLabel.classList.add('invalid-input-label');
+        return false;
+    }
+    else if(passwordField.value.length <6){
+        passwordField.classList.add('invalid-input');
+        passwordLabel.classList.add('invalid-input-label');
+        invalidPasswordDiv.innerHTML = 'La contraseña debe tener 6 caracteres como mínimo.';
         return false;
     }
     return true;

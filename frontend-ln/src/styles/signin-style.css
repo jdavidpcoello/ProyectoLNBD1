@@ -156,4 +156,11 @@ header{
     margin-bottom: 15px;
 }
 
+.hidden{
+    display: none;
+}
 
+.create-account-anchor{
+    color: rgb(206, 0, 0);
+    font-weight: bold;
+}

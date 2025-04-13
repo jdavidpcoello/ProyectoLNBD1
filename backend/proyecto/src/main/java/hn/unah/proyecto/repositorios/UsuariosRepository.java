@@ -6,5 +6,5 @@ import hn.unah.proyecto.entidades.Usuarios;
 
 public interface UsuariosRepository extends JpaRepository<Usuarios,Integer> {
 
-    
+    public Usuarios findByEmail(String email);
 }
