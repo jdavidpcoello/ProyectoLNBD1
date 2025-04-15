@@ -4,6 +4,7 @@ package hn.unah.proyecto.controladores;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.unah.proyecto.dto.ConexionDTO;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.servicios.ConexionService;
 import hn.unah.proyecto.entidades.Usuarios;
@@ -13,6 +14,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,15 +30,32 @@ public class ConexionController {
     private ConexionService conexionService;
 
     @PostMapping
-    public ResponseEntity<Conexiones> guardarConexion(@RequestBody Conexiones conexion) {
-        Conexiones nuevaConexion = new Conexiones();
-        nuevaConexion.setUsuario1Id(conexion.getUsuario1Id());
-        nuevaConexion.setUsuario2Id(conexion.getUsuario2Id());
-        nuevaConexion.setFechaConexion(conexion.getFechaConexion());
-        
-        Conexiones conexionGuardada = conexionService.guardarConexion(nuevaConexion);
-        return ResponseEntity.ok(conexionGuardada);
+    public ResponseEntity<ConexionDTO> crearConexion(@RequestBody ConexionDTO dto) {
+        ConexionDTO nuevaConexion = conexionService.guardarConexion(dto);
+        return ResponseEntity.ok(nuevaConexion);
     }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<ConexionDTO>> obtenerConexiones(@PathVariable int idUsuario) {
+        List<ConexionDTO> conexiones = conexionService.obtenerConexionesDeUsuario(idUsuario);
+        return ResponseEntity.ok(conexiones);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarConexion(@PathVariable int id) {
+        conexionService.eliminarConexion(id);
+    }
+
+    // @PostMapping
+    // public ResponseEntity<Conexiones> guardarConexion(@RequestBody Conexiones conexion) {
+    //     Conexiones nuevaConexion = new Conexiones();
+    //     nuevaConexion.setUsuario1Id(conexion.getUsuario1Id());
+    //     nuevaConexion.setUsuario2Id(conexion.getUsuario2Id());
+    //     nuevaConexion.setFechaConexion(conexion.getFechaConexion());
+        
+    //     Conexiones conexionGuardada = conexionService.guardarConexion(nuevaConexion);
+    //     return ResponseEntity.ok(conexionGuardada);
+    // }
 
     @GetMapping("/amigos/{codigoUsuario}")
     public ResponseEntity<List<Usuarios>> obtenerAmigos(@PathVariable int codigoUsuario) {

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ConexionRepository extends JpaRepository<Conexiones,Integer> {
 
+    List<Conexiones> findByUsuario1Id(int codigoUsuario1);
+
     List<Conexiones> findByUsuario1IdOrUsuario2IdAndEstado(int usuario1Id, int usuario2Id, int estado);
 
     @Query("SELECT c FROM Conexiones c WHERE (c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario) AND c.estado = :estado")

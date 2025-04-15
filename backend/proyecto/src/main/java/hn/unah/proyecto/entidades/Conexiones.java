@@ -4,8 +4,6 @@ import lombok.*;
 
 import java.util.Date;
 
-
-
 @Data
 @Getter
 @Setter
@@ -31,8 +29,6 @@ public class Conexiones {
 
     @Column(name = "FECHA_CONEXION")
     private Date fechaConexion;
-
-
 }
 
 

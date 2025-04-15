@@ -1,5 +1,7 @@
 package hn.unah.proyecto.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ConexionDTO {
 
-    private int id;
+    private int codigoConexion;
     
     private int usuario1Id;
     
@@ -19,6 +21,6 @@ public class ConexionDTO {
     
     private int estado;
     
-    private String fechaConexion;
+    private Date fechaConexion;
 
 }
