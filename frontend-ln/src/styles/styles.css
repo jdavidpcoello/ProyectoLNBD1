@@ -162,3 +162,31 @@ object-fit: cover;
     color: black;
     border-bottom: 2px solid black;
   }
+
+  .card-custom{
+    height: 100%;
+    max-width: 316px;
+  }
+  .texto-usuario{
+    min-height: 76px;
+    max-height: 76px;
+  }
+
+  .btn-close-custom {
+    border: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .btn-close-custom:hover{
+    color: #000;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}

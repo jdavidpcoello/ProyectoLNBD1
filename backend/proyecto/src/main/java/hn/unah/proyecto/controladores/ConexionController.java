@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.proyecto.dto.ConexionDTO;
-import hn.unah.proyecto.entidades.Conexiones;
+// import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.servicios.ConexionService;
+import hn.unah.proyecto.servicios.EstadoConexionService;
+import hn.unah.proyecto.entidades.Conexiones;
+import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.entidades.Usuarios;
 
 import java.util.List;
@@ -18,16 +21,26 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @RestController
+// @CrossOrigin(origins = "*")
+@CrossOrigin(
+    origins = {"http://localhost:5501", "http://192.168.0.12:5501"},
+    allowedHeaders = "*",
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
 @RequestMapping("/api/conexiones")
-@CrossOrigin(origins = "*")
 public class ConexionController {
     
     @Autowired
     private ConexionService conexionService;
+
+    @Autowired
+    private EstadoConexionService estadoConexionService;
 
     @PostMapping
     public ResponseEntity<ConexionDTO> crearConexion(@RequestBody ConexionDTO dto) {
@@ -35,27 +48,10 @@ public class ConexionController {
         return ResponseEntity.ok(nuevaConexion);
     }
 
-    @GetMapping("/usuario/{idUsuario}")
-    public ResponseEntity<List<ConexionDTO>> obtenerConexiones(@PathVariable int idUsuario) {
-        List<ConexionDTO> conexiones = conexionService.obtenerConexionesDeUsuario(idUsuario);
-        return ResponseEntity.ok(conexiones);
-    }
-
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{codigoConexion}")
     public void eliminarConexion(@PathVariable int id) {
         conexionService.eliminarConexion(id);
     }
-
-    // @PostMapping
-    // public ResponseEntity<Conexiones> guardarConexion(@RequestBody Conexiones conexion) {
-    //     Conexiones nuevaConexion = new Conexiones();
-    //     nuevaConexion.setUsuario1Id(conexion.getUsuario1Id());
-    //     nuevaConexion.setUsuario2Id(conexion.getUsuario2Id());
-    //     nuevaConexion.setFechaConexion(conexion.getFechaConexion());
-        
-    //     Conexiones conexionGuardada = conexionService.guardarConexion(nuevaConexion);
-    //     return ResponseEntity.ok(conexionGuardada);
-    // }
 
     @GetMapping("/amigos/{codigoUsuario}")
     public ResponseEntity<List<Usuarios>> obtenerAmigos(@PathVariable int codigoUsuario) {
@@ -64,6 +60,34 @@ public class ConexionController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(amigos);
+    }
+
+    // @GetMapping("/no-contacto/{codigoUsuario}")
+    // public ResponseEntity<List<Usuarios>> obtenerUsuariosNoAmigos(@PathVariable int codigoUsuario) {
+    //     List<Usuarios> noAmigos = this.conexionService.obtenerPosiblesContactos(codigoUsuario);
+    //     return ResponseEntity.ok(noAmigos);
+    // }
+
+    // @GetMapping("/sugerencias/{codigoUsuario}")
+    // public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerUsuariosConEstado(@PathVariable int codigoUsuario) {
+    //     List<UsuarioConEstadoDTO> sugerencias = conexionService.obtenerUsuariosNoAmigosConEstado(codigoUsuario);
+    //     return ResponseEntity.ok(sugerencias);
+    // }
+
+    @PutMapping("/cancelar/{codigoConexion}")
+    public ResponseEntity<?> cancelarSolicitud(@PathVariable int codigoConexion) {
+        Conexiones conexion = conexionService.obtenerConexionPorId(codigoConexion);
+        if (conexion == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        EstadoConexion estadoPendiente = estadoConexionService.findByEstado("PENDIENTE");
+        if (conexion.getEstado() != estadoPendiente.getCodigoEstado()) {
+            return ResponseEntity.badRequest().body("Solo se pueden cancelar solicitudes pendientes");
+        }
+
+        conexionService.eliminarConexion(codigoConexion);
+        return ResponseEntity.ok("Solicitud cancelada");
     }
 
 

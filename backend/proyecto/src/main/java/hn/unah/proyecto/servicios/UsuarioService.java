@@ -22,4 +22,8 @@ public class UsuarioService {
         }
         return true;
     }
+
+    public Usuarios obtenerUsuarioPorId(int codigoUsuario) {
+        return usuariosRepository.findById(codigoUsuario).orElse(null);
+    }
 }

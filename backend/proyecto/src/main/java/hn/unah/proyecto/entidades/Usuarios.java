@@ -51,4 +51,12 @@ public class Usuarios {
 
     private String contrasenia;
 
+    @Column(name = "foto_perfil")
+    private String fotoPerfilUrl;
+
+    @Column(name = "foto_portada")
+    private String fotoPortadaUrl;
+
+    @Column(name = "foto_asociada_titular")
+    private String fotoTitularUrl;
 }

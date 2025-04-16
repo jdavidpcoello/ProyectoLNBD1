@@ -35,4 +35,10 @@ public class UsuarioDTO {
     private String email;
 
     private String contrasenia;
+
+    private String fotoPerfilUrl;
+
+    private String fotoPortadaUrl;
+
+    private String fotoTitularUrl;
 }

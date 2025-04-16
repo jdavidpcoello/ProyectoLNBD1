@@ -126,18 +126,11 @@
                     <div class="col-md-2 mt-3 mb-0">
                         <button class="btn m-0 p-0"><span>Mostrar todo</span></button>
                     </div>
-
-                    <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3 mt-0">
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
-                        <div class="contacto-container"></div>
+                    <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-3 mb-3 mt-0" id="contenedor-contactos">
+                        
                     </div>
                 </div>
+
                 <div class="row border rounded ms-3 mb-3 ps-3 bg-white general-border-style">
                     <div class="col-md-10 pt-3">
                         <p class="mb-0">Personas que podrías conocer en Universidad Nacional Autónoma de Honduras (UNAH)</p>
@@ -196,6 +189,16 @@
             </div>
     </div>
     
+    <div id="modalCancelar" class="modal" style="display:none;">
+        <div class="modal-contenido text-center">
+            <p>¿Cancelar la solicitud de conexión?</p>
+            <div class="d-flex justify-content-center gap-2">
+            <button class="btn btn-danger" onclick="console.log('Botón presionado'); cancelarSolicitud()">Sí</button>
+            <button class="btn btn-secondary" onclick="cerrarModal()">No</button>
+            </div>
+        </div>
+    </div>
+      
     <script src="../JS/loadContactosMiRed.js"></script>
     <script src="../JS/loadMenu.js"></script>
     <script src="../JS/loadFooter.js"></script>

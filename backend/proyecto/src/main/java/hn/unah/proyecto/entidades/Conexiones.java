@@ -2,7 +2,7 @@ package hn.unah.proyecto.entidades;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Getter
@@ -28,7 +28,7 @@ public class Conexiones {
     private int estado;
 
     @Column(name = "FECHA_CONEXION")
-    private Date fechaConexion;
+    private LocalDateTime fechaConexion;
 }
 
 

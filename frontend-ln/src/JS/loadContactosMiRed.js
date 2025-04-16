@@ -1,15 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     fetch('contactoMiRed.html')
-//         .then(response => response.text())
-//         .then(data => {
-//             const containers = document.querySelectorAll('.contacto-container');
-//             containers.forEach(container => {
-//                 container.innerHTML += data;
-//             });
-//         })
-//         .catch(error => console.error('Error loading contactos:', error));
-// });
-
 document.addEventListener("DOMContentLoaded", function() {
     fetch('seguirMiRed.html')
         .then(response => response.text())
@@ -23,35 +11,44 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    cargarConexiones();
+    cargarPosiblesConexiones();
 });
 
-async function cargarConexiones() {
-    const url = 'http://localhost:8080/api/conexiones/usuario/1';
-    const container = document.querySelector('.contacto-container');
+
+
+async function cargarPosiblesConexiones() {
+    //Recordatorio: Cambiar la URL según el usuario logueado
+    const url = 'http://localhost:8080/api/conexiones/sugerencias/1';
+    const rowContainer = document.getElementById('contenedor-contactos');
 
     try {
         const response = await fetch(url);
         
         if (!response.ok) {
-            throw new Error("Error al cargar conexiones 😥");
+            throw new Error("Error al cargar usuarios :c");
         }
 
-        for (const conexion of conexiones) {
+        const usuarios = await response.json();
 
-            const usuario1Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario1Id}`);
-            const usuario1 = await usuario1Response.json();
+        rowContainer.innerHTML = '';
 
-            const usuario2Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario2Id}`);
-            const usuario2 = await usuario2Response.json();
+        for (const usuario of usuarios) {
+            const cardHTML = crearCardHTML(usuario);
 
-            const usuarioAmostrar = usuario1.id === 1 ? usuario2 : usuario1;
+            const contactoDiv = document.createElement('div');
+            contactoDiv.classList.add('contacto-container');
+            
 
-            const cardHTML = crearCardHTML(usuarioAmostrar);
-            container.innerHTML += cardHTML;
+            contactoDiv.innerHTML += cardHTML;
+
+            rowContainer.appendChild(contactoDiv);
+            // const cardHTML = crearCardHTML(usuario);
+            // rowContainer.innerHTML += cardHTML;
         }
+
+        agregarEventosConectar();
+        agregarEventosCerrarTarjeta();
 
     } catch (error) {
         alert('💔 F bebé: ' + error.message);
@@ -59,40 +56,193 @@ async function cargarConexiones() {
     }
 }
 
+function agregarEventosCerrarTarjeta() {
+    const botonesCerrar = document.querySelectorAll(".btn-close-custom");
+
+    botonesCerrar.forEach(boton => {
+        boton.addEventListener("click", () => {
+           const tarjeta = boton.closest(".card-custom");
+            if (tarjeta) {
+                tarjeta.classList.add("fade-out");
+
+                setTimeout(() => {
+                    tarjeta.remove();
+                }, 300); 
+            }
+        });
+    });
+}
+
+function agregarEventosConectar() {
+    const botones = document.querySelectorAll(".btn-conectar");
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", async () => {
+            // ! Recordar cambiar el idUsuario1 por el id del usuario logueado dinamicamente
+            const idUsuario1 = 1;
+            const idUsuario2 = boton.getAttribute("data-usuario-id");
+
+            const conexion = {
+                usuario1Id: idUsuario1,
+                usuario2Id: parseInt(idUsuario2),
+                estado: 3
+            };
+
+            try {
+                const response = await fetch("http://localhost:8080/api/conexiones", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(conexion)
+                });
+
+                if (response.ok) {
+                    boton.innerHTML = '<i class="bi bi-stopwatch"></i> Pendiente';
+                    boton.disabled = true;
+                } else {
+                    alert("Error al enviar solicitud");
+                }
+            } catch (err) {
+                console.error("Error al conectar:", err);
+            }
+        });
+    });
+}
+
 function crearCardHTML(usuario) {
+    console.log('Estado de conexión de usuario:', usuario.estadoConexion); 
+    const baseUrl = 'http://localhost:5501';
+
+    const fotoPortada = usuario.fotoPortadaUrl ? `${baseUrl}${usuario.fotoPortadaUrl}` : '';
+    const fotoPerfil = usuario.fotoPerfilUrl ? `${baseUrl}${usuario.fotoPerfilUrl}` : '';
+    const fotoTitular = usuario.fotoTitularUrl ? `${baseUrl}${usuario.fotoTitularUrl}` : '';
+
+    const botonId = `btn-conectar-${usuario.codigoUsuario}`;
+
+    let botonHTML = '';
+
+    if (usuario.estadoConexion === 1) {
+        return '';
+    }
+
+    if (usuario.estadoConexion === 3) {
+        botonHTML = `
+            <button class="btn btn-outline-secondary btn-sm rounded-pill w-100 btn-cancelar"
+                onclick="mostrarCancelarModal(${usuario.codigoConexion})">
+                <i class="bi bi-stopwatch"></i> Enviado
+            </button> 
+            
+        `;
+    } else {
+        botonHTML = `
+            <button class="btn btn-azul btn-sm rounded-pill w-100 btn-conectar" 
+                id="${botonId}" 
+                data-usuario-id="${usuario.codigoUsuario}">
+                <i class="bi bi-person-plus-fill"></i>
+                <span>Conectar</span>
+            </button>
+        `;
+    }
+
     return `
-    <div class="col">
-        <div class="bg-white pt-0 border rounded">
+    <div class="col card-custom">
+        <div class="card">
             <div class="position-relative " style="height: 100px;">
                 <div class="position-relative">
-                    <img src="${usuario.fotoPortadaUrl}" class="w-100 rounded-top" alt="Cover Photo">
-                    <button class="btn m-2 position-absolute top-0 end-0 btn-sombreado text-light"><i class="bi bi-x"></i></button>
+                    <img src="${fotoPortada}" class="w-100 rounded-top" alt="Cover Photo">
+                    <button class="btn m-2 position-absolute top-0 end-0 btn-close-custom text-light"><i class="bi bi-x"></i></button>
                 </div>
                 <div class="mb-5">
-                    <img src="${usuario.fotoPerfilUrl}" class="rounded-circle position-absolute start-50 translate-middle img-contenedor-mired" alt="Profile Photo">
+                    <img src="${fotoPerfil}" class="rounded-circle position-absolute start-50 translate-middle img-contenedor-mired" alt="Profile Photo">
                 </div>
             </div>
             <div class="position-relative mt-5 mb-3">
-                <div class="text-center">
+                <div class="text-center texto-usuario">
                     <p class="mb-1 fw-bold">${usuario.nombre} ${usuario.apellidos}</p>
                     <p class="mb-1 text-muted">${usuario.titular}</p>
                 </div> 
                 <div class="d-flex justify-content-between">
-                    <div class="my-3 mx-2 px-2">
-                        <img src="../Image/UNAH.jpg" alt="UNAH" class="img-responsive">
+                    <div class="my-3 mx-2 px-2 w-25">
+                        <img src="${fotoTitular}" alt="Titular" class="img-responsive img-fluid">
                     </div>
-                    <div class="d-flex align-items-center me-3">
+                    <div class="d-flex align-items-center me-3 w-75">
                         <small class="mb-1 text-small text-muted">${usuario.sector}</small>
                     </div>
                 </div>
                 <div class="mx-2">
-                    <button class="btn btn-azul btn-sm rounded-pill w-100">
-                        <i class="bi bi-person-plus-fill"></i>
-                        <span>Conectar</span>
-                    </button>
+                    ${botonHTML}
                 </div>
             </div>
         </div>
     </div>
     `;
 }
+
+let conexionIdSeleccionada = null;
+
+function mostrarCancelarModal(codigoConexion) {
+    console.log("Codigo de conexion:", codigoConexion);
+
+    conexionIdSeleccionada = codigoConexion;
+    document.getElementById('modalCancelar').style.display = 'flex';
+}
+
+function cerrarModal() {
+    document.getElementById('modalCancelar').style.display = 'none';
+}
+
+async function cancelarSolicitud() {
+    if (!conexionIdSeleccionada) return;
+
+    try {
+        const response = await fetch(`http://localhost:8080/api/conexiones/cancelar/${conexionIdSeleccionada}`, {
+            method: 'PUT'
+        });
+
+        if (response.ok) {
+            alert("Solicitud cancelada");
+            location.reload();
+        } else {
+            alert("No se pudo cancelar");
+        }
+    } catch (error) {
+        console.error("Error al cancelar solicitud:", error);
+    }
+
+    cerrarModal();
+}
+
+
+// Para página de conexiones:
+// async function cargarConexiones() {
+//     const url = 'http://localhost:8080/api/conexiones/usuario/1';
+//     const container = document.querySelector('.contacto-container');
+
+//     try {
+//         const response = await fetch(url);
+        
+//         if (!response.ok) {
+//             throw new Error("Error al cargar conexiones");
+//         }
+
+//         const conexiones = await response.json();
+//         for (const conexion of conexiones) {
+
+//             const usuario1Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario1Id}`);
+//             const usuario1 = await usuario1Response.json();
+
+//             const usuario2Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario2Id}`);
+//             const usuario2 = await usuario2Response.json();
+
+//             const usuarioAmostrar = usuario1.id === 1 ? usuario2 : usuario1;
+
+//             const cardHTML = crearCardHTML(usuarioAmostrar);
+//             container.innerHTML += cardHTML;
+//         }
+
+//     } catch (error) {
+//         alert('💔 F bebé: ' + error.message);
+//         console.error(error);
+//     }
+// }
