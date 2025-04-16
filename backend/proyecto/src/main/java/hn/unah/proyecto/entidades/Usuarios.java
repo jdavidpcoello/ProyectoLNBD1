@@ -64,11 +64,11 @@ public class Usuarios {
     @Column(name = "foto_asociada_titular")
     private String fotoTitularUrl;
 
-    // @ManyToOne()
-    // @JoinColumn(name = "codigoPais", referencedColumnName = "codigo_pais")
-    // private Paises pais;
+    @ManyToOne()
+    @JoinColumn(name = "codigoPais", referencedColumnName = "codigo_pais")
+    private Paises pais;
 
-    // @ManyToOne()
-    // @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
-    // private Ciudades ciudad;
+    @ManyToOne()
+    @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
+    private Ciudades ciudad;
 }
