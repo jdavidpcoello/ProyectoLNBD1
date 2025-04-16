@@ -3,11 +3,12 @@ package hn.unah.proyecto.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import hn.unah.proyecto.dto.ConexionDTO;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.repositorios.ConexionRepository;
@@ -24,17 +25,51 @@ public class ConexionService {
     @Autowired
     private UsuariosRepository usuariosRepository;
 
-    public Conexiones guardarConexion(Conexiones conexion) {
-        return conexionRepository.save(conexion);
+    public ConexionDTO guardarConexion(ConexionDTO dto) {
+        Conexiones conexion = new Conexiones();
+        conexion.setUsuario1Id(dto.getUsuario1Id());
+        conexion.setUsuario2Id(dto.getUsuario2Id());
+        conexion.setEstado(dto.getEstado());
+        conexion.setFechaConexion(dto.getFechaConexion());
+
+        conexion = conexionRepository.save(conexion);
+
+        dto.setFechaConexion(conexion.getFechaConexion());
+        return dto;
+    }
+
+    public List<ConexionDTO> obtenerConexionesDeUsuario(int idUsuario) {
+        List<Conexiones> conexiones = conexionRepository.findByUsuario1Id(idUsuario);
+        return conexiones.stream().map(c -> {
+            ConexionDTO dto = new ConexionDTO();
+            dto.setUsuario1Id(c.getUsuario1Id());
+            dto.setUsuario2Id(c.getUsuario2Id());
+            dto.setEstado(c.getEstado());
+            dto.setFechaConexion(c.getFechaConexion());
+            return dto;
+        }).collect(Collectors.toList());
+    }
+
+    private ConexionDTO convertirADTO(Conexiones c) {
+        ConexionDTO dto = new ConexionDTO();
+        dto.setCodigoConexion(c.getCodigoConexion());
+        dto.setUsuario1Id(c.getUsuario1Id());
+        dto.setUsuario2Id(c.getUsuario2Id());
+        dto.setEstado(c.getEstado());
+        dto.setFechaConexion(c.getFechaConexion());
+        return dto;
+    }
+
+    public void eliminarConexion(int id){
+        Conexiones conexion = this.conexionRepository.findById(id).orElse(null);
+        if (conexion != null) {
+            this.conexionRepository.delete(conexion);
+        }
     }
 
     public Conexiones obtenerConexionPorId(int id) {
         return conexionRepository.findById(id).orElse(null);
     }
-
-    // public List<Conexiones> obtenerConexionesActivasPorUsuario(int codigoUsuario) {
-    //     return conexionRepository.findConexionesActivasPorUsuario(codigoUsuario);
-    // }
 
     public List<Usuarios> obtenerAmigosPorUsuario(int codigoUsuario) {
         List<Conexiones> conexiones = this.conexionRepository
@@ -50,14 +85,7 @@ public class ConexionService {
             if (amigo != null) {
                 amigos.add(amigo);
             }
-            System.out.println("Amigo encontrado con ID: " + amigoId);
-
         }
-        System.out.println("Buscando amigos para el usuario: " + codigoUsuario);
-        System.out.println("Conexiones encontradas: " + conexiones.size());
-
-        System.out.println("Código usuario: " + codigoUsuario + ", amigos encontrados: " + amigos.size());
-
         return amigos;
     }
 
