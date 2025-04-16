@@ -42,6 +42,31 @@ public class ConexionService {
         return new ConexionDTO(conexion);
     }
 
+    // public ConexionDTO guardarConexion(ConexionDTO dto) {
+    //     Conexiones conexion = new Conexiones();
+
+    //     conexion.setUsuario1Id(usuariosRepository.findById(dto.getUsuario1Id()).orElseThrow());
+    //     conexion.setUsuario2Id(usuariosRepository.findById(dto.getUsuario2Id()).orElseThrow());
+    //     conexion.setEstadoConexion(estadoConexionRepository.findById(dto.getEstado()).orElseThrow());
+    //     conexion.setFechaConexion(LocalDateTime.now());
+
+    //     conexionRepository.save(conexion);
+
+    //     return convertirADTO(conexion);
+    // }
+
+    // public List<ConexionDTO> obtenerConexionesDeUsuario(int idUsuario) {
+    //     List<Conexiones> conexiones = conexionRepository.findByUsuario1Id(idUsuario);
+    //     return conexiones.stream().map(c -> {
+    //         ConexionDTO dto = new ConexionDTO();
+    //         dto.setUsuario1Id(c.getUsuario1Id());
+    //         dto.setUsuario2Id(c.getUsuario2Id());
+    //         dto.setEstado(c.getEstado());
+    //         dto.setFechaConexion(c.getFechaConexion());
+    //         return dto;
+    //     }).collect(Collectors.toList());
+    // }
+
     public void eliminarConexion(int id){
         Conexiones conexion = this.conexionRepository.findById(id).orElse(null);
         if (conexion != null) {
@@ -71,6 +96,7 @@ public class ConexionService {
         return amigos;
     }
 
+
     public List<Usuarios> obtenerPosiblesContactos(int codigoUsuario) {
     
         List<Conexiones> conexiones = this.conexionRepository
@@ -99,6 +125,8 @@ public class ConexionService {
     public List<UsuarioConEstadoDTO> obtenerUsuariosNoAmigosConEstado(int codigoUsuario) {
         List<Conexiones> conexiones = conexionRepository.findConexionesPorUsuario(codigoUsuario);
         
+        System.out.println("Conexiones encontradas: " + conexiones.size());
+
         Map<Integer, Integer> mapaEstados = new HashMap<>();
         for (Conexiones c : conexiones) {
             int otroId = (c.getUsuario1Id() == codigoUsuario) ? c.getUsuario2Id() : c.getUsuario1Id();
@@ -119,8 +147,8 @@ public class ConexionService {
                     dto.setApellidos(usuario.getApellidos());
                     dto.setTitular(usuario.getTitular());
                     dto.setSector(usuario.getSector());
-                    dto.setFotoPerfilUrl(usuario.getFotoPerfilUrl());
-                    dto.setFotoPortadaUrl(usuario.getFotoPortadaUrl());
+                    dto.setFotoPerfil(usuario.getFotoPerfil());
+                    dto.setFotoPortada(usuario.getFotoPortada());
                     dto.setFotoTitularUrl(usuario.getFotoTitularUrl());
                     dto.setEstadoConexion(estado);
                     
@@ -141,5 +169,7 @@ public class ConexionService {
         }
         return resultado;
     }
+
+
     
 }

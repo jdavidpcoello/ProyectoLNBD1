@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.proyecto.dto.ConexionDTO;
-// import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
+import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.servicios.ConexionService;
 import hn.unah.proyecto.servicios.EstadoConexionService;
 import hn.unah.proyecto.entidades.Conexiones;
@@ -48,7 +48,7 @@ public class ConexionController {
         return ResponseEntity.ok(nuevaConexion);
     }
 
-    @DeleteMapping("/{codigoConexion}")
+    @DeleteMapping("/{id}")
     public void eliminarConexion(@PathVariable int id) {
         conexionService.eliminarConexion(id);
     }
@@ -62,17 +62,17 @@ public class ConexionController {
         return ResponseEntity.ok(amigos);
     }
 
-    // @GetMapping("/no-contacto/{codigoUsuario}")
-    // public ResponseEntity<List<Usuarios>> obtenerUsuariosNoAmigos(@PathVariable int codigoUsuario) {
-    //     List<Usuarios> noAmigos = this.conexionService.obtenerPosiblesContactos(codigoUsuario);
-    //     return ResponseEntity.ok(noAmigos);
-    // }
+    @GetMapping("/no-contacto/{codigoUsuario}")
+    public ResponseEntity<List<Usuarios>> obtenerUsuariosNoAmigos(@PathVariable int codigoUsuario) {
+        List<Usuarios> noAmigos = this.conexionService.obtenerPosiblesContactos(codigoUsuario);
+        return ResponseEntity.ok(noAmigos);
+    }
 
-    // @GetMapping("/sugerencias/{codigoUsuario}")
-    // public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerUsuariosConEstado(@PathVariable int codigoUsuario) {
-    //     List<UsuarioConEstadoDTO> sugerencias = conexionService.obtenerUsuariosNoAmigosConEstado(codigoUsuario);
-    //     return ResponseEntity.ok(sugerencias);
-    // }
+    @GetMapping("/sugerencias/{codigoUsuario}")
+    public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerUsuariosConEstado(@PathVariable int codigoUsuario) {
+        List<UsuarioConEstadoDTO> sugerencias = conexionService.obtenerUsuariosNoAmigosConEstado(codigoUsuario);
+        return ResponseEntity.ok(sugerencias);
+    }
 
     @PutMapping("/cancelar/{codigoConexion}")
     public ResponseEntity<?> cancelarSolicitud(@PathVariable int codigoConexion) {

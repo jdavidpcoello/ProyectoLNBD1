@@ -19,8 +19,8 @@ public class UsuarioConEstadoDTO {
     private String apellidos;
     private String titular;
     private String sector;
-    private String fotoPerfilUrl;
-    private String fotoPortadaUrl;
+    private String fotoPerfil;
+    private String fotoPortada;
     private String fotoTitularUrl;
 
     private int codigoConexion;
@@ -32,10 +32,10 @@ public class UsuarioConEstadoDTO {
         this.apellidos = usuario.getApellidos();
         this.titular = usuario.getTitular();
         this.sector = usuario.getSector();
-        this.fotoPerfilUrl = usuario.getFotoPerfilUrl();
-        this.fotoPortadaUrl = usuario.getFotoPortadaUrl();
+        this.fotoPerfil = usuario.getFotoPerfil();
+        this.fotoPortada = usuario.getFotoPortada();
         this.fotoTitularUrl = usuario.getFotoTitularUrl();
-        this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : 0;
+        this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : null;
         this.codigoConexion = conexion.getCodigoConexion();
     }
 }

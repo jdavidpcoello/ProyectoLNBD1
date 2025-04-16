@@ -36,9 +36,9 @@ public class UsuarioDTO {
 
     private String contrasenia;
 
-    private String fotoPerfilUrl;
+    private String fotoPerfil;
 
-    private String fotoPortadaUrl;
+    private String fotoPortada;
 
     private String fotoTitularUrl;
 }
