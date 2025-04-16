@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,12 +53,22 @@ public class Usuarios {
 
     private String contrasenia;
 
+    private String visibilidad;
+
     @Column(name = "foto_perfil")
-    private String fotoPerfilUrl;
+    private String fotoPerfil;
 
     @Column(name = "foto_portada")
-    private String fotoPortadaUrl;
+    private String fotoPortada;
 
     @Column(name = "foto_asociada_titular")
     private String fotoTitularUrl;
+
+    @ManyToOne()
+    @JoinColumn(name = "codigoPais", referencedColumnName = "codigo_pais")
+    private Paises pais;
+
+    @ManyToOne()
+    @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
+    private Ciudades ciudad;
 }
