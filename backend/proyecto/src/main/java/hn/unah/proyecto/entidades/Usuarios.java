@@ -29,7 +29,9 @@ public class Usuarios {
     @Column(name = "codigo_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoUsuario;
+
     private String nombre;
+    
     private String apellidos;
 
     @Column(name = "nombre_adicional")
@@ -61,14 +63,14 @@ public class Usuarios {
     @Column(name = "foto_portada")
     private String fotoPortada;
 
-    @Column(name = "foto_asociada_titular")
+    @Column(name = "foto_asociado_titular")
     private String fotoTitularUrl;
 
-    // @ManyToOne()
-    // @JoinColumn(name = "codigoPais", referencedColumnName = "codigo_pais")
-    // private Paises pais;
+    @ManyToOne()
+    @JoinColumn(name = "pais", referencedColumnName = "codigo_pais")
+    private Paises pais;
 
-    // @ManyToOne()
-    // @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
-    // private Ciudades ciudad;
+    @ManyToOne()
+    @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
+    private Ciudades ciudad;
 }

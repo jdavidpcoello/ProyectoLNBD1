@@ -43,8 +43,8 @@ public class ConexionController {
     private EstadoConexionService estadoConexionService;
 
     @PostMapping
-    public ResponseEntity<ConexionDTO> crearConexion(@RequestBody ConexionDTO dto) {
-        ConexionDTO nuevaConexion = conexionService.guardarConexion(dto);
+    public ResponseEntity<ConexionDTO> crearConexion(@RequestBody ConexionDTO conexionDTO) {
+        ConexionDTO nuevaConexion = conexionService.guardarConexion(conexionDTO);
         return ResponseEntity.ok(nuevaConexion);
     }
 
@@ -82,7 +82,7 @@ public class ConexionController {
         }
 
         EstadoConexion estadoPendiente = estadoConexionService.findByEstado("PENDIENTE");
-        if (conexion.getEstado() != estadoPendiente.getCodigoEstado()) {
+        if (conexion.getEstado().getCodigoEstado() != estadoPendiente.getCodigoEstado()) {
             return ResponseEntity.badRequest().body("Solo se pueden cancelar solicitudes pendientes");
         }
 

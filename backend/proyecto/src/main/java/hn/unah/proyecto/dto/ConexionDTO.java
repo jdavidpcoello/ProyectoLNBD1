@@ -28,7 +28,7 @@ public class ConexionDTO {
         this.codigoConexion = conexion.getCodigoConexion();
         this.usuario1Id = conexion.getUsuario1Id();
         this.usuario2Id = conexion.getUsuario2Id();
-        this.estado = conexion.getEstado();
+        this.estado = conexion.getEstado().getCodigoEstado();
         this.fechaConexion = conexion.getFechaConexion();
     }
 }

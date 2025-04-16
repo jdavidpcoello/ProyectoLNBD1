@@ -17,7 +17,7 @@ import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.repositorios.ConexionRepository;
-
+import hn.unah.proyecto.repositorios.EstadoConexionRepository;
 import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.repositorios.UsuariosRepository;
 
@@ -30,42 +30,23 @@ public class ConexionService {
     @Autowired
     private UsuariosRepository usuariosRepository;
 
+    @Autowired
+    private EstadoConexionRepository estadoConexionRepository;
+
     public ConexionDTO guardarConexion(ConexionDTO dto) {
+        EstadoConexion estado = estadoConexionRepository.findById(dto.getEstado())
+            .orElseThrow(() -> new RuntimeException("Estado no encontrado con código: " + dto.getEstado()));
+
         Conexiones conexion = new Conexiones();
         conexion.setUsuario1Id(dto.getUsuario1Id());
         conexion.setUsuario2Id(dto.getUsuario2Id());
-        conexion.setEstado(dto.getEstado());
+        conexion.setEstado(estado);
         conexion.setFechaConexion(LocalDateTime.now());
 
         conexion = conexionRepository.save(conexion);
 
         return new ConexionDTO(conexion);
     }
-
-    // public ConexionDTO guardarConexion(ConexionDTO dto) {
-    //     Conexiones conexion = new Conexiones();
-
-    //     conexion.setUsuario1Id(usuariosRepository.findById(dto.getUsuario1Id()).orElseThrow());
-    //     conexion.setUsuario2Id(usuariosRepository.findById(dto.getUsuario2Id()).orElseThrow());
-    //     conexion.setEstadoConexion(estadoConexionRepository.findById(dto.getEstado()).orElseThrow());
-    //     conexion.setFechaConexion(LocalDateTime.now());
-
-    //     conexionRepository.save(conexion);
-
-    //     return convertirADTO(conexion);
-    // }
-
-    // public List<ConexionDTO> obtenerConexionesDeUsuario(int idUsuario) {
-    //     List<Conexiones> conexiones = conexionRepository.findByUsuario1Id(idUsuario);
-    //     return conexiones.stream().map(c -> {
-    //         ConexionDTO dto = new ConexionDTO();
-    //         dto.setUsuario1Id(c.getUsuario1Id());
-    //         dto.setUsuario2Id(c.getUsuario2Id());
-    //         dto.setEstado(c.getEstado());
-    //         dto.setFechaConexion(c.getFechaConexion());
-    //         return dto;
-    //     }).collect(Collectors.toList());
-    // }
 
     public void eliminarConexion(int id){
         Conexiones conexion = this.conexionRepository.findById(id).orElse(null);
@@ -96,7 +77,6 @@ public class ConexionService {
         return amigos;
     }
 
-
     public List<Usuarios> obtenerPosiblesContactos(int codigoUsuario) {
     
         List<Conexiones> conexiones = this.conexionRepository
@@ -118,7 +98,6 @@ public class ConexionService {
                 noAmigos.add(usuario);
             }
         }
-
         return noAmigos;
     }
 
@@ -130,7 +109,7 @@ public class ConexionService {
         Map<Integer, Integer> mapaEstados = new HashMap<>();
         for (Conexiones c : conexiones) {
             int otroId = (c.getUsuario1Id() == codigoUsuario) ? c.getUsuario2Id() : c.getUsuario1Id();
-            mapaEstados.put(otroId, c.getEstado());
+            mapaEstados.put(otroId, c.getEstado().getCodigoEstado());
         }
 
         List<Usuarios> todos = usuariosRepository.findAll();
@@ -168,8 +147,5 @@ public class ConexionService {
             }
         }
         return resultado;
-    }
-
-
-    
+    }    
 }
