@@ -10,7 +10,6 @@ import hn.unah.proyecto.servicios.ConexionService;
 import hn.unah.proyecto.servicios.EstadoConexionService;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.EstadoConexion;
-import hn.unah.proyecto.entidades.Usuarios;
 
 import java.util.List;
 
