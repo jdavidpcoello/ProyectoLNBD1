@@ -1,4 +1,8 @@
 package hn.unah.proyecto.dto;
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.entidades.Usuarios;
@@ -26,6 +30,9 @@ public class UsuarioConEstadoDTO {
     private int codigoConexion;
     private int estadoConexion;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime fechaConexion;
+
     public UsuarioConEstadoDTO(Usuarios usuario, EstadoConexion estadoConexion, Conexiones conexion) {
         this.codigoUsuario = usuario.getCodigoUsuario();
         this.nombre = usuario.getNombre();
@@ -37,5 +44,6 @@ public class UsuarioConEstadoDTO {
         this.fotoTitularUrl = usuario.getFotoTitularUrl();
         this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : null;
         this.codigoConexion = conexion.getCodigoConexion();
+        this.fechaConexion = conexion.getFechaConexion() != null ? conexion.getFechaConexion() : null;
     }
 }

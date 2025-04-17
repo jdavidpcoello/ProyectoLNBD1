@@ -4,10 +4,8 @@ package hn.unah.proyecto.servicios;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,53 +57,53 @@ public class ConexionService {
         return conexionRepository.findById(id).orElse(null);
     }
 
-    public List<Usuarios> obtenerAmigosPorUsuario(int codigoUsuario) {
-        List<Conexiones> conexiones = this.conexionRepository
-            .findConexionesActivasPorUsuarioYEstado(codigoUsuario, EstadoConexion.ACEPTADA);
-
-        List<Usuarios> amigos = new ArrayList<>();
+    // public List<UsuarioConEstadoDTO> obtenerAmigosPorUsuario(int codigoUsuario) {
+    //     List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario(codigoUsuario);
+    
+    //     List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
         
+    //     for (Conexiones conexion : conexiones) {
+    //         if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
+    //             int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
+    //                 ? conexion.getUsuario2Id() 
+    //                 : conexion.getUsuario1Id();
+    
+    //             Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
+    //             if (amigo != null) {
+    //                 UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
+    //                 amigos.add(dto);
+    //             }
+    //         }
+    //     }
+    //     return amigos;
+    // }
+        
+    public List<UsuarioConEstadoDTO> obtenerAmigosPorUsuario(int codigoUsuario) {
+        List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario(codigoUsuario);
+    
+        List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
+    
         for (Conexiones conexion : conexiones) {
-            int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
-                ? conexion.getUsuario2Id() 
-                : conexion.getUsuario1Id();
-            Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
-            if (amigo != null) {
-                amigos.add(amigo);
+            if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
+                int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
+                    ? conexion.getUsuario2Id() 
+                    : conexion.getUsuario1Id();
+    
+                Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
+                if (amigo != null) {
+                    // Crear el DTO con los datos necesarios
+                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
+                    amigos.add(dto);
+                }
             }
         }
+    
         return amigos;
     }
-
-    public List<Usuarios> obtenerPosiblesContactos(int codigoUsuario) {
     
-        List<Conexiones> conexiones = this.conexionRepository
-            .findConexionesActivasPorUsuarioYEstado(codigoUsuario, EstadoConexion.ACEPTADA);
-
-        Set<Integer> idsAmigos = new HashSet<>();
-        for (Conexiones conexion : conexiones) {
-            int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
-                ? conexion.getUsuario2Id() 
-                : conexion.getUsuario1Id();
-            idsAmigos.add(amigoId);
-        }
-
-        List<Usuarios> todos = this.usuariosRepository.findAll();
-
-        List<Usuarios> noAmigos = new ArrayList<>();
-        for (Usuarios usuario : todos) {
-            if (usuario.getCodigoUsuario() != codigoUsuario && !idsAmigos.contains(usuario.getCodigoUsuario())) {
-                noAmigos.add(usuario);
-            }
-        }
-        return noAmigos;
-    }
-
     public List<UsuarioConEstadoDTO> obtenerUsuariosNoAmigosConEstado(int codigoUsuario) {
         List<Conexiones> conexiones = conexionRepository.findConexionesPorUsuario(codigoUsuario);
         
-        System.out.println("Conexiones encontradas: " + conexiones.size());
-
         Map<Integer, Integer> mapaEstados = new HashMap<>();
         for (Conexiones c : conexiones) {
             int otroId = (c.getUsuario1Id() == codigoUsuario) ? c.getUsuario2Id() : c.getUsuario1Id();

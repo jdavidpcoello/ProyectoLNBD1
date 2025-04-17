@@ -21,8 +21,8 @@ public interface ConexionRepository extends JpaRepository<Conexiones,Integer> {
         @Param("estado") int estado
     );
 
-    @Query("SELECT c FROM Conexiones c WHERE (c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario) AND c.estado = :estado")
-    List<Conexiones> findConexionesActivasPorUsuarioYEstado(@Param("codigoUsuario") int codigoUsuario, @Param("estado") int estado);
+    // @Query("SELECT c FROM Conexiones c WHERE (c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario) AND c.estado.codigoEstado = :codigoEstado")
+    // List<Conexiones> findConexionesActivasPorUsuarioYEstado(@Param("codigoUsuario") int codigoUsuario, @Param("estado") int codigoEstado);
 
     @Query("SELECT c FROM Conexiones c WHERE c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario")
     List<Conexiones> findConexionesPorUsuario(@Param("codigoUsuario") int codigoUsuario);

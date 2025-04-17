@@ -48,24 +48,13 @@ public class ConexionController {
         return ResponseEntity.ok(nuevaConexion);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminarConexion(@PathVariable int id) {
-        conexionService.eliminarConexion(id);
-    }
-
     @GetMapping("/amigos/{codigoUsuario}")
-    public ResponseEntity<List<Usuarios>> obtenerAmigos(@PathVariable int codigoUsuario) {
-        List<Usuarios> amigos = this.conexionService.obtenerAmigosPorUsuario(codigoUsuario);
+    public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerAmigos(@PathVariable int codigoUsuario) {
+        List<UsuarioConEstadoDTO> amigos = conexionService.obtenerAmigosPorUsuario(codigoUsuario);
         if (amigos.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(amigos);
-    }
-
-    @GetMapping("/no-contacto/{codigoUsuario}")
-    public ResponseEntity<List<Usuarios>> obtenerUsuariosNoAmigos(@PathVariable int codigoUsuario) {
-        List<Usuarios> noAmigos = this.conexionService.obtenerPosiblesContactos(codigoUsuario);
-        return ResponseEntity.ok(noAmigos);
     }
 
     @GetMapping("/sugerencias/{codigoUsuario}")
@@ -90,5 +79,14 @@ public class ConexionController {
         return ResponseEntity.ok("Solicitud cancelada");
     }
 
+    @DeleteMapping("/eliminar/{codigoConexion}")
+    public ResponseEntity<?> eliminarConexion(@PathVariable int codigoConexion) {
+        Conexiones conexion = conexionService.obtenerConexionPorId(codigoConexion);
+        if (conexion == null) {
+            return ResponseEntity.notFound().build();
+        }
 
+        conexionService.eliminarConexion(codigoConexion);
+        return ResponseEntity.ok("Conexión eliminada");
+    }
 }
