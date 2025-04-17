@@ -130,7 +130,7 @@ function crearCardHTML(usuario) {
         botonHTML = `
             <button class="btn btn-outline-secondary btn-sm rounded-pill w-100 btn-cancelar"
                 onclick="mostrarCancelarModal(${usuario.codigoConexion})">
-                <i class="bi bi-stopwatch"></i> Enviado
+                <i class="bi bi-stopwatch"></i> Pendiente
             </button> 
             
         `;
