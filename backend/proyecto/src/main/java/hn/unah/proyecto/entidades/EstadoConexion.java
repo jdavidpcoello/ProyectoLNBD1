@@ -25,11 +25,9 @@ public class EstadoConexion {
     public static final int BLOQUEADA = 5;   
 
     @Id
-    @Column(name = "CODIGO_ESTADO")
+    @Column(name = "codigo_estado")
     private int codigoEstado;
 
-    @Column(name ="Estado")
+    @Column(name ="estado")
     private String estado;
-
-
 }

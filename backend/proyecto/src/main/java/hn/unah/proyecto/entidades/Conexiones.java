@@ -24,8 +24,9 @@ public class Conexiones {
     @Column(name = "CODIGO_USUARIO_2", nullable = false)
     private int usuario2Id;
 
-    @Column(name = "CODIGO_ESTADO", nullable = false)
-    private int estado;
+    @ManyToOne
+    @JoinColumn(name = "CODIGO_ESTADO", nullable = false)
+    private EstadoConexion estado;
 
     @Column(name = "FECHA_CONEXION")
     private LocalDateTime fechaConexion;

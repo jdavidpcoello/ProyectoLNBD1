@@ -130,7 +130,7 @@ function crearCardHTML(usuario) {
         botonHTML = `
             <button class="btn btn-outline-secondary btn-sm rounded-pill w-100 btn-cancelar"
                 onclick="mostrarCancelarModal(${usuario.codigoConexion})">
-                <i class="bi bi-stopwatch"></i> Enviado
+                <i class="bi bi-stopwatch"></i> Pendiente
             </button> 
             
         `;
@@ -192,6 +192,7 @@ function cerrarModal() {
     document.getElementById('modalCancelar').style.display = 'none';
 }
 
+
 async function cancelarSolicitud() {
     if (!conexionIdSeleccionada) return;
 
@@ -212,37 +213,3 @@ async function cancelarSolicitud() {
 
     cerrarModal();
 }
-
-
-// Para página de conexiones:
-// async function cargarConexiones() {
-//     const url = 'http://localhost:8080/api/conexiones/usuario/1';
-//     const container = document.querySelector('.contacto-container');
-
-//     try {
-//         const response = await fetch(url);
-        
-//         if (!response.ok) {
-//             throw new Error("Error al cargar conexiones");
-//         }
-
-//         const conexiones = await response.json();
-//         for (const conexion of conexiones) {
-
-//             const usuario1Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario1Id}`);
-//             const usuario1 = await usuario1Response.json();
-
-//             const usuario2Response = await fetch(`http://localhost:8080/api/usuarios/${conexion.usuario2Id}`);
-//             const usuario2 = await usuario2Response.json();
-
-//             const usuarioAmostrar = usuario1.id === 1 ? usuario2 : usuario1;
-
-//             const cardHTML = crearCardHTML(usuarioAmostrar);
-//             container.innerHTML += cardHTML;
-//         }
-
-//     } catch (error) {
-//         alert('💔 F bebé: ' + error.message);
-//         console.error(error);
-//     }
-// }
