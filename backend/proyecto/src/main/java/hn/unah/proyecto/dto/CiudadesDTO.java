@@ -1,5 +1,6 @@
 package hn.unah.proyecto.dto;
 
+import hn.unah.proyecto.entidades.Ciudades;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class CiudadesDTO {
 
     private String nombreCiudad;
 
-    private CiudadesDTO ciudadPadre;
+    private Ciudades ciudadPadre;
 
     private PaisesDTO pais;
 }
