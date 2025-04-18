@@ -70,6 +70,7 @@ public class UsuarioService {
         usuarioBd.setContrasenia(nvoUsuario.getPassword());
         usuarioBd.setNombre(nvoUsuario.getFirstName());
         usuarioBd.setApellidos(nvoUsuario.getLastName());
+        usuarioBd.setFotoPerfil(nvoUsuario.getProfilePhoto());
         
         Paises pais = paisesRepository.findByNombre(nvoUsuario.getCountry());
         usuarioBd.setPais(pais);
@@ -77,9 +78,7 @@ public class UsuarioService {
 
         Ciudades ciudad = ciudadesRepository.findByNombreCiudad(nvoUsuario.getCity());
         usuarioBd.setCiudad(ciudad);
-        usuarioBd.setUrlPerfil("");
-        usuarioBd.setUrlPerfil(nvoUsuario.getProfilePhoto());
-        
+        usuarioBd.setUrlPerfil("www.linkedin.com/in/"+nvoUsuario.getFirstName()+"-"+nvoUsuario.getLastName());        
         usuariosRepository.save(usuarioBd);
         if(nvoUsuario.getJob()==""){
             int dia = Integer.parseInt(nvoUsuario.getBirthDay());
@@ -141,4 +140,3 @@ public class UsuarioService {
         return usuariosRepository.findById(codigoUsuario).orElse(null);
     }
 }
-
