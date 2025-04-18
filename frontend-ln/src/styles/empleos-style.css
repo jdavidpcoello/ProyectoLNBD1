@@ -9,3 +9,8 @@
 .div-img{
     height: 1rem;
 }
+
+.empleo.activo {
+    background-color: #dde1e6;
+    border-left: 4px solid grey;
+}

@@ -91,7 +91,7 @@ public class ConexionService {
     
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
-                    // Crear el DTO con los datos necesarios
+                   
                     UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
                     amigos.add(dto);
                 }
