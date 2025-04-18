@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tbl_usuarios")
+@Table(name = "tbl_tipos_lugar_trabajo")
 @Entity
 public class TipoLugarTrabajo {
 

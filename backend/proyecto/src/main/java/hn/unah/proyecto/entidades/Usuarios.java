@@ -70,10 +70,6 @@ public class Usuarios {
     @JoinColumn(name = "pais", referencedColumnName = "codigo_pais")
     private Paises pais;
 
-    // @ManyToOne()
-    // @JoinColumn(name = "pais", referencedColumnName = "codigo_pais")
-    // private Paises pais;
-
     @ManyToOne()
     @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
     private Ciudades ciudad;

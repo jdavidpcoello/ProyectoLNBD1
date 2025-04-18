@@ -58,4 +58,5 @@ public class Empleos {
 
     @Column(name = "medio_solicitudes")
     private String medioSolicitudes;
+
 }

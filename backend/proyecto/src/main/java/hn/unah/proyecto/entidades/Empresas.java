@@ -28,4 +28,7 @@ public class Empresas {
 
     @Column(name = "nombre_empresas")
     private String nombreEmpresa;
+
+    @Column(name = "foto_empresa")
+    private String fotoEmpresa;
 }
