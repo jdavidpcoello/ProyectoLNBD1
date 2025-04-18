@@ -2,13 +2,13 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LinkedIn Login, Sign in | LinkedIn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="../styles/login-style.css" />
-    <link rel="icon" href="../Image/favicon.png" type="image/x-icon"/>
+    <link rel="icon" href="../Image/favicon.png" type="image/x-icon" />
 </head>
 
 <body>
@@ -30,23 +30,426 @@
                         <label for="recent-job-field" class="label-job">Cargo más reciente</label>
                     </div>
                     <div class="job-field-container">
-                        <input type="text" id="recent-job-field" class="job-field" required />
+                        <input type="text" id="recent-job-field" class="job-field" list="job-list" />
+                        <datalist id="job-list">
+                            <option value="Desarrollador(a) de Software"></option>
+                            <option value="Diseñador(a) Gráfico(a)"></option>
+                            <option value="Gerente de Marketing"></option>
+                            <option value="Ingeniero(a) de Sistemas"></option>
+                            <option value="Analista de Datos"></option>
+                            <option value="Asesor(a) de Ventas"></option>
+                            <option value="Abogado(a)"></option>
+                            <option value="Médico(a) General"></option>
+                            <option value="Enfermero(a)"></option>
+                            <option value="Contador(a)"></option>
+                            <option value="Profesor(a) de Matemáticas"></option>
+                            <option value="Administrador(a) de Proyectos"></option>
+                            <option value="Cocinero(a)"></option>
+                            <option value="Chef(a) Ejecutivo(a)"></option>
+                            <option value="Recepcionista"></option>
+                            <option value="Especialista en SEO"></option>
+                            <option value="Gerente de Recursos Humanos"></option>
+                            <option value="Técnico(a) de Soporte IT"></option>
+                            <option value="Product Manager"></option>
+                            <option value="Consultor(a) de Negocios"></option>
+                            <option value="Ingeniero(a) Civil"></option>
+                            <option value="Arquitecto(a)"></option>
+                            <option value="Investigador(a) Científico(a)"></option>
+                            <option value="Psicólogo(a)"></option>
+                            <option value="Community Manager"></option>
+                            <option value="Redactor(a) de Contenidos"></option>
+                            <option value="Desarrollador(a) Web"></option>
+                            <option value="Director(a) de Finanzas"></option>
+                            <option value="Analista Financiero(a)"></option>
+                            <option value="Marketing Digital"></option>
+                            <option value="Científico(a) de Datos"></option>
+                            <option value="Desarrollador(a) de Aplicaciones Móviles"></option>
+                            <option value="Gerente de Operaciones"></option>
+                            <option value="Técnico(a) en Electrónica"></option>
+                            <option value="Agente de Seguros"></option>
+                            <option value="Consultor(a) de TI"></option>
+                            <option value="Vendedor(a) de Tecnología"></option>
+                            <option value="Ingeniero(a) Mecánico(a)"></option>
+                            <option value="Gerente de TI"></option>
+                            <option value="Programador(a) de Videojuegos"></option>
+                            <option value="Director(a) de Marketing"></option>
+                            <option value="Técnico(a) de Redes"></option>
+                            <option value="Especialista en Ciberseguridad"></option>
+                            <option value="Jefe(a) de Producto"></option>
+                            <option value="Analista de Riesgos"></option>
+                            <option value="Consultor(a) Ambiental"></option>
+                            <option value="Ingeniero(a) Químico(a)"></option>
+                            <option value="Fotógrafo(a) Profesional"></option>
+                            <option value="Diseñador(a) UX/UI"></option>
+                            <option value="Auditor(a) Interno"></option>
+                            <option value="Analista de Sistemas"></option>
+                            <option value="Desarrollador(a) Front-End"></option>
+                            <option value="Desarrollador(a) Back-End"></option>
+                            <option value="Editor(a) de Video"></option>
+                            <option value="Coordinador(a) de Eventos"></option>
+                            <option value="Técnico(a) de Mantenimiento"></option>
+                            <option value="Gestor(a) de Proyectos Ágiles"></option>
+                            <option value="Analista de Marketing"></option>
+                            <option value="Jefe(a) de Ventas"></option>
+                            <option value="Gestor(a) de Redes Sociales"></option>
+                            <option value="Ingeniero(a) en Telecomunicaciones"></option>
+                            <option value="Gestor(a) de Cuentas"></option>
+                            <option value="Jefe(a) de Innovación"></option>
+                            <option value="Desarrollador(a) Full-Stack"></option>
+                            <option value="Ingeniero(a) de Software Embebido"></option>
+                            <option value="Técnico(a) de Laboratorio"></option>
+                            <option value="Gestor(a) de Calidad"></option>
+                            <option value="Analista de Logística"></option>
+                            <option value="Especialista en Comunicación"></option>
+                            <option value="Jefe(a) de Compras"></option>
+                            <option value="Supervisor(a) de Producción"></option>
+                            <option value="Coordinador(a) de Recursos Humanos"></option>
+                            <option value="Técnico(a) de Reparación de Equipos"></option>
+                            <option value="Jefe(a) de Seguridad"></option>
+                            <option value="Especialista en Inteligencia Artificial"></option>
+                            <option value="Consultor(a) de Estrategia"></option>
+                            <option value="Director(a) de Operaciones"></option>
+                            <option value="Productor(a) Musical"></option>
+                            <option value="Vendedor(a) de Software"></option>
+                            <option value="Consultor(a) de Transformación Digital"></option>
+                            <option value="Asesor(a) Financiero(a)"></option>
+                            <option value="Administrador(a) de Base de Datos"></option>
+                            <option value="Ingeniero(a) de Redes"></option>
+                            <option value="Especialista en E-commerce"></option>
+                            <option value="Experto(a) en Blockchain"></option>
+                            <option value="Jefe(a) de Producción"></option>
+                            <option value="Responsable de Sostenibilidad"></option>
+                            <option value="Director(a) de Logística"></option>
+                            <option value="Analista de Comunicaciones"></option>
+                            <option value="Consultor(a) de Recursos Humanos"></option>
+                            <option value="Investigador(a) de Mercado"></option>
+                            <option value="Especialista en Marketing de Contenidos"></option>
+                            <option value="Supervisor(a) de Calidad"></option>
+                            <option value="Analista de Contabilidad"></option>
+                            <option value="Director(a) de Tecnología"></option>
+                            <option value="Gestor(a) de Proyectos Internacionales"></option>
+                            <option value="Consultor(a) de Transformación Empresarial"></option>
+                        </datalist>
                     </div>
+                    <div class="invalid-input-div invalid-job-text"></div>
                     <div class="job-label-container">
                         <label for="type-job-field" class="label-job">Tipo de empleo</label>
                     </div>
                     <div class="job-field-container">
-                        <input type="text" id="type-job-field" class="job-field" required />
+                        <select id="type-job-select">
+                            <option value="" selected>-</option>
+                            <option value="Jornada completa">Jornada Completa</option>
+                            <option value="Jornada parcial">Jornada Parcial</option>
+                            <option value="Autónomo">Autónomo</option>
+                            <option value="Profesional independiente">
+                                Profesional Independiente
+                            </option>
+                            <option value="Contrato temporal">Contrato Temporal</option>
+                            <option value="Contrato de prácticas">
+                                Contrato de Prácticas
+                            </option>
+                            <option value="Contrato de formación">
+                                Contrato de Formación
+                            </option>
+                            <option value="Temporal">Temporal</option>
+                        </select>
                     </div>
+                    <div class="invalid-input-div invalid-type-job-text"></div>
                     <div class="job-label-container">
-                        <label for="place-job-field" class="label-job">Empresa mas reciente</label>
+                        <label for="place-job-field" class="label-job">Empresa más reciente</label>
                     </div>
                     <div class="job-field-container">
-                        <input type="text" id="place-job-field" class="job-field" required />
+                        <input type="text" id="place-job-field" class="job-field" list="company-list" />
+                        <datalist id="company-list">
+                            <option value="Google"></option>
+                            <option value="Apple"></option>
+                            <option value="Microsoft"></option>
+                            <option value="Amazon"></option>
+                            <option value="Facebook"></option>
+                            <option value="Tesla"></option>
+                            <option value="Uber"></option>
+                            <option value="Samsung"></option>
+                            <option value="Sony"></option>
+                            <option value="Intel"></option>
+                            <option value="IBM"></option>
+                            <option value="Twitter"></option>
+                            <option value="Netflix"></option>
+                            <option value="Spotify"></option>
+                            <option value="Adobe"></option>
+                            <option value="Salesforce"></option>
+                            <option value="Oracle"></option>
+                            <option value="Slack"></option>
+                            <option value="Zoom"></option>
+                            <option value="Airbnb"></option>
+                            <option value="Spotify"></option>
+                            <option value="Snap Inc."></option>
+                            <option value="Alibaba"></option>
+                            <option value="Tencent"></option>
+                            <option value="Baidu"></option>
+                            <option value="Accenture"></option>
+                            <option value="Cisco"></option>
+                            <option value="Siemens"></option>
+                            <option value="General Electric"></option>
+                            <option value="Philips"></option>
+                            <option value="Ford Motor Company"></option>
+                            <option value="Coca-Cola"></option>
+                            <option value="PepsiCo"></option>
+                            <option value="Nestlé"></option>
+                            <option value="Unilever"></option>
+                            <option value="Procter & Gamble"><!----></option>
+                            <option value="Johnson & Johnson"></option>
+                            <option value="ExxonMobil"></option>
+                            <option value="BP"></option>
+                            <option value="Shell"></option>
+                            <option value="Chevron"></option>
+                            <option value="Volkswagen Group"></option>
+                            <option value="BMW Group"></option>
+                            <option value="Toyota"></option>
+                            <option value="Mercedes-Benz"></option>
+                            <option value="Audi"></option>
+                            <option value="Ferrari"></option>
+                            <option value="Peugeot"></option>
+                            <option value="Daimler AG"></option>
+                            <option value="Roche"></option>
+                            <option value="GlaxoSmithKline"></option>
+                            <option value="Sanofi"></option>
+                            <option value="Pfizer"></option>
+                            <option value="Novartis"></option>
+                            <option value="Bayer"></option>
+                            <option value="Merck"></option>
+                            <option value="Eli Lilly"></option>
+                            <option value="AstraZeneca"><!----></option>
+                            <option value="LVMH"></option>
+                            <option value="Chanel"></option>
+                            <option value="Gucci"></option>
+                            <option value="Louis Vuitton"></option>
+                            <option value="Rolex"></option>
+                            <option value="Tiffany & Co."></option>
+                            <option value="H&M"></option>
+                            <option value="Zara"></option>
+                            <option value="IKEA"></option>
+                            <option value="Nike"></option>
+                            <option value="Adidas"></option>
+                            <option value="Puma"></option>
+                            <option value="Reebok"></option>
+                            <option value="Under Armour"></option>
+                            <option value="Patagonia"></option>
+                            <option value="New Balance"></option>
+                            <option value="Mango"></option>
+                            <option value="Forever 21"></option>
+                            <option value="Sephora"></option>
+                            <option value="Home Depot"></option>
+                            <option value="Walmart"></option>
+                            <option value="Target"></option>
+                            <option value="Costco"></option>
+                            <option value="Best Buy"></option>
+                            <option value="Lowe's"></option>
+                            <option value="CVS Health"><!----></option>
+                            <option value="Walgreens"></option>
+                            <option value="Rite Aid"></option>
+                            <option value="Home Depot"></option>
+                            <option value="Amazon Web Services"></option>
+                            <option value="Dropbox"></option>
+                            <option value="Shopify"></option>
+                            <option value="Square"></option>
+                            <option value="Stripe"></option>
+                            <option value="Zoom Video Communications"></option>
+                            <option value="Pinterest"></option>
+                            <option value="Etsy"></option>
+                            <option value="Reddit"></option>
+                            <option value="LinkedIn"></option>
+                            <option value="Dropbox"></option>
+                            <option value="Slack Technologies"></option>
+                            <option value="Atlassian"></option>
+                            <option value="Spotify"></option>
+                            <option value="Salesforce"></option>
+                            <option value="DocuSign"></option>
+                            <option value="Electronic Arts"></option>
+                            <option value="Activision Blizzard"></option>
+                            <option value="Ubisoft"></option>
+                            <option value="Rockstar Games"></option>
+                            <option value="Bethesda Softworks"></option>
+                            <option value="Naughty Dog"></option>
+                            <option value="Epic Games"></option>
+                            <option value="Valve Corporation"><!----></option>
+                            <option value="Nvidia"></option>
+                            <option value="Qualcomm"></option>
+                            <option value="Arm Holdings"></option>
+                            <option value="Micron Technology"></option>
+                            <option value="AMD"></option>
+                            <option value="Asus"></option>
+                            <option value="MSI"></option>
+                            <option value="Gigabyte Technology"></option>
+                            <option value="Razer"></option>
+                            <option value="Logitech"></option>
+                            <option value="Corsair"></option>
+                            <option value="Sega"></option>
+                            <option value="Square Enix"></option>
+                            <option value="Capcom"></option>
+                            <option value="Mitsubishi"></option>
+                            <option value="Canon"></option>
+                            <option value="Panasonic"></option>
+                            <option value="Hitachi"></option>
+                            <option value="Sony"></option>
+                            <option value="NEC"></option>
+                            <option value="Sharp"></option>
+                            <option value="Toshiba"></option>
+                            <option value="Fujitsu"></option>
+                            <option value="Kyocera"></option>
+                            <option value="Nikon"><!----></option>
+                            <option value="Harman International"></option>
+                            <option value="Bridgestone"></option>
+                            <option value="Toyota Financial Services"></option>
+                            <option value="Marriott International"></option>
+                            <option value="Hilton Worldwide"></option>
+                            <option value="Accor"></option>
+                            <option value="Hyatt Hotels"></option>
+                            <option value="InterContinental Hotels Group"></option>
+                            <option value="Wyndham Hotels & Resorts"></option>
+                            <option value="Carnival Corporation"></option>
+                            <option value="Royal Caribbean International"></option>
+                            <option value="Norwegian Cruise Line"></option>
+                            <option value="American Airlines"></option>
+                            <option value="Delta Airlines"></option>
+                            <option value="United Airlines"></option>
+                            <option value="Southwest Airlines"></option>
+                            <option value="JetBlue Airways"></option>
+                            <option value="Air Canada"></option>
+                            <option value="Singapore Airlines"></option>
+                            <option value="Emirates"></option>
+                            <option value="Qatar Airways"></option>
+                            <option value="British Airways"></option>
+                            <option value="Lufthansa"></option>
+                            <option value="Boeing"></option>
+                            <option value="Lockheed Martin"></option>
+                            <option value="Raytheon Technologies"></option>
+                            <option value="Northrop Grumman"></option>
+                            <option value="General Dynamics"></option>
+                            <option value="Siemens Gamesa"></option>
+                            <option value="Philips Lighting"></option>
+                            <option value="Caterpillar"></option>
+                            <option value="Komatsu"></option>
+                            <option value="John Deere"></option>
+                            <option value="Husqvarna"></option>
+                            <option value="Whirlpool Corporation"></option>
+                            <option value="General Motors"></option>
+                            <option value="Chrysler"></option>
+                            <option value="Honda"></option>
+                            <option value="Renault"></option>
+                            <option value="Fiat"></option>
+                            <option value="Peugeot"></option>
+                            <option value="Audi"></option>
+                            <option value="Volkswagen"></option>
+                            <option value="BMW"><!----></option>
+                            <option value="Kia Motors"></option>
+                            <option value="Hyundai"></option>
+                            <option value="Mazda"></option>
+                            <option value="Lexus"></option>
+                            <option value="Mitsubishi Motors"></option>
+                            <option value="Ferrari"></option>
+                            <option value="Porsche"></option>
+                            <option value="Bugatti"></option>
+                            <option value="Aston Martin"></option>
+                            <option value="Lamborghini"></option>
+                            <option value="Rolls-Royce"></option>
+                            <option value="Bentley"></option>
+                            <option value="Jaguar Land Rover"></option>
+                            <option value="Tesla"></option>
+                            <option value="Lucid Motors"></option>
+                            <option value="Rivian"></option>
+                            <option value="Polestar"></option>
+                            <option value="Fisker Inc."></option>
+                            <option value="ChargePoint"></option>
+                            <option value="Nikola Corporation"></option>
+                            <option value="Lordstown Motors"></option>
+                            <option value="Rimac Automobili"></option>
+                            <option value="Xpeng Motors"></option>
+                            <option value="Lacthosa"></option>
+                            <option value="Cervecería Hondureña"></option>
+                            <option value="Supermercados La Colonia"></option>
+                            <option value="Supermercados Paiz"></option>
+                            <option value="Diunsa"></option>
+                            <option value="Grupo Jaremar"></option>
+                            <option value="Hondupalma"></option>
+                            <option value="Tigo Honduras"></option>
+                            <option value="Claro Honduras"></option>
+                            <option value="Banco Atlántida"></option>
+                            <option value="Banco Ficohsa"></option>
+                            <option value="Banco del País (Banpaís)"></option>
+                            <option value="Banco de Occidente"></option>
+                            <option value="BAC Credomatic"></option>
+                            <option value="Zamorano (Universidad Agrícola)"></option>
+                            <option value="Lufussa (Luz y Fuerza de San Lorenzo)"></option>
+                            <option value="Grupo Karims"></option>
+                            <option value="Zip San José"></option>
+                            <option value="Zip Choloma"></option>
+                            <option value="Altia Business Park"></option>
+                            <option value="Grupo INTUR"></option>
+                            <option value="Hondutel"></option>
+                            <option value="Empresa Nacional de Energía Eléctrica (ENEE)"></option>
+                            <option value="COPECO"></option>
+                            <option value="Grupo Flores (Toyota Honduras)"></option>
+                            <option value="Autoamérica"></option>
+                            <option value="Corporación Lady Lee"></option>
+                            <option value="Hotel Intercontinental San Pedro Sula"></option>
+                            <option value="Cementos del Norte S.A. (CENOSA)"></option>
+                            <option value="La Mundial"></option>
+                            <option value="Avinicsa"></option>
+                            <option value="Empacadora Wilson & CIA"></option>
+                            <option value="Frigoríficos Integrados"></option>
+                            <option value="Alimentos Maravilla Honduras"></option>
+                            <option value="Distribuidora Solís"></option>
+                            <option value="Distribuidora Istmania"></option>
+                            <option value="Industrias Tropicales"></option>
+                            <option value="Agencia de Publicidad BBDO Honduras"></option>
+                            <option value="Distribuidora Roma"></option>
+                            <option value="Panadería Bambino"></option>
+
+                            <option value="Alicorp"></option>
+                            <option value="Backus y Johnston"></option>
+                            <option value="Gloria S.A."></option>
+                            <option value="InRetail Perú"></option>
+                            <option value="Credicorp"></option>
+                            <option value="Interbank"></option>
+                            <option value="MiBanco"></option>
+                            <option value="Saga Falabella Perú"></option>
+                            <option value="Ransa"></option>
+
+                            <option value="Grupo Éxito"></option>
+                            <option value="Bancolombia"></option>
+                            <option value="Ecopetrol"></option>
+                            <option value="Postobón"></option>
+                            <option value="Grupo Aval"></option>
+                            <option value="Alpina"></option>
+                            <option value="Nutresa"></option>
+                            <option value="Argos"></option>
+                            <option value="Sura"></option>
+
+                            <option value="YPF"></option>
+                            <option value="Arcor"></option>
+                            <option value="Techint"></option>
+                            <option value="Molinos Río de la Plata"></option>
+                            <option value="La Serenísima"></option>
+                            <option value="Tenaris"></option>
+                            <option value="Grupo Clarín"></option>
+                            <option value="Banco Galicia"></option>
+                            <option value="Mercado Libre"></option>
+
+                            <option value="Latam Airlines"></option>
+                            <option value="Claro América Latina"></option>
+                            <option value="Cemex"></option>
+                            <option value="Bimbo"></option>
+                            <option value="Femsa"></option>
+                            <option value="Televisa"></option>
+
+                        </datalist>
                     </div>
+                    <div class="invalid-input-div invalid-job-place-text"></div>
                 </form>
                 <div class="btn-student-container">
-                    <button id="btn-student"  class="btn-student-option" onclick="notDisplayForm(4)">Soy estudiante</button>
+                    <button id="btn-student" class="btn-student-option">
+                        Soy estudiante
+                    </button>
                 </div>
                 <div class="btn-job-container">
                     <button type="submit" id="btn4" form="job-form" class="form-button">
@@ -69,278 +472,442 @@
                         <label for="student-field" class="label-job">Institución educativa</label>
                     </div>
                     <div class="student-field-container">
-                        <input id="school-name-field" type="text" class="student-field" required />
-                    </div>
-                </form>
-                <div class="student-dates-container">
-                    <div class="first-year-date">
-                        <label class="first-year-label">Año de inicio</label>
-                        <span>
-                            <select name="first-year" id="first-year-field" class="first-year-select" required>
-                                <option value="" selected>-</option>
-                                <option value="2025">2025</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                                <option value="2004">2004</option>
-                                <option value="2003">2003</option>
-                                <option value="2002">2002</option>
-                                <option value="2001">2001</option>
-                                <option value="2000">2000</option>
-                                <option value="1999">1999</option>
-                                <option value="1998">1998</option>
-                                <option value="1997">1997</option>
-                                <option value="1996">1996</option>
-                                <option value="1995">1995</option>
-                                <option value="1994">1994</option>
-                                <option value="1993">1993</option>
-                                <option value="1992">1992</option>
-                                <option value="1991">1991</option>
-                                <option value="1990">1990</option>
-                                <option value="1989">1989</option>
-                                <option value="1988">1988</option>
-                                <option value="1987">1987</option>
-                                <option value="1986">1986</option>
-                                <option value="1985">1985</option>
-                                <option value="1984">1984</option>
-                                <option value="1983">1983</option>
-                                <option value="1982">1982</option>
-                                <option value="1981">1981</option>
-                                <option value="1980">1980</option>
-                                <option value="1979">1979</option>
-                                <option value="1978">1978</option>
-                                <option value="1977">1977</option>
-                                <option value="1976">1976</option>
-                                <option value="1975">1975</option>
-                                <option value="1974">1974</option>
-                                <option value="1973">1973</option>
-                                <option value="1972">1972</option>
-                                <option value="1971">1971</option>
-                                <option value="1970">1970</option>
-                                <option value="1969">1969</option>
-                                <option value="1968">1968</option>
-                                <option value="1967">1967</option>
-                                <option value="1966">1966</option>
-                            </select>
-                        </span>
-                    </div>
-                    <div class="end-year-date">
-                        <label class="end-year-label">Año de finalización (o previsto)</label>
-                        <span>
-                            <select name="end-year" id="last-year-field" class="end-year-select">
-                                <option value="" selected>-</option>
-                                <option value="2025">2025</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                                <option value="2004">2004</option>
-                                <option value="2003">2003</option>
-                                <option value="2002">2002</option>
-                                <option value="2001">2001</option>
-                                <option value="2000">2000</option>
-                                <option value="1999">1999</option>
-                                <option value="1998">1998</option>
-                                <option value="1997">1997</option>
-                                <option value="1996">1996</option>
-                                <option value="1995">1995</option>
-                                <option value="1994">1994</option>
-                                <option value="1993">1993</option>
-                                <option value="1992">1992</option>
-                                <option value="1991">1991</option>
-                                <option value="1990">1990</option>
-                                <option value="1989">1989</option>
-                                <option value="1988">1988</option>
-                                <option value="1987">1987</option>
-                                <option value="1986">1986</option>
-                                <option value="1985">1985</option>
-                                <option value="1984">1984</option>
-                                <option value="1983">1983</option>
-                                <option value="1982">1982</option>
-                                <option value="1981">1981</option>
-                                <option value="1980">1980</option>
-                                <option value="1979">1979</option>
-                                <option value="1978">1978</option>
-                                <option value="1977">1977</option>
-                                <option value="1976">1976</option>
-                                <option value="1975">1975</option>
-                                <option value="1974">1974</option>
-                                <option value="1973">1973</option>
-                                <option value="1972">1972</option>
-                                <option value="1971">1971</option>
-                                <option value="1970">1970</option>
-                                <option value="1969">1969</option>
-                                <option value="1968">1968</option>
-                                <option value="1967">1967</option>
-                                <option value="1966">1966</option>
-                            </select>
-                        </span>
-                    </div>
-                </div>
+                        <input id="school-name-field" type="text" class="student-field" list="institutions-list" />
+                        <datalist id="institutions-list">
+                            <!-- Honduras -->
+                            <option value="Universidad Nacional Autónoma de Honduras (UNAH)">
+                            <option value="Universidad Tecnológica de Honduras (UTH)">
+                            <option value="Universidad de San Pedro Sula (USAP)">
+                            <option value="Universidad Católica de Honduras (UNICAH)">
+                            <option value="Universidad Pedagógica Nacional Francisco Morazán (UPNFM)">
+                            <option value="Universidad Autónoma de Tegucigalpa (UNITEC)">
+                            <option value="Escuela Agrícola Panamericana (Zamorano)">
+                            <option value="Universidad Nacional de Agricultura (UNA)">
+                            <option value="Escuela Militar de Aviación (EMA)">
+                            <option value="Universidad Politécnica de Ingeniería (UPI)">
 
-                <label>Fecha de nacimiento</label>
-                <div class="birth-date-container">
-                    <div class="birth-day-container">
-                        <label class="birth-label">Día</label>
-                        <select name="birth-day" id="birth-day-field" class="birth-select">
-                            <option value="" selected>-</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
+                                <!-- Estados Unidos -->
+                            <option value="Harvard University">
+                            <option value="Massachusetts Institute of Technology (MIT)">
+                            <option value="Stanford University">
+                            <option value="University of California, Berkeley (UC Berkeley)">
+                            <option value="University of Chicago">
+                            <option value="Princeton University">
+                            <option value="Columbia University">
+                            <option value="New York University (NYU)">
+                            <option value="University of Michigan">
+                            <option value="Texas A&M University">
+                            <option value="University of California, Los Angeles (UCLA)">
+                            <option value="University of Washington">
+                            <option value="University of Florida">
+                            <option value="California State University, Fullerton">
+                            <option value="University of Pennsylvania">
+                            <option value="University of California, San Diego (UCSD)">
+                            <option value="University of Virginia">
+                            <option value="University of North Carolina at Chapel Hill">
+                            <option value="Georgia Institute of Technology">
+                            <option value="University of Texas at Austin">
+                            <option value="University of Wisconsin-Madison">
+
+                                <!-- Perú -->
+                            <option value="Pontificia Universidad Católica del Perú (PUCP)">
+                            <option value="Universidad Nacional Mayor de San Marcos (UNMSM)">
+                            <option value="Universidad de Lima">
+                            <option value="Universidad Nacional Agraria La Molina">
+                            <option value="Universidad del Pacífico">
+                            <option value="Universidad Peruana Cayetano Heredia (UPCH)">
+                            <option value="Universidad Nacional de Ingeniería (UNI)">
+                            <option value="Universidad de Piura">
+                            <option value="Universidad San Ignacio de Loyola (USIL)">
+                            <option value="Universidad Nacional de Trujillo (UNT)">
+                            <option value="Universidad Ricardo Palma">
+                            <option value="Universidad Nacional de San Agustín de Arequipa (UNSA)">
+                            <option value="Universidad Nacional de San Martín (UNSAM)">
+                            <option value="Universidad ESAN">
+                            <option value="Universidad de la República (URP)">
+                            <option value="Universidad Nacional de Cajamarca (UNC)">
+
+                                <!-- México -->
+                            <option value="Universidad Nacional Autónoma de México (UNAM)">
+                            <option value="Tecnológico de Monterrey">
+                            <option value="Universidad Autónoma Metropolitana (UAM)">
+                            <option value="Universidad de Guadalajara">
+                            <option value="Universidad Autónoma de Nuevo León (UANL)">
+                            <option value="Universidad Iberoamericana">
+                            <option value="Universidad Autónoma de San Luis Potosí (UASLP)">
+                            <option value="Universidad Anáhuac">
+                            <option value="Universidad de las Américas Puebla (UDLAP)">
+                            <option value="Universidad Veracruzana">
+                            <option value="Universidad Autónoma de Yucatán (UADY)">
+                            <option value="Universidad Autónoma de Baja California (UABC)">
+                            <option value="Universidad Autónoma de Coahuila">
+                            <option value="Universidad de Monterrey (UDEM)">
+                            <option value="Universidad Autónoma de Sinaloa">
+                            <option value="Instituto Politécnico Nacional (IPN)">
+                            <option value="Universidad Autónoma de Querétaro (UAQ)">
+                            <option value="Universidad Autónoma de Chiapas (UNACH)">
+                            <option value="Universidad del Valle de México (UVM)">
+                            <option value="Universidad de Celaya">
+
+                                <!-- Canadá -->
+                            <option value="University of Toronto">
+                            <option value="McGill University">
+                            <option value="University of British Columbia (UBC)">
+                            <option value="Université de Montréal">
+                            <option value="University of Ottawa">
+                            <option value="York University">
+                            <option value="Université Laval">
+                            <option value="Simon Fraser University">
+                            <option value="University of Calgary">
+                            <option value="University of Waterloo">
+                            <option value="Concordia University">
+                            <option value="Dalhousie University">
+                            <option value="University of Saskatchewan">
+                            <option value="University of Alberta">
+                            <option value="University of Manitoba">
+                            <option value="Université du Québec à Montréal (UQAM)">
+                            <option value="University of Victoria">
+                            <option value="Université de Sherbrooke">
+                            <option value="University of New Brunswick">
+                            <option value="Memorial University of Newfoundland">
+
+                                <!-- Argentina -->
+                            <option value="Universidad de Buenos Aires (UBA)">
+                            <option value="Universidad Nacional de La Plata (UNLP)">
+                            <option value="Universidad Torcuato Di Tella (UTDT)">
+                            <option value="Universidad Nacional de Córdoba (UNC)">
+                            <option value="Universidad Nacional de Rosario (UNR)">
+                            <option value="Universidad Nacional de Tucumán (UNT)">
+                            <option value="Universidad Nacional del Litoral (UNL)">
+                            <option value="Universidad Nacional de Mar del Plata (UNMDP)">
+                            <option value="Universidad de Palermo">
+                            <option value="Universidad Tecnológica Nacional (UTN)">
+                            <option value="Instituto Tecnológico de Buenos Aires (ITBA)">
+                            <option value="Universidad Nacional de San Juan (UNSJ)">
+                            <option value="Universidad Nacional de Salta (UNSa)">
+                            <option value="Universidad Nacional de San Luis (UNSL)">
+                            <option value="Universidad Nacional de Quilmes (UNQ)">
+                            <option value="Universidad Nacional de Cuyo (UNCuyo)">
+                            <option value="Universidad Nacional de Comahue (UNCo)">
+                            <option value="Universidad Nacional de Entre Ríos (UNER)">
+
+                            <option value="University of Oxford">
+                            <option value="University of Cambridge">
+                            <option value="Imperial College London">
+                            <option value="London School of Economics and Political Science (LSE)">
+                            <option value="ETH Zurich - Swiss Federal Institute of Technology">
+                            <option value="University of Copenhagen">
+                            <option value="Université Paris-Saclay">
+                            <option value="Université de Strasbourg">
+                            <option value="LMU Munich">
+                            <option value="Universität Heidelberg">
+                            <option value="Universität Zürich">
+                            <option value="Universidade de Lisboa">
+                            <option value="Università Bocconi">
+                            <option value="Universität Wien">
+                            <option value="Tsinghua University">
+                            <option value="Peking University">
+                            <option value="National University of Singapore (NUS)">
+                            <option value="University of Tokyo">
+                            <option value="Seoul National University">
+                            <option value="Kyoto University">
+                            <option value="Hong Kong University of Science and Technology (HKUST)">
+                            <option value="Fudan University">
+                            <option value="Indian Institute of Technology (IIT) Bombay">
+                            <option value="Indian Institute of Technology (IIT) Delhi">
+                            <option value="Shanghai Jiao Tong University">
+                            <option value="Zhejiang University">
+                            <option value="University of Hong Kong">
+                            <option value="Peking University">
+                            <option value="Chulalongkorn University">
+                            <option value="Australian National University">
+                            <option value="University of Melbourne">
+                            <option value="University of Sydney">
+                            <option value="University of Queensland">
+                            <option value="University of New South Wales">
+                            <option value="University of Auckland">
+                            <option value="University of Otago">
+                            <option value="Monash University">
+                            <option value="University of Western Australia">
+                            <option value="University of Tasmania">
+
+
+                        </datalist>
                     </div>
-                    <div class="birth-month-container">
-                        <label class="birth-label">Mes</label>
-                        <span>
-                            <select name="birth-month" id="birth-month-field" class="birth-select">
+                    <div class="invalid-input-div invalid-school-text"></div>
+                    <div class="student-dates-container">
+                        <div class="first-year-date">
+                            <label class="first-year-label">Año de inicio</label>
+                            <span>
+                                <select name="first-year" id="first-year-field" class="first-year-select">
+                                    <option value="" selected>-</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1969">1969</option>
+                                    <option value="1968">1968</option>
+                                    <option value="1967">1967</option>
+                                    <option value="1966">1966</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="end-year-date">
+                            <label class="end-year-label">Año de finalización (o previsto)</label>
+                            <span>
+                                <select name="end-year" id="last-year-field" class="end-year-select">
+                                    <option value="" selected>-</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1969">1969</option>
+                                    <option value="1968">1968</option>
+                                    <option value="1967">1967</option>
+                                    <option value="1966">1966</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="invalid-input-div invalid-years-text"></div>
+                    <label>Fecha de nacimiento</label>
+                    <div class="birth-date-container">
+                        <div class="birth-day-container">
+                            <label class="birth-label">Día</label>
+                            <select name="birth-day" id="birth-day-field" class="birth-select">
                                 <option value="" selected>-</option>
-                                <option value="Enero">Enero</option>
-                                <option value="Febrero">Febrero</option>
-                                <option value="Marzo">Marzo</option>
-                                <option value="Abril">Abril</option>
-                                <option value="Mayo">Mayo</option>
-                                <option value="Junio">Junio</option>
-                                <option value="Julio">Julio</option>
-                                <option value="Agosto">Agosto</option>
-                                <option value="Septiembre">Septiembre</option>
-                                <option value="Octubre">Octubre</option>
-                                <option value="Noviembre">Noviembre</option>
-                                <option value="Diciembre">Diciembre</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
                             </select>
-                        </span>
+                        </div>
+                        <div class="birth-month-container">
+                            <label class="birth-label">Mes</label>
+                            <span>
+                                <select name="birth-month" id="birth-month-field" class="birth-select">
+                                    <option value="" selected>-</option>
+                                    <option value="01">Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="birth-year-container">
+                            <label class="birth-label">Año</label>
+                            <span>
+                                <select name="birth-year" id="birth-year-field" class="birth-select">
+                                    <option value="" selected>-</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2000">2000</option>
+                                    <option value="1999">1999</option>
+                                    <option value="1998">1998</option>
+                                    <option value="1997">1997</option>
+                                    <option value="1996">1996</option>
+                                    <option value="1995">1995</option>
+                                    <option value="1994">1994</option>
+                                    <option value="1993">1993</option>
+                                    <option value="1992">1992</option>
+                                    <option value="1991">1991</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1989">1989</option>
+                                    <option value="1988">1988</option>
+                                    <option value="1987">1987</option>
+                                    <option value="1986">1986</option>
+                                    <option value="1985">1985</option>
+                                    <option value="1984">1984</option>
+                                    <option value="1983">1983</option>
+                                    <option value="1982">1982</option>
+                                    <option value="1981">1981</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1979">1979</option>
+                                    <option value="1978">1978</option>
+                                    <option value="1977">1977</option>
+                                    <option value="1976">1976</option>
+                                    <option value="1975">1975</option>
+                                    <option value="1974">1974</option>
+                                    <option value="1973">1973</option>
+                                    <option value="1972">1972</option>
+                                    <option value="1971">1971</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1969">1969</option>
+                                    <option value="1968">1968</option>
+                                    <option value="1967">1967</option>
+                                    <option value="1966">1966</option>
+                                </select>
+                            </span>
+                        </div>
                     </div>
-                    <div class="birth-year-container">
-                        <label class="birth-label">Año</label>
-                        <span>
-                            <select name="birth-year" id="birth--field" class="birth-select">
-                                <option value="" selected>-</option>
-                                <option value="2025">2025</option>
-                                <option value="2024">2024</option>
-                                <option value="2023">2023</option>
-                                <option value="2022">2022</option>
-                                <option value="2021">2021</option>
-                                <option value="2020">2020</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                                <option value="2004">2004</option>
-                                <option value="2003">2003</option>
-                                <option value="2002">2002</option>
-                                <option value="2001">2001</option>
-                                <option value="2000">2000</option>
-                                <option value="1999">1999</option>
-                                <option value="1998">1998</option>
-                                <option value="1997">1997</option>
-                                <option value="1996">1996</option>
-                                <option value="1995">1995</option>
-                                <option value="1994">1994</option>
-                                <option value="1993">1993</option>
-                                <option value="1992">1992</option>
-                                <option value="1991">1991</option>
-                                <option value="1990">1990</option>
-                                <option value="1989">1989</option>
-                                <option value="1988">1988</option>
-                                <option value="1987">1987</option>
-                                <option value="1986">1986</option>
-                                <option value="1985">1985</option>
-                                <option value="1984">1984</option>
-                                <option value="1983">1983</option>
-                                <option value="1982">1982</option>
-                                <option value="1981">1981</option>
-                                <option value="1980">1980</option>
-                                <option value="1979">1979</option>
-                                <option value="1978">1978</option>
-                                <option value="1977">1977</option>
-                                <option value="1976">1976</option>
-                                <option value="1975">1975</option>
-                                <option value="1974">1974</option>
-                                <option value="1973">1973</option>
-                                <option value="1972">1972</option>
-                                <option value="1971">1971</option>
-                                <option value="1970">1970</option>
-                                <option value="1969">1969</option>
-                                <option value="1968">1968</option>
-                                <option value="1967">1967</option>
-                                <option value="1966">1966</option>
-                            </select>
-                        </span>
-                    </div>
-                </div>
+                    <div class="invalid-input-div invalid-birth-date-text"></div>
+                </form>
                 <div class="btn-not-student-container">
-                    <button id="btn-not-student" class="btn-student-option" onclick="notDisplayForm(5)">No soy estudiante</button>
+                    <button id="btn-not-student" class="btn-student-option">
+                        No soy estudiante
+                    </button>
                 </div>
                 <div class="btn-job-container">
                     <button type="submit" id="btn5" class="form-button" form="student-form">
@@ -350,7 +917,7 @@
             </div>
         </div>
     </main>
-    <script src="../JS/FormManager.js"></script>
+    <script type="module" src="../JS/FormManager4.js"></script>
 </body>
 
 </html>
