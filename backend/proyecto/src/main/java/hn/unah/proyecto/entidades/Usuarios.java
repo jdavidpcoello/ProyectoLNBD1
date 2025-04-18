@@ -59,9 +59,6 @@ public class Usuarios {
     @Column(name = "foto_portada")
     private String fotoPortada;
 
-    @Column(name = "foto_asociado_titular")
-    private String fotoTitularUrl;
-
     @ManyToOne()
     @JoinColumn(name = "pais", referencedColumnName = "codigo_pais")
     private Paises pais;

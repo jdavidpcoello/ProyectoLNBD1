@@ -102,7 +102,7 @@ public class UsuarioService {
             experiencias.setCargo(nvoUsuario.getJob());
             
             TipoEmpleos tipoEmpleo = tipoEmpleoRepository.findByTipoEmpleo(nvoUsuario.getTypeJob());
-            experiencias.setTipoEmpleos(tipoEmpleo);
+            experiencias.setTipoEmpleo(tipoEmpleo);
             
             Empresas empresa = empresaRepository.findByNombreEmpresas(nvoUsuario.getPlaceJob());
             experiencias.setEmpresa(empresa);

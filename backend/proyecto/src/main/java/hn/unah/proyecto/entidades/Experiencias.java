@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "tbl_experiencias")
 @Entity
-public class Experiencia {
+public class Experiencias {
     
     @Id
     @Column(name = "codigo_experiencia")
@@ -42,13 +42,14 @@ public class Experiencia {
 
     @ManyToOne()
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario")
-    private Usuarios codigoUsuario;
+    private Usuarios usuario;
 
     @ManyToOne()
     @JoinColumn(name = "tipo_empleo", referencedColumnName = "codigo_tipo_empleo")
-    private TipoEmpleo tipoEmpleo;
+    private TipoEmpleos tipoEmpleo;
 
     @ManyToOne()
     @JoinColumn(name = "empresa", referencedColumnName = "codigo_empresas")
-    private Empresas codigoEmpresa;
+    private Empresas empresa;
+
 }
