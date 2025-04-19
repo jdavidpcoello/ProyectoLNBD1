@@ -40,5 +40,5 @@ public class EmpleoSugerenciaDTO {
         this.descripcionEmpleo = empleo.getDescripcionEmpleo();
         this.medioSolicitudes = empleo.getMedioSolicitudes();
     }
-
+    
 }
