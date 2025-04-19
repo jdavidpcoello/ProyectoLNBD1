@@ -28,10 +28,10 @@ public class Mensajes {
     private Mensajes mensajePadre;
 
     @ManyToOne()
-    @JoinColumn(name = "CODIGO_USUARIO_EMI", referencedColumnName = "CODIGO_USUARIO")
+    @JoinColumn(name = "CODIGO_EMISOR", referencedColumnName = "CODIGO_USUARIO")
     private Usuarios codigoUsuarioEmisor;
 
     @ManyToOne()
-    @JoinColumn(name = "CODIGO_USUARIO_RECEP", referencedColumnName = "CODIGO_USUARIO")
+    @JoinColumn(name = "CODIGO_RECEPTOR", referencedColumnName = "CODIGO_USUARIO")
     private Usuarios codigoUsuarioReceptor;
 }

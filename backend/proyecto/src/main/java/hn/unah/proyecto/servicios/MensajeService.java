@@ -18,23 +18,20 @@ public class MensajeService {
         Mensajes mensaje = null;
         try {
             mensaje = mensajesRepository.findByCodigoMensaje(codigo);
+            System.out.println(codigo);
+            System.out.println("Mensaje encontrado: " + mensaje.getMensaje());
+
+            return new MensajeDTO(
+                mensaje.getMensaje(),
+                mensaje.getCodigoUsuarioEmisor().getNombre(),
+                mensaje.getCodigoUsuarioReceptor().getNombre()
+        );
         } catch (Exception e) {
             System.err.println("Error al buscar el mensaje: " + e.getMessage());
             e.printStackTrace();
-        }
-
-        if (mensaje == null) {
-            System.out.println("No se encontró el mensaje");
             return null;
         }
-    
-        System.out.println("Mensaje encontrado: " + mensaje.getMensaje());
 
-        return new MensajeDTO(
-            mensaje.getMensaje(),
-            mensaje.getCodigoUsuarioEmisor().getNombre(),
-            mensaje.getCodigoUsuarioReceptor().getNombre()
-        );
     }
 }
 
