@@ -41,7 +41,7 @@ public class UsuarioConEstadoDTO {
         this.sector = usuario.getSector();
         this.fotoPerfil = usuario.getFotoPerfil();
         this.fotoPortada = usuario.getFotoPortada();
-        //this.fotoTitularUrl = usuario.getFotoTitularUrl();
+        this.fotoTitularUrl = usuario.getFotoTitularUrl();
         this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : null;
         this.codigoConexion = conexion.getCodigoConexion();
         this.fechaConexion = conexion.getFechaConexion() != null ? conexion.getFechaConexion() : null;

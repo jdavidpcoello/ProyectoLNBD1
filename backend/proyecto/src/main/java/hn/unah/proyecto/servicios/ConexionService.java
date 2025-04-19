@@ -105,7 +105,7 @@ public class ConexionService {
                     dto.setSector(usuario.getSector());
                     dto.setFotoPerfil(usuario.getFotoPerfil());
                     dto.setFotoPortada(usuario.getFotoPortada());
-                   // dto.setFotoTitularUrl(usuario.getFotoTitularUrl());
+                    dto.setFotoTitularUrl(usuario.getFotoTitularUrl());
                     dto.setEstadoConexion(estado);
                     
                     Conexiones conexion = conexiones.stream()

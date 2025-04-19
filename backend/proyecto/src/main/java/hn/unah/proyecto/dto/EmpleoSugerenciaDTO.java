@@ -31,7 +31,7 @@ public class EmpleoSugerenciaDTO {
 
     public EmpleoSugerenciaDTO (Empleos empleo, Empresas empresa ) {
         this.codigoEmpleo = empleo.getCodigoEmpleo();
-       // this.fotoEmpresa = empresa.getFotoEmpresa();
+        this.fotoEmpresa = empresa.getFotoEmpresa();
         this.cargo = empleo.getCargo();
         this.nombreEmpresa = empresa.getNombreEmpresas();
         this.ubicacionEmpleo = empleo.getUbicacionEmpleo().getNombreCiudad();

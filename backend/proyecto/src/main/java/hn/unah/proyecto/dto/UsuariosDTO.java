@@ -44,4 +44,6 @@ public class UsuariosDTO {
     private PaisesDTO pais;
 
     private CiudadesDTO ciudad;
+
+    private String fotoTitularUrl;
 }
