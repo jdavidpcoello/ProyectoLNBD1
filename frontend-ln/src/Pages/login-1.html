@@ -30,9 +30,11 @@
           <label class="label-input">Email
             <input type="email" id="email-field" required class="form-input" />
           </label>
+          <div class="invalid-input-div invalid-email-text"></div>
           <label class="label-input">Contraseña
             <input type="password" id="password-field" required class="form-input" />
           </label>
+          <div class="invalid-input-div invalid-password-text"></div>
         </form>
       </div>
       <div class="remember-me-container">
@@ -48,7 +50,7 @@
         </p>
       </div>
       <div class="button-container">
-        <button type="submit" onclick="submitForm(event,2)" id="btn1" form="email-form" class="form-button">
+        <button type="submit" id="btn1" form="email-form" class="form-button">
           Aceptar y unirse
         </button>
       </div>
@@ -72,7 +74,8 @@
       </div>
     </div>
   </main>
-  <script src="../JS/FormManager.js"></script>
+  <script type="module"  src="../JS/FormManager1.js"></script>
 </body>
 
 </html>
+

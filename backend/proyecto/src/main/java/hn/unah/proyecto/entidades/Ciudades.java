@@ -26,11 +26,11 @@ public class Ciudades {
     private int codigoCiudad;
 
     @Column(name = "nombre_ciudad")
-    private String nombre_ciudad;
+    private String nombreCiudad;
 
     @ManyToOne()
     @JoinColumn(name = "ciudad_padre", referencedColumnName = "codigo_ciudad")
-    private Ciudades ciudad_padre;
+    private Ciudades ciudadPadre;
 
     @ManyToOne()
     @JoinColumn(name = "pais",referencedColumnName = "codigo_pais")

@@ -23,15 +23,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-
 
 @RestController
-// @CrossOrigin(origins = "*")
-@CrossOrigin(
-    origins = {"http://localhost:5501", "http://192.168.0.12:5501"},
-    allowedHeaders = "*",
-    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
+@CrossOrigin(origins = "*")
+// @CrossOrigin(
+//     origins = {"http://localhost:5501", "http://192.168.0.12:5501"},
+//     allowedHeaders = "*",
+//     methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
 @RequestMapping("/api/conexiones")
 public class ConexionController {
     

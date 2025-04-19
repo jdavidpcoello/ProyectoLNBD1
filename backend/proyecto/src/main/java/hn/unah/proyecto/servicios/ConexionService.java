@@ -56,27 +56,6 @@ public class ConexionService {
     public Conexiones obtenerConexionPorId(int id) {
         return conexionRepository.findById(id).orElse(null);
     }
-
-    // public List<UsuarioConEstadoDTO> obtenerAmigosPorUsuario(int codigoUsuario) {
-    //     List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario(codigoUsuario);
-    
-    //     List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
-        
-    //     for (Conexiones conexion : conexiones) {
-    //         if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
-    //             int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
-    //                 ? conexion.getUsuario2Id() 
-    //                 : conexion.getUsuario1Id();
-    
-    //             Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
-    //             if (amigo != null) {
-    //                 UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
-    //                 amigos.add(dto);
-    //             }
-    //         }
-    //     }
-    //     return amigos;
-    // }
         
     public List<UsuarioConEstadoDTO> obtenerAmigosPorUsuario(int codigoUsuario) {
         List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario(codigoUsuario);
@@ -91,7 +70,7 @@ public class ConexionService {
     
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
-                    // Crear el DTO con los datos necesarios
+                   
                     UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
                     amigos.add(dto);
                 }

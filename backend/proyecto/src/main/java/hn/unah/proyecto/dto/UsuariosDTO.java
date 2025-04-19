@@ -11,19 +11,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDTO {
+public class UsuariosDTO {
+
     private int codigoUsuario;
 
     private String nombre;
-    
+
     private String apellidos;
-    
+
     private String nombreAdicional;
-    
+
     private String titular;
-    
+
     private String sector;
-    
+
     private String urlPerfil;
 
     private String telefono;
@@ -39,6 +40,10 @@ public class UsuarioDTO {
     private String fotoPerfil;
 
     private String fotoPortada;
+
+    private PaisesDTO pais;
+
+    private CiudadesDTO ciudad;
 
     private String fotoTitularUrl;
 }

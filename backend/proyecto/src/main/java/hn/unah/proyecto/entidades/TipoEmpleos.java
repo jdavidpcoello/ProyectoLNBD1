@@ -15,15 +15,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tbl_paises")
+@Table(name = "tbl_tipo_empleos")
 @Entity
-public class Paises {
+public class TipoEmpleos {
     
     @Id
-    @Column(name = "codigo_pais")
-    private String codigoPais;
+    @Column(name = "codigo_tipo_empleo")
+    private int codigoTipoEmpleo;
 
-    private String nombre;
+    @Column(name = "tipo_empleo")
+    private String tipoEmpleo;
 
 }
-
