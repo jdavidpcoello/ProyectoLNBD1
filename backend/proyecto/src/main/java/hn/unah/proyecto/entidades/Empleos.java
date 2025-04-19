@@ -39,7 +39,7 @@ public class Empleos {
 
     @ManyToOne()
     @JoinColumn(name = "tipo_empleo", referencedColumnName = "codigo_tipo_empleo")
-    private TipoEmpleo tipoEmpleo;
+    private TipoEmpleos tipoEmpleo;
 
     @ManyToOne()
     @JoinColumn(name = "empresa" , referencedColumnName = "codigo_empresas")

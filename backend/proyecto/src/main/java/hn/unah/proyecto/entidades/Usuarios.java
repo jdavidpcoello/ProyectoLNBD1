@@ -44,10 +44,6 @@ public class Usuarios {
     @Column(name = "url_perfil")
     private String urlPerfil;
 
-    private String telefono;
-
-    private String direccion;
-
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
@@ -63,9 +59,6 @@ public class Usuarios {
     @Column(name = "foto_portada")
     private String fotoPortada;
 
-    @Column(name = "foto_asociado_titular")
-    private String fotoTitularUrl;
-
     @ManyToOne()
     @JoinColumn(name = "pais", referencedColumnName = "codigo_pais")
     private Paises pais;
@@ -74,3 +67,4 @@ public class Usuarios {
     @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
     private Ciudades ciudad;
 }
+

@@ -2,8 +2,6 @@ package hn.unah.proyecto.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -12,20 +10,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+@Entity
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tbl_tipo_empleos")
-@Entity
-public class TipoEmpleo {
+@Table(name="TBL_INSTITUCIONES_EDUCATIVAS")
+public class Instituciones {
 
     @Id
-    @Column(name = "codigo_tipo_empleo")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigoTipoEmpleo;
+    @Column(name="codigo_institucion_educativa")
+    private int codigoInstitucionEducativa;
 
-    @Column(name = "tipo_empleo")
-    private String tipoEmpleo; 
+    @Column(name="nombre_institucion_educativa")
+    private String nombreInstitucion;
+
 }

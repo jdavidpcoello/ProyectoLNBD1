@@ -25,19 +25,21 @@
                     <label class="label-input">Nombre
                         <input id="name-field" type="text" required class="form-input" />
                     </label>
+                    <div class="invalid-input-div invalid-name-text"></div>
                     <label class="label-input">Apellido
                         <input id="last-name-field" type="text" required class="form-input" />
                     </label>
+                    <div class="invalid-input-div invalid-last-name-text"></div>
                 </form>
             </div>
             <div class="button-container">
-                <button type="input" onclick="submitForm(event,3)" id="btn2" form="name-form" class="form-button">
+                <button type="input" id="btn2" form="name-form" class="form-button">
                     Continue
                 </button>
             </div>
         </div>
     </main>
-    <script src="../JS/FormManager.js"></script>
+    <script type="module" src="../JS/FormManager2.js"></script>
 </body>
 
 </html>

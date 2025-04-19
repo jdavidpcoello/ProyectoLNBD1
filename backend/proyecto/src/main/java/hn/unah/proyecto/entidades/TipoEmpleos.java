@@ -10,21 +10,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-@Setter
 @Getter
-@Table(name="tbl_empresas")
-public class Empresas {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "tbl_tipo_empleos")
+@Entity
+public class TipoEmpleos {
     
     @Id
-    @Column(name="codigo_empresas")
-    private int codigoEmpresas;
+    @Column(name = "codigo_tipo_empleo")
+    private int codigoTipoEmpleo;
 
-    @Column(name="nombre_empresas")
-    private String nombreEmpresas;
+    @Column(name = "tipo_empleo")
+    private String tipoEmpleo;
 
 }
