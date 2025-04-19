@@ -75,12 +75,17 @@ public class UsuarioService {
         Paises pais = paisesRepository.findByNombre(nvoUsuario.getCountry());
         usuarioBd.setPais(pais);
 
-
-        Ciudades ciudad = ciudadesRepository.findByNombreCiudad(nvoUsuario.getCity());
+        Ciudades ciudad;
+        if(nvoUsuario.getParentCity().equals("")){
+            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), null);
+        }{
+            Ciudades ciudadPadre = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getParentCity(), null);
+            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
+        }
         usuarioBd.setCiudad(ciudad);
         usuarioBd.setUrlPerfil("www.linkedin.com/in/"+nvoUsuario.getFirstName()+"-"+nvoUsuario.getLastName());        
         usuariosRepository.save(usuarioBd);
-        if(nvoUsuario.getJob()==""){
+        if(nvoUsuario.getJob().equals("")){
             int dia = Integer.parseInt(nvoUsuario.getBirthDay());
             int mes = Integer.parseInt(nvoUsuario.getBirthMonth());
             int anio = Integer.parseInt(nvoUsuario.getBirthYear());
