@@ -8,7 +8,7 @@ const uploadButton = document.querySelector('#upload-btn');
 
 const greetings = document.querySelector('.greeting-user');
 const nameDiv = document.querySelector('.display-name');
-const jobDiv = document.querySelector('.display-job');
+const titularDiv = document.querySelector('.display-titular');
 const locationDiv = document.querySelector('.display-location');
 
 const submitBtn = document.querySelector('#btn6');
@@ -17,8 +17,14 @@ submitBtn.addEventListener('click',createUser)
 
 greetings.innerHTML = `¡Sales fenomenal, ${localStorage.getItem('name')} ${localStorage.getItem('lastName')}!`
 nameDiv.innerHTML = `${localStorage.getItem('name')} ${localStorage.getItem('lastName')}`;
-jobDiv.innerHTML = `${localStorage.getItem('job')} en ${localStorage.getItem('placeJob')}`;
 locationDiv.innerHTML = `${localStorage.getItem('location')}`;
+
+if(localStorage.getItem('Job')===''){
+    titularDiv.innerHTML = `${localStorage.getItem('job')} en ${localStorage.getItem('placeJob')}`;
+}
+else{
+    titularDiv.innerHTML = `Estudiante de ${localStorage.getItem('schoolName')}`;
+}
 
 photoInput.addEventListener('change', uploadNewFile);
 
