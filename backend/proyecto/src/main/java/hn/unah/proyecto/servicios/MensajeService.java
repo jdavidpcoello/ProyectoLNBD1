@@ -22,7 +22,7 @@ public class MensajeService {
             mensaje = mensajesRepository.findByCodigoMensaje(codigoMensaje);
             System.out.println("Se buscó con codigo mensaje: " + codigoMensaje);
             if (mensaje == null) {
-            System.out.println("No se encontró ningún mensaje con el código: " + codigoMensaje);
+            System.out.println("/n/nNo se encontró ningún mensaje con el código: " + codigoMensaje);
             return null;
         }
 
