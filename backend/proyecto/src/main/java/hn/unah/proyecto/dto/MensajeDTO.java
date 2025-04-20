@@ -3,6 +3,7 @@ package hn.unah.proyecto.dto;
 import hn.unah.proyecto.entidades.Usuarios;
 import java.time.LocalDate;
 
+
 public class MensajeDTO {
     private String contenido;
     private LocalDate fecha;

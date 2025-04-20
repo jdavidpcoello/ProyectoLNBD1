@@ -114,8 +114,8 @@ function crearCardHTML(usuario) {
     console.log('Estado de conexión de usuario:', usuario.estadoConexion); 
     const baseUrl = 'http://localhost:5501';
 
-    const fotoPortada = usuario.fotoPortada ? `${baseUrl}${usuario.fotoPortada}` : '';
-    const fotoPerfil = usuario.fotoPerfil ? `${baseUrl}${usuario.fotoPerfil}` : '';
+    const fotoPortada = usuario.fotoPortada ? `data:image/jpeg;base64,${usuario.fotoPortada}` : '';
+    const fotoPerfil = usuario.fotoPerfil ? `data:image/png;base64,${usuario.fotoPerfil}` : '';
     const fotoTitular = usuario.fotoTitularUrl ? `${baseUrl}${usuario.fotoTitularUrl}` : '';
 
     const botonId = `btn-conectar-${usuario.codigoUsuario}`;
