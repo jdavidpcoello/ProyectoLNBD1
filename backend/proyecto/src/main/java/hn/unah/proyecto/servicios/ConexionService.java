@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import hn.unah.proyecto.dto.ConexionDTO;
 import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.entidades.Conexiones;
+import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.repositorios.ConexionRepository;
 import hn.unah.proyecto.repositorios.EstadoConexionRepository;
@@ -62,6 +63,7 @@ public class ConexionService {
     
         List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
     
+        Empresas empresa = null;
         for (Conexiones conexion : conexiones) {
             if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
                 int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
@@ -71,7 +73,7 @@ public class ConexionService {
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
                    
-                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, null);
+                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, empresa);
                     amigos.add(dto);
                 }
             }
