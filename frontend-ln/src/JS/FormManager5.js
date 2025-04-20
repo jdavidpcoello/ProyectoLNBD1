@@ -50,6 +50,7 @@ async function createUser(event) {
     const lastName = localStorage.getItem('lastName');
     const country = localStorage.getItem('country');
     const city = localStorage.getItem('city');
+    const parentCity = localStorage.getItem('city2');
     const job = localStorage.getItem('job');
     const typeJob = localStorage.getItem('typeJob');
     const placeJob = localStorage.getItem('placeJob');
@@ -68,6 +69,7 @@ async function createUser(event) {
         firstName,
         lastName,
         country,
+        parentCity,
         city,
         job,
         typeJob,

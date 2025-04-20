@@ -16,6 +16,7 @@ public class NewUserDTO {
     private String lastName;
     private String country;
     private String city;
+    private String parentCity;
     private String job;
     private String typeJob;
     private String placeJob;

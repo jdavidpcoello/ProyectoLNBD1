@@ -71,7 +71,7 @@ public class ConexionService {
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
                    
-                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion);
+                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, null);
                     amigos.add(dto);
                 }
             }
@@ -105,7 +105,6 @@ public class ConexionService {
                     dto.setSector(usuario.getSector());
                     dto.setFotoPerfil(usuario.getFotoPerfil());
                     dto.setFotoPortada(usuario.getFotoPortada());
-                    dto.setFotoTitularUrl(usuario.getFotoTitularUrl());
                     dto.setEstadoConexion(estado);
                     
                     Conexiones conexion = conexiones.stream()
