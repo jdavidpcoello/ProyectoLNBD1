@@ -31,9 +31,9 @@ public class Mensajes {
 
     @ManyToOne()
     @JoinColumn(name = "CODIGO_EMISOR", referencedColumnName = "CODIGO_USUARIO")
-    private Usuarios codigoUsuarioEmisor;
+    private Usuarios UsuarioEmisor;
 
     @ManyToOne()
     @JoinColumn(name = "CODIGO_RECEPTOR", referencedColumnName = "CODIGO_USUARIO")
-    private Usuarios codigoUsuarioReceptor;
+    private Usuarios UsuarioReceptor;
 }

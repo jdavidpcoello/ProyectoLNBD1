@@ -30,8 +30,10 @@ public class Usuarios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoUsuario;
 
+    @Column(name = "nombre")
     private String nombre;
     
+    @Column(name = "apellidos")
     private String apellidos;
 
     @Column(name = "nombre_adicional")
@@ -66,5 +68,9 @@ public class Usuarios {
     @ManyToOne()
     @JoinColumn(name = "ciudad", referencedColumnName = "codigo_ciudad")
     private Ciudades ciudad;
+
+    public Usuarios(int codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
+    }
 }
 

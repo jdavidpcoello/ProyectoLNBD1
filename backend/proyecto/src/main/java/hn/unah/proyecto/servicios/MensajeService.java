@@ -1,6 +1,6 @@
 package hn.unah.proyecto.servicios;
 
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,44 +17,35 @@ public class MensajeService {
     private MensajesRepository mensajesRepository;
 
     public MensajeDTO obtenerMensajeDTO(int codigoMensaje) {
+        try {
+            Mensajes mensaje = this.mensajesRepository.findById(codigoMensaje).orElse(null);
+            MensajeDTO mensajeDTO = new MensajeDTO(mensaje);
+            return mensajeDTO;
+        } catch (Exception e) {
+            System.err.println("Error al buscar el mensaje: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
         
-        Mensajes mensaje = this.mensajesRepository.findById(codigoMensaje).orElse(null);
-
-        
-        MensajeDTO mensajeDTO = new MensajeDTO(mensaje);
-        // try {
-        //     mensaje = mensajesRepository.findByCodigoMensaje(codigoMensaje);
-        //     System.out.println("Se buscó con codigo mensaje: " + codigoMensaje);
-        //     if (mensaje == null) {
-        //     System.out.println("/n/nNo se encontró ningún mensaje con el código: " + codigoMensaje);
-        //     return null;
-        // }
-
-        // return new MensajeDTO(
-        //     mensaje.getContenido(),
-        //     mensaje.getFecha(),
-        //     mensaje.getEmisor(),
-        //     mensaje.getReceptor()
-        // );
-        // } catch (Exception e) {
-        //     System.err.println("Error al buscar el mensaje: " + e.getMessage());
-        //     e.printStackTrace();
-        //     return null;
-        // }
-        return mensajeDTO;
     }
 
     public List<MensajeDTO> obtenerTodosLosMensajes() {
         return mensajesRepository.findAll().stream()
             .map(m -> new MensajeDTO(
-                m.getMensaje(),
-                m.getFechaMensaje(),
-                m.getCodigoUsuarioEmisor().getNombre(),
-                m.getCodigoUsuarioReceptor().getNombre()
-                
+            m.getMensaje(),
+            m.getFechaMensaje(),
+            m.getMensajePadre() != null ? m.getMensajePadre().getMensaje() : null,
+            m.getUsuarioEmisor().getNombre(),
+            m.getUsuarioEmisor().getApellidos(),
+            m.getUsuarioEmisor().getTitular(),
+            m.getUsuarioReceptor().getNombre(),
+            m.getUsuarioReceptor().getApellidos()
             ))
             .collect(Collectors.toList());
     }
     
+    public Mensajes guardarMensaje(Mensajes mensaje) {
+        return this.mensajesRepository.save(mensaje);
+    }
 }
 

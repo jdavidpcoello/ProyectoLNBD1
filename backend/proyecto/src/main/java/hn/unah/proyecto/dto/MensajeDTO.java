@@ -13,15 +13,23 @@ import lombok.NoArgsConstructor;
 public class MensajeDTO {
     private String contenido;
     private LocalDate fecha;
-    private String emisor;
-    private String receptor;
+    private String mensajePadre;
+    private String nombreEmisor;
+    private String apellidoEmisor;
+    private String emisorCargo;
+    private String nombreReceptor;
+    private String apellidoReceptor;
 
   
     public MensajeDTO(Mensajes mensaje) {
         this.contenido = mensaje.getMensaje();
         this.fecha = mensaje.getFechaMensaje();
-        this.emisor = mensaje.getCodigoUsuarioEmisor().getNombre();
-        this.receptor = mensaje.getCodigoUsuarioReceptor().getNombre();
+        this.mensajePadre = mensaje.getMensajePadre().getMensaje();
+        this.nombreEmisor = mensaje.getUsuarioEmisor().getNombre();
+        this.apellidoEmisor = mensaje.getUsuarioEmisor().getApellidos();
+        this.emisorCargo = mensaje.getUsuarioEmisor().getTitular();
+        this.nombreReceptor = mensaje.getUsuarioReceptor().getNombre();
+        this.apellidoReceptor = mensaje.getUsuarioReceptor().getApellidos();
     }
 
    
