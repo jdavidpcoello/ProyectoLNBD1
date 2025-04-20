@@ -11,8 +11,8 @@ import hn.unah.proyecto.entidades.Mensajes;
 
 public interface MensajesRepository extends JpaRepository<Mensajes, Integer>{
      
-    @Query("SELECT c FROM Mensajes c WHERE codigoMensaje = :codigo")
-    public Mensajes findByCodigoMensaje(@Param("codigo") int codigo);
+    @Query("SELECT c FROM Mensajes c WHERE c.codigoMensaje = :codigoMensaje")
+    public Mensajes findByCodigoMensaje(@Param("codigoMensaje") int codigoMensaje);
     
     
 }

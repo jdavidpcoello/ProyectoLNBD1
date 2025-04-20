@@ -1,5 +1,7 @@
 package hn.unah.proyecto.entidades;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +11,6 @@ import lombok.*;
 
 public class Mensajes {
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "CODIGO_MENSAJE")
     private int codigoMensaje;
 
@@ -18,7 +19,7 @@ public class Mensajes {
     private String mensaje;
 
     @Column(name = "FECHA_MENSAJE")
-    private String fechaMensaje;
+    private LocalDate fechaMensaje;
 
     @Column(name = "CODIGO_CHAT")
     private int codigoChat;
