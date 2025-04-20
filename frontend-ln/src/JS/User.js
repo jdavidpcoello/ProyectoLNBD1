@@ -1,11 +1,12 @@
 export default class User {
-    constructor(email,password,firstName,lastName,country,city,job,typeJob,placeJob,schoolName,firstYear,lastYear,birthDay,birthMonth,birthYear,profilePhoto) {
+    constructor(email,password,firstName,lastName,country,parentCity,city,job,typeJob,placeJob,schoolName,firstYear,lastYear,birthDay,birthMonth,birthYear,profilePhoto) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.city = city;
+        this.parentCity = parentCity;
         this.job = job;
         this.typeJob = typeJob;
         this.placeJob = placeJob;

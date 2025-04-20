@@ -8,4 +8,5 @@ import hn.unah.proyecto.entidades.Ciudades;
 public interface CiudadesRepository extends JpaRepository<Ciudades, Integer> {
     
     public Ciudades findByNombreCiudad(String nombreCiudad);
+    Ciudades findByNombreCiudadAndCiudadPadre(String nombreCiudad, Ciudades ciudadPadre);
 }
