@@ -19,7 +19,7 @@ greetings.innerHTML = `¡Sales fenomenal, ${localStorage.getItem('name')} ${loca
 nameDiv.innerHTML = `${localStorage.getItem('name')} ${localStorage.getItem('lastName')}`;
 locationDiv.innerHTML = `${localStorage.getItem('location')}`;
 
-if(localStorage.getItem('Job')===''){
+if(localStorage.getItem('job')!=''){
     titularDiv.innerHTML = `${localStorage.getItem('job')} en ${localStorage.getItem('placeJob')}`;
 }
 else{

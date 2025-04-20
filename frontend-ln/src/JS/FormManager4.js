@@ -79,7 +79,7 @@ function formValidation(status){
         else if(birthDayField.value === '' || birthMonthField.value === '' || birthYearField.value === ''){
             invalidBirthDateText.innerHTML = 'Introduce tu fecha de nacimiento.';
             return false;
-        }else if(firstYearField.value > lastYearField.value){
+        }else if((!RegexValidator.isEmpty(lastYearField.value))&&(firstYearField.value > lastYearField.value)){
             invalidYearText.innerHTML = 'Ingresa los años de estudios validos.';
             return false;
         }
