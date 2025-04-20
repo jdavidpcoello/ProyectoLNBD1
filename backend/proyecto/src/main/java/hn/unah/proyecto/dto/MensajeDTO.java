@@ -2,9 +2,14 @@ package hn.unah.proyecto.dto;
 
 import java.time.LocalDate;
 
+import hn.unah.proyecto.entidades.Mensajes;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MensajeDTO {
     private String contenido;
     private LocalDate fecha;
@@ -12,11 +17,11 @@ public class MensajeDTO {
     private String receptor;
 
   
-    public MensajeDTO(String contenido, LocalDate fechaMensaje, String emisor, String receptor) {
-        this.contenido = contenido;
-        this.fecha = fechaMensaje;
-        this.emisor = emisor;
-        this.receptor = receptor;
+    public MensajeDTO(Mensajes mensaje) {
+        this.contenido = mensaje.getMensaje();
+        this.fecha = mensaje.getFechaMensaje();
+        this.emisor = mensaje.getCodigoUsuarioEmisor().getNombre();
+        this.receptor = mensaje.getCodigoUsuarioReceptor().getNombre();
     }
 
    

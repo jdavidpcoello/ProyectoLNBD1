@@ -17,27 +17,31 @@ public class MensajeService {
     private MensajesRepository mensajesRepository;
 
     public MensajeDTO obtenerMensajeDTO(int codigoMensaje) {
-        Mensajes mensaje ;
-        try {
-            mensaje = mensajesRepository.findByCodigoMensaje(codigoMensaje);
-            System.out.println("Se buscó con codigo mensaje: " + codigoMensaje);
-            if (mensaje == null) {
-            System.out.println("/n/nNo se encontró ningún mensaje con el código: " + codigoMensaje);
-            return null;
-        }
+        
+        Mensajes mensaje = this.mensajesRepository.findById(codigoMensaje).orElse(null);
 
-        return new MensajeDTO(
-            mensaje.getMensaje(),
-            mensaje.getFechaMensaje(),
-            mensaje.getCodigoUsuarioEmisor().getNombre(),
-            mensaje.getCodigoUsuarioReceptor().getNombre()
-        );
-        } catch (Exception e) {
-            System.err.println("Error al buscar el mensaje: " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
+        
+        MensajeDTO mensajeDTO = new MensajeDTO(mensaje);
+        // try {
+        //     mensaje = mensajesRepository.findByCodigoMensaje(codigoMensaje);
+        //     System.out.println("Se buscó con codigo mensaje: " + codigoMensaje);
+        //     if (mensaje == null) {
+        //     System.out.println("/n/nNo se encontró ningún mensaje con el código: " + codigoMensaje);
+        //     return null;
+        // }
 
+        // return new MensajeDTO(
+        //     mensaje.getContenido(),
+        //     mensaje.getFecha(),
+        //     mensaje.getEmisor(),
+        //     mensaje.getReceptor()
+        // );
+        // } catch (Exception e) {
+        //     System.err.println("Error al buscar el mensaje: " + e.getMessage());
+        //     e.printStackTrace();
+        //     return null;
+        // }
+        return mensajeDTO;
     }
 
     public List<MensajeDTO> obtenerTodosLosMensajes() {

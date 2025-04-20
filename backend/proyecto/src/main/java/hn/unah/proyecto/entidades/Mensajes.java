@@ -10,7 +10,8 @@ import lombok.*;
 @Table(name = "TBL_MENSAJES")
 
 public class Mensajes {
-    @Id 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "CODIGO_MENSAJE")
     private int codigoMensaje;
 
