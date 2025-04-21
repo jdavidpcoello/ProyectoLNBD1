@@ -1,4 +1,4 @@
-export default class User {
+export default class NewUser {
     constructor(email,password,firstName,lastName,country,parentCity,city,job,typeJob,placeJob,schoolName,firstYear,lastYear,birthDay,birthMonth,birthYear,profilePhoto,titular) {
         this.email = email;
         this.password = password;
