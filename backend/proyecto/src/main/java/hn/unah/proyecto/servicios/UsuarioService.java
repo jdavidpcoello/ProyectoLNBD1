@@ -71,6 +71,7 @@ public class UsuarioService {
         usuarioBd.setNombre(nvoUsuario.getFirstName());
         usuarioBd.setApellidos(nvoUsuario.getLastName());
         usuarioBd.setFotoPerfil(nvoUsuario.getProfilePhoto());
+        usuarioBd.setTitular(nvoUsuario.getTitular());
         
         Paises pais = paisesRepository.findByNombre(nvoUsuario.getCountry());
         usuarioBd.setPais(pais);
@@ -84,7 +85,10 @@ public class UsuarioService {
         }
         usuarioBd.setCiudad(ciudad);
         usuarioBd.setUrlPerfil("www.linkedin.com/in/"+nvoUsuario.getFirstName()+"-"+nvoUsuario.getLastName());        
-        usuariosRepository.save(usuarioBd);
+
+        Educacion educacion = new Educacion();
+        Experiencias experiencias = new Experiencias();
+
         if(nvoUsuario.getJob().equals("")){
             int dia = Integer.parseInt(nvoUsuario.getBirthDay());
             int mes = Integer.parseInt(nvoUsuario.getBirthMonth());
@@ -93,17 +97,13 @@ public class UsuarioService {
             LocalDate birthDate = LocalDate.of(anio, mes, dia);
 
             usuarioBd.setFechaNacimiento(birthDate);
-            Educacion educacion = new Educacion();
             educacion.setAnioInicio(nvoUsuario.getFirtYear());
             educacion.setAnioFinal(nvoUsuario.getLastYear());
             
             Instituciones instituciones = institucionesRepository.findByNombreInstitucion(nvoUsuario.getSchoolName());
             educacion.setInstitucionEducativa(instituciones);
-            educacion.setUsuario(usuarioBd);
-            educacionRepository.save(educacion);
         }
         else {
-            Experiencias experiencias = new Experiencias();
             experiencias.setCargo(nvoUsuario.getJob());
             
             TipoEmpleos tipoEmpleo = tipoEmpleoRepository.findByTipoEmpleo(nvoUsuario.getTypeJob());
@@ -112,9 +112,18 @@ public class UsuarioService {
             Empresas empresa = empresaRepository.findByNombreEmpresas(nvoUsuario.getPlaceJob());
             experiencias.setEmpresa(empresa);
 
+        }
+
+        usuariosRepository.save(usuarioBd);
+
+        if(nvoUsuario.getJob().equals("")){
+            educacion.setUsuario(usuarioBd);
+            educacionRepository.save(educacion);
+        }else{
             experiencias.setUsuario(usuarioBd);
             experienciasRepository.save(experiencias);
         }
+
 
         PaisesDTO paisDTO = new PaisesDTO();
 
@@ -135,6 +144,7 @@ public class UsuarioService {
         usuarioDTO.setNombre(usuarioBd.getNombre());
         usuarioDTO.setFotoPerfil(usuarioBd.getFotoPerfil());
         usuarioDTO.setApellidos(usuarioBd.getApellidos());
+        usuarioDTO.setTitular(usuarioBd.getTitular());
         usuarioDTO.setCiudad(ciudadesDTO);
         usuarioDTO.setPais(paisDTO);
 

@@ -1,5 +1,5 @@
 export default class User {
-    constructor(email,password,firstName,lastName,country,parentCity,city,job,typeJob,placeJob,schoolName,firstYear,lastYear,birthDay,birthMonth,birthYear,profilePhoto) {
+    constructor(email,password,firstName,lastName,country,parentCity,city,job,typeJob,placeJob,schoolName,firstYear,lastYear,birthDay,birthMonth,birthYear,profilePhoto,titular) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -17,5 +17,6 @@ export default class User {
         this.birthMonth = birthMonth;
         this.birthYear = birthYear;
         this.profilePhoto = profilePhoto;
+        this.titular = titular;
     }
 }
