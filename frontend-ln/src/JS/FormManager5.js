@@ -123,8 +123,9 @@ async function createUser(event) {
             });
         
             if (response.ok) {
+                alert('Registro extoso. Te redirigiremos al inicio.')
                 const responseData = await response.json();
-                
+                localStorage.setItem('infoUsuario', JSON.stringify(responseData));
                 window.location.href = 'inicio.html'
             } else {
                 const errorData = await response.json();
