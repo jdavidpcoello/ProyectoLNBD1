@@ -38,8 +38,7 @@ public class MensajeService {
             m.getUsuarioEmisor().getNombre(),
             m.getUsuarioEmisor().getApellidos(),
             m.getUsuarioEmisor().getTitular(),
-            m.getUsuarioReceptor().getNombre(),
-            m.getUsuarioReceptor().getApellidos()
+            m.getUsuarioEmisor().getFotoPerfil()
             ))
             .collect(Collectors.toList());
     }
