@@ -7,13 +7,15 @@ if(estaLogueado){
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
     document.querySelector('.description-container').innerHTML = `${usuario.titular}`;
 
-    if(usuario.ciudad.ciudadPadre.nombreCiudad != null){
+    if(usuario.ciudad.ciudadPadre != null){
         document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
     }else{
         document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
     }
 
     document.querySelector('.link-span').innerHTML = `${usuario.urlPerfil}`;
+
+
     document.querySelector('#profile-photo').setAttribute('src',usuario.fotoPerfil);
 
     if(usuario.fotoPortada != null){

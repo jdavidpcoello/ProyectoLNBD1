@@ -195,6 +195,7 @@ public class UsuarioService {
             usuarioDTO.setTitular(usuarioBd.getTitular());
             usuarioDTO.setCiudad(ciudadesDTO);
             usuarioDTO.setPais(paisDTO);
+            usuarioDTO.setUrlPerfil(usuarioBd.getUrlPerfil());
         }
         return usuarioDTO;
     }
