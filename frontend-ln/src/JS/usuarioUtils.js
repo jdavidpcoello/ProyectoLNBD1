@@ -13,6 +13,6 @@ export function obtenerUsuario() {
 
 export function redirigirSiNoEstaLogueado() {
     if (!estaLogueado()) {
-        window.location.href = "login.html";
+        window.location.href = "signin.html";
     }
 }
