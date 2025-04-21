@@ -12,41 +12,45 @@ async function submitSignin(event) {
     event.preventDefault();
     
     const url = 'http://localhost:8080/api/usuarios/signin';
+    
     const validez = validateForm();
-    if (validez) {
-        
-        const data = {
-            email : emailField.value,
-            password : passwordField.value
-        };
+    if (!validez) {
+        alert("Formulario no válido. Verifica los campos.");
+        return;
+    }
+    
+    const data = {
+        email: emailField.value,
+        password: passwordField.value
+    };
 
-        try{
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams (data)
-            });
+    alert(`Datos que se van a enviar:\nEmail: ${data.email}\nPassword: ${data.password}`);
+    
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(data).toString()
+        });
 
-            const responseData = await response.json();
+        const responseData = await response.json();
 
-            if(responseData === true){
-                window.location.href = '../Pages/Inicio.html';
-            }
-            else if(responseData === false ) {
-                const invalidCredentials = document.querySelector('.invalid-credentials');
-                invalidCredentials.classList.remove('hidden');
-                emailField.classList.add('invalid-input');
-                emailLabel.classList.add('invalid-input-label');
-                passwordField.classList.add('invalid-input');
-                passwordLabel.classList.add('invalid-input-label');
-            }
+        if (response.ok) {
+            alert('Inicio de sesión exitoso');
+            window.location.href = '../Pages/Inicio.html';
+        } else {
+            const invalidCredentials = document.querySelector('.invalid-credentials');
+            invalidCredentials.classList.remove('hidden');
+            emailField.classList.add('invalid-input');
+            emailLabel.classList.add('invalid-input-label');
+            passwordField.classList.add('invalid-input');
+            passwordLabel.classList.add('invalid-input-label');
         }
-        catch (error){
-            alert('error de backend sos una inutil');
-            console.log(error);
-        }
+    } catch (error) {
+        alert('Error al realizar la solicitud al backend. Revisa la consola.');
+        console.log(error);
     }
 }
 

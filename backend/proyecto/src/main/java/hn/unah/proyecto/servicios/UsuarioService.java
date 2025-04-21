@@ -28,7 +28,7 @@ import hn.unah.proyecto.repositorios.UsuariosRepository;
 
 @Service
 public class UsuarioService {
-    
+
     @Autowired
     private UsuariosRepository usuariosRepository;
 
@@ -53,101 +53,149 @@ public class UsuarioService {
     @Autowired
     private EducacionRepository educacionRepository;
 
-    public boolean iniciarSesion(String email,String password) {
+    public UsuariosDTO iniciarSesion(String email, String password) {
         Usuarios usuario = usuariosRepository.findByEmail(email);
-        if(usuario==null){
-            return false;
+        if (usuario == null) {
+            return null;
         }
-        if(!(usuario.getContrasenia().equals(password))){
-            return false;
+        if (!(usuario.getContrasenia().equals(password))) {
+            return null;
         }
-        return true;
-    }
 
-    public UsuariosDTO registrarUsuario(NewUserDTO nvoUsuario){
-        Usuarios usuarioBd = new Usuarios();
-        usuarioBd.setEmail(nvoUsuario.getEmail());
-        usuarioBd.setContrasenia(nvoUsuario.getPassword());
-        usuarioBd.setNombre(nvoUsuario.getFirstName());
-        usuarioBd.setApellidos(nvoUsuario.getLastName());
-        usuarioBd.setFotoPerfil(nvoUsuario.getProfilePhoto());
-        usuarioBd.setTitular(nvoUsuario.getTitular());
+        UsuariosDTO usuariosDTO = new UsuariosDTO();
+
+        usuariosDTO.setEmail(usuario.getEmail());
+        usuariosDTO.setNombre(usuario.getNombre());
+        usuariosDTO.setApellidos(usuario.getApellidos());
+        usuariosDTO.setFotoPerfil(usuario.getFotoPerfil());
+        usuariosDTO.setFotoPortada(usuario.getFotoPortada());
+        usuariosDTO.setSector(usuario.getSector());
+        usuariosDTO.setTitular(usuario.getTitular());
+        usuariosDTO.setNombreAdicional(usuariosDTO.getNombreAdicional());
+        usuariosDTO.setFechaNacimiento(usuario.getFechaNacimiento());
+        usuariosDTO.setUrlPerfil(usuario.getUrlPerfil());
+        usuariosDTO.setNombreAdicional(usuario.getNombreAdicional());
+
+        Paises pais = paisesRepository.findById(usuario.getPais().getCodigoPais()).get();
+        Ciudades ciudad = ciudadesRepository.findById(usuario.getCiudad().getCodigoCiudad()).get();
+        Ciudades parentCity;
         
-        Paises pais = paisesRepository.findByNombre(nvoUsuario.getCountry());
-        usuarioBd.setPais(pais);
-
-        Ciudades ciudad;
-        if(nvoUsuario.getParentCity().equals("")){
-            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), null);
-        }{
-            Ciudades ciudadPadre = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getParentCity(), null);
-            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
-        }
-        usuarioBd.setCiudad(ciudad);
-        usuarioBd.setUrlPerfil("www.linkedin.com/in/"+nvoUsuario.getFirstName()+"-"+nvoUsuario.getLastName());        
-
-        Educacion educacion = new Educacion();
-        Experiencias experiencias = new Experiencias();
-
-        if(nvoUsuario.getJob().equals("")){
-            int dia = Integer.parseInt(nvoUsuario.getBirthDay());
-            int mes = Integer.parseInt(nvoUsuario.getBirthMonth());
-            int anio = Integer.parseInt(nvoUsuario.getBirthYear());
-
-            LocalDate birthDate = LocalDate.of(anio, mes, dia);
-
-            usuarioBd.setFechaNacimiento(birthDate);
-            educacion.setAnioInicio(nvoUsuario.getFirtYear());
-            educacion.setAnioFinal(nvoUsuario.getLastYear());
-            
-            Instituciones instituciones = institucionesRepository.findByNombreInstitucion(nvoUsuario.getSchoolName());
-            educacion.setInstitucionEducativa(instituciones);
-        }
-        else {
-            experiencias.setCargo(nvoUsuario.getJob());
-            
-            TipoEmpleos tipoEmpleo = tipoEmpleoRepository.findByTipoEmpleo(nvoUsuario.getTypeJob());
-            experiencias.setTipoEmpleo(tipoEmpleo);
-            
-            Empresas empresa = empresaRepository.findByNombreEmpresas(nvoUsuario.getPlaceJob());
-            experiencias.setEmpresa(empresa);
-
-        }
-
-        usuariosRepository.save(usuarioBd);
-
-        if(nvoUsuario.getJob().equals("")){
-            educacion.setUsuario(usuarioBd);
-            educacionRepository.save(educacion);
-        }else{
-            experiencias.setUsuario(usuarioBd);
-            experienciasRepository.save(experiencias);
-        }
-
-
         PaisesDTO paisDTO = new PaisesDTO();
-
         paisDTO.setCodigoPais(pais.getCodigoPais());
         paisDTO.setNombre(pais.getNombre());
 
-        CiudadesDTO ciudadesDTO = new CiudadesDTO();
+        CiudadesDTO ciudadDTO = new CiudadesDTO();
+        ciudadDTO.setCodigoCiudad(ciudad.getCodigoCiudad());
+        ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
+        ciudadDTO.setPais(paisDTO);
 
-        ciudadesDTO.setCodigoCiudad(ciudad.getCodigoCiudad());
-        ciudadesDTO.setNombreCiudad(ciudad.getNombreCiudad());
-        ciudadesDTO.setCiudadPadre(ciudad.getCiudadPadre());
-        ciudadesDTO.setPais(paisDTO);
+
+        if(ciudad.getCiudadPadre()!=null){
+            parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
+        }else{
+            parentCity = null;
+        }
+
+        ciudadDTO.setCiudadPadre(parentCity);
+
+
+        usuariosDTO.setCiudad(ciudadDTO);
+        usuariosDTO.setPais(paisDTO);
+
+
+        return usuariosDTO;
+    }
+
+    public UsuariosDTO registrarUsuario(NewUserDTO nvoUsuario) {
 
         UsuariosDTO usuarioDTO = new UsuariosDTO();
-        usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
-        usuarioDTO.setEmail(usuarioBd.getEmail());
-        usuarioDTO.setContrasenia(usuarioBd.getContrasenia());
-        usuarioDTO.setNombre(usuarioBd.getNombre());
-        usuarioDTO.setFotoPerfil(usuarioBd.getFotoPerfil());
-        usuarioDTO.setApellidos(usuarioBd.getApellidos());
-        usuarioDTO.setTitular(usuarioBd.getTitular());
-        usuarioDTO.setCiudad(ciudadesDTO);
-        usuarioDTO.setPais(paisDTO);
 
+        if (usuariosRepository.existsByEmail(nvoUsuario.getEmail())) {
+            usuarioDTO = null;
+        } else {
+            Usuarios usuarioBd = new Usuarios();
+            usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
+            usuarioBd.setEmail(nvoUsuario.getEmail());
+            usuarioBd.setContrasenia(nvoUsuario.getPassword());
+            usuarioBd.setNombre(nvoUsuario.getFirstName());
+            usuarioBd.setApellidos(nvoUsuario.getLastName());
+            usuarioBd.setFotoPerfil(nvoUsuario.getProfilePhoto());
+            usuarioBd.setTitular(nvoUsuario.getTitular());
+
+            Paises pais = paisesRepository.findByNombre(nvoUsuario.getCountry());
+            usuarioBd.setPais(pais);
+
+            Ciudades ciudad;
+            if (nvoUsuario.getParentCity().equals("")) {
+                ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), null);
+            }
+            {
+                Ciudades ciudadPadre = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getParentCity(),
+                        null);
+                ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
+            }
+            usuarioBd.setCiudad(ciudad);
+            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName() + "-" + nvoUsuario.getLastName());
+
+            Educacion educacion = new Educacion();
+            Experiencias experiencias = new Experiencias();
+
+            if (nvoUsuario.getJob().equals("")) {
+                int dia = Integer.parseInt(nvoUsuario.getBirthDay());
+                int mes = Integer.parseInt(nvoUsuario.getBirthMonth());
+                int anio = Integer.parseInt(nvoUsuario.getBirthYear());
+
+                LocalDate birthDate = LocalDate.of(anio, mes, dia);
+
+                usuarioBd.setFechaNacimiento(birthDate);
+                educacion.setAnioInicio(nvoUsuario.getFirtYear());
+                educacion.setAnioFinal(nvoUsuario.getLastYear());
+
+                Instituciones instituciones = institucionesRepository
+                        .findByNombreInstitucion(nvoUsuario.getSchoolName());
+                educacion.setInstitucionEducativa(instituciones);
+            } else {
+                experiencias.setCargo(nvoUsuario.getJob());
+
+                TipoEmpleos tipoEmpleo = tipoEmpleoRepository.findByTipoEmpleo(nvoUsuario.getTypeJob());
+                experiencias.setTipoEmpleo(tipoEmpleo);
+
+                Empresas empresa = empresaRepository.findByNombreEmpresas(nvoUsuario.getPlaceJob());
+                experiencias.setEmpresa(empresa);
+
+            }
+
+            usuariosRepository.save(usuarioBd);
+
+            if (nvoUsuario.getJob().equals("")) {
+                educacion.setUsuario(usuarioBd);
+                educacionRepository.save(educacion);
+            } else {
+                experiencias.setUsuario(usuarioBd);
+                experienciasRepository.save(experiencias);
+            }
+
+            PaisesDTO paisDTO = new PaisesDTO();
+
+            paisDTO.setCodigoPais(pais.getCodigoPais());
+            paisDTO.setNombre(pais.getNombre());
+
+            CiudadesDTO ciudadesDTO = new CiudadesDTO();
+
+            ciudadesDTO.setCodigoCiudad(ciudad.getCodigoCiudad());
+            ciudadesDTO.setNombreCiudad(ciudad.getNombreCiudad());
+            ciudadesDTO.setCiudadPadre(ciudad.getCiudadPadre());
+            ciudadesDTO.setPais(paisDTO);
+
+            usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
+            usuarioDTO.setEmail(usuarioBd.getEmail());
+            usuarioDTO.setNombre(usuarioBd.getNombre());
+            usuarioDTO.setFotoPerfil(usuarioBd.getFotoPerfil());
+            usuarioDTO.setApellidos(usuarioBd.getApellidos());
+            usuarioDTO.setTitular(usuarioBd.getTitular());
+            usuarioDTO.setCiudad(ciudadesDTO);
+            usuarioDTO.setPais(paisDTO);
+        }
         return usuarioDTO;
     }
 
