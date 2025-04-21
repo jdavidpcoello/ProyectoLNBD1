@@ -188,17 +188,32 @@
                 </div>
             </div>
     </div>
-    
-    <div id="modalCancelar" class="modal" style="display:none;">
-        <div class="modal-contenido text-center">
-            <p>¿Cancelar la solicitud de conexión?</p>
-            <div class="d-flex justify-content-center gap-2">
-            <button class="btn btn-danger" onclick="console.log('Botón presionado'); cancelarSolicitud()">Sí</button>
-            <button class="btn btn-secondary" onclick="cerrarModal()">No</button>
-            </div>
-        </div>
-    </div>
+
+    <div class="modal fade" id="modalCancelar" tabindex="-1" aria-labelledby="modalCancelarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content rounded-4 shadow-sm">
       
+            <!-- Título -->
+            <div class="modal-header border-0 pb-0">
+              <h6 class="modal-title w-100 text-center" id="modalCancelarLabel">¿Cancelar solicitud?</h6>
+              <button type="button" class="btn-close position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+      
+            <!-- Contenido -->
+            <div class="modal-body text-center pt-2 pb-3">
+              <p class="small mb-3">No podrás volver a enviar esta invitación hasta dentro de 3 semanas.</p>
+              <div class="d-flex justify-content-center gap-2">
+                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill" onclick="cancelarSolicitud()">Cancelar</button>
+                <button type="button" class="btn btn-primary btn-sm rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+  
+     
     <script src="../JS/loadContactosMiRed.js"></script>
     <script src="../JS/loadMenu.js"></script>
     <script src="../JS/loadFooter.js"></script>

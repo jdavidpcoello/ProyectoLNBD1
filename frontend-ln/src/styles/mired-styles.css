@@ -59,3 +59,18 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
+  .fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .img-contenedor-mired.perfil-superpuesto {
+    width: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    z-index: 2;
+    top: 100%;
+    transform: translate(-50%, -50%);
+  }
+  
