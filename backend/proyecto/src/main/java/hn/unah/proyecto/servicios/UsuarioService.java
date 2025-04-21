@@ -64,6 +64,7 @@ public class UsuarioService {
 
         UsuariosDTO usuariosDTO = new UsuariosDTO();
 
+        usuariosDTO.setCodigoUsuario(usuario.getCodigoUsuario());
         usuariosDTO.setEmail(usuario.getEmail());
         usuariosDTO.setNombre(usuario.getNombre());
         usuariosDTO.setApellidos(usuario.getApellidos());

@@ -13,44 +13,42 @@ async function submitSignin(event) {
   const url = "http://localhost:8080/api/usuarios/signin";
 
   const validez = validateForm();
-  if (!validez) {
-    alert("Formulario no válido. Verifica los campos.");
-    return;
+  if (validez) {
+    const data = {
+        email: emailField.value,
+        password: passwordField.value,
+      };
+    
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(data).toString(),
+        });
+    
+        const responseData = await response.json();
+        console.log(responseData);
+        
+        if (response.ok) {
+          alert("Inicio de sesión exitoso");
+          localStorage.setItem('infoUsuario', JSON.stringify(responseData));
+          window.location.href = "../Pages/Inicio.html";
+        } else {
+          const invalidCredentials = document.querySelector(".invalid-credentials");
+          invalidCredentials.classList.remove("hidden");
+          emailField.classList.add("invalid-input");
+          emailLabel.classList.add("invalid-input-label");
+          passwordField.classList.add("invalid-input");
+          passwordLabel.classList.add("invalid-input-label");
+        }
+      } catch (error) {
+        alert("Error al realizar la solicitud al backend. Revisa la consola.");
+        console.log(error);
+      }
   }
 
-  const data = {
-    email: emailField.value,
-    password: passwordField.value,
-  };
-
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams(data).toString(),
-    });
-
-    const responseData = await response.json();
-
-    if (response.ok) {
-      alert("Inicio de sesión exitoso");
-      localStorage.setItem('infoUsuario', JSON.stringify(responseData));
-      
-      window.location.href = "../Pages/Inicio.html";
-    } else {
-      const invalidCredentials = document.querySelector(".invalid-credentials");
-      invalidCredentials.classList.remove("hidden");
-      emailField.classList.add("invalid-input");
-      emailLabel.classList.add("invalid-input-label");
-      passwordField.classList.add("invalid-input");
-      passwordLabel.classList.add("invalid-input-label");
-    }
-  } catch (error) {
-    alert("Error al realizar la solicitud al backend. Revisa la consola.");
-    console.log(error);
-  }
 }
 
 function validateForm() {
