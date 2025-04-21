@@ -127,7 +127,8 @@ function crearCardHTML(usuario) {
 
     const fotoPortada = usuario.fotoPortada ? `${usuario.fotoPortada}` : '';
     const fotoPerfil = usuario.fotoPerfil ? `${usuario.fotoPerfil}` : '';
-    const fotoTitular = usuario.fotoTitularUrl ? `${baseUrl}${usuario.fotoTitularUrl}` : '';
+    const fotoEmpresa = usuario.fotoEmpresa ? `${baseUrl}${usuario.fotoEmpresa}` : '';
+    const fotoEmpresaDefault = `${baseUrl}/public/Image/fotoEmpresaPorDefecto.png`;
 
     const botonId = `btn-conectar-${usuario.codigoUsuario}`;
 
@@ -177,7 +178,7 @@ function crearCardHTML(usuario) {
                     </div> 
                     <div class="d-flex justify-content-between">
                         <div class="my-3 mx-2 px-2 w-25">
-                            <img src="${fotoTitular}" alt="Titular" class="img-responsive img-fluid">
+                            <img src="${fotoEmpresa || fotoEmpresaDefault}" alt="Empresa" class="img-responsive img-fluid">
                         </div>
                         <div class="d-flex align-items-center me-3 w-75">
                             <small class="mb-1 text-small text-muted">${usuario.sector}</small>

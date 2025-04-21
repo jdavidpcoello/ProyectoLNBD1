@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,10 @@ import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.EstadoConexion;
+import hn.unah.proyecto.entidades.Experiencias;
 import hn.unah.proyecto.repositorios.ConexionRepository;
 import hn.unah.proyecto.repositorios.EstadoConexionRepository;
+import hn.unah.proyecto.repositorios.ExperienciaRepository;
 import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.repositorios.UsuariosRepository;
 
@@ -31,6 +34,9 @@ public class ConexionService {
 
     @Autowired
     private EstadoConexionRepository estadoConexionRepository;
+
+    @Autowired
+    private ExperienciaRepository experienciaRepository;
 
     public ConexionDTO guardarConexion(ConexionDTO dto) {
         EstadoConexion estado = estadoConexionRepository.findById(dto.getEstado())
@@ -63,7 +69,6 @@ public class ConexionService {
     
         List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
     
-        Empresas empresa = null;
         for (Conexiones conexion : conexiones) {
             if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
                 int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
@@ -73,6 +78,14 @@ public class ConexionService {
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
                    
+                    List<Experiencias> experiencias = this.experienciaRepository.findUltimaExperienciaPorUsuario(amigoId);
+                    Empresas empresa = null;
+        
+                    if (!experiencias.isEmpty()) {
+                        Experiencias ultima = experiencias.get(0);
+                        empresa = ultima.getEmpresa();                     
+                    }
+
                     UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, empresa);
                     amigos.add(dto);
                 }
@@ -108,6 +121,13 @@ public class ConexionService {
                     dto.setFotoPerfil(usuario.getFotoPerfil());
                     dto.setFotoPortada(usuario.getFotoPortada());
                     dto.setEstadoConexion(estado);
+                    
+                    Optional<Experiencias> experienciaConEmpresa = usuario.getExperiencias().stream()
+                        .filter(e -> e.getEmpresa() != null)
+                        .findFirst();
+
+                    dto.setFotoEmpresa(experienciaConEmpresa.map(e -> e.getEmpresa().getFotoEmpresa()).orElse(null));
+
                     
                     Conexiones conexion = conexiones.stream()
                         .filter(c -> c.getUsuario1Id() == usuario.getCodigoUsuario() || c.getUsuario2Id() == usuario.getCodigoUsuario())
