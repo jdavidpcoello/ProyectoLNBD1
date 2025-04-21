@@ -64,6 +64,7 @@ public class UsuarioService {
 
         UsuariosDTO usuariosDTO = new UsuariosDTO();
 
+        usuariosDTO.setCodigoUsuario(usuario.getCodigoUsuario());
         usuariosDTO.setEmail(usuario.getEmail());
         usuariosDTO.setNombre(usuario.getNombre());
         usuariosDTO.setApellidos(usuario.getApellidos());
@@ -71,7 +72,6 @@ public class UsuarioService {
         usuariosDTO.setFotoPortada(usuario.getFotoPortada());
         usuariosDTO.setSector(usuario.getSector());
         usuariosDTO.setTitular(usuario.getTitular());
-        usuariosDTO.setNombreAdicional(usuariosDTO.getNombreAdicional());
         usuariosDTO.setFechaNacimiento(usuario.getFechaNacimiento());
         usuariosDTO.setUrlPerfil(usuario.getUrlPerfil());
         usuariosDTO.setNombreAdicional(usuario.getNombreAdicional());
@@ -135,7 +135,7 @@ public class UsuarioService {
                 ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
             }
             usuarioBd.setCiudad(ciudad);
-            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName() + "-" + nvoUsuario.getLastName());
+            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName().toLowerCase() + "-" + nvoUsuario.getLastName().toLowerCase());
 
             Educacion educacion = new Educacion();
             Experiencias experiencias = new Experiencias();
