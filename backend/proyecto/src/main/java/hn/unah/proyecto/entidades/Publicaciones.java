@@ -42,7 +42,7 @@ public class Publicaciones {
 
     @ManyToOne
     @JoinColumn(name = "codigo_visibilidad", referencedColumnName = "codigo_visibilidad")
-    private Visibilidad visibilidad;
+    private Visibilidad codigoVisibilidad;
 
     @Column(name = "fecha_publicacion")
     private LocalDateTime fechaPublicacion;
