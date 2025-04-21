@@ -17,8 +17,7 @@ public class MensajeDTO {
     private String nombreEmisor;
     private String apellidoEmisor;
     private String emisorCargo;
-    private String nombreReceptor;
-    private String apellidoReceptor;
+    private String emisorFotoPerfil;
 
   
     public MensajeDTO(Mensajes mensaje) {
@@ -28,9 +27,6 @@ public class MensajeDTO {
         this.nombreEmisor = mensaje.getUsuarioEmisor().getNombre();
         this.apellidoEmisor = mensaje.getUsuarioEmisor().getApellidos();
         this.emisorCargo = mensaje.getUsuarioEmisor().getTitular();
-        this.nombreReceptor = mensaje.getUsuarioReceptor().getNombre();
-        this.apellidoReceptor = mensaje.getUsuarioReceptor().getApellidos();
+        this.emisorFotoPerfil = mensaje.getUsuarioEmisor().getFotoPerfil();
     }
-
-   
 }

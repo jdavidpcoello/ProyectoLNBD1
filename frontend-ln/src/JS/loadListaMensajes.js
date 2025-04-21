@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
           clon.removeAttribute('id'); // Eliminamos el id duplicado
   
           // Seteamos los valores dentro del clon usando tus IDs
-          clon.querySelector('#foto-perfil').src = '../Image/LinkedIn_icon.svg.png'; // Cambia por el src real si lo tienes
+          clon.querySelector('#foto-perfil').src = `${mensaje.emisorFotoPerfil}`; // Cambia por el src real si lo tienes
   
           const nombreCompleto = `${mensaje.nombreEmisor} ${mensaje.apellidoEmisor}`;
           clon.querySelector('#nombre').textContent = nombreCompleto;
