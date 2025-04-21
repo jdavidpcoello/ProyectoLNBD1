@@ -114,6 +114,7 @@ public class UsuarioService {
             usuarioDTO = null;
         } else {
             Usuarios usuarioBd = new Usuarios();
+            usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
             usuarioBd.setEmail(nvoUsuario.getEmail());
             usuarioBd.setContrasenia(nvoUsuario.getPassword());
             usuarioBd.setNombre(nvoUsuario.getFirstName());
@@ -186,6 +187,7 @@ public class UsuarioService {
             ciudadesDTO.setCiudadPadre(ciudad.getCiudadPadre());
             ciudadesDTO.setPais(paisDTO);
 
+            usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
             usuarioDTO.setEmail(usuarioBd.getEmail());
             usuarioDTO.setNombre(usuarioBd.getNombre());
             usuarioDTO.setFotoPerfil(usuarioBd.getFotoPerfil());

@@ -13,6 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UsuariosDTO {
 
+    private int codigoUsuario;
+
     private String nombre;
 
     private String apellidos;
