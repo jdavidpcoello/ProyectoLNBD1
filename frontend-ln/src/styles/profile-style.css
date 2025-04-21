@@ -2,7 +2,7 @@ body{
     background-color: #f4f2ee;
 }
 .profile-photo{
-    width: 100%px;
+    width: 100%;
     border-radius: 50%;
     margin-top: -75px;
     padding: 5px;
@@ -16,7 +16,7 @@ body{
 }
 
 .profile-page-container{
-    padding: 10px  60px;
+    padding: 10px 60px;
     display: inline-flex;
 }
 
@@ -28,6 +28,7 @@ body{
     border-radius: 10px;
     border:1px solid #e1e1e1;
     position: relative;
+    
 }
 
 .background-container{
@@ -73,6 +74,8 @@ body{
     display: none;
 }
 
+
+
 #upload-bck-btn , #upload-pp-btn{
     height: 40px;
     width: 40px;
@@ -95,6 +98,7 @@ body{
 #upload-bck-btn{
     margin-top: -130px;
     margin-left: 700px;
+    z-index: 10;
 }
 
 
@@ -161,18 +165,6 @@ body{
     border: none;
 }
 
-.add-btn{
-    background-image: url('../Image/ButtonIcon2.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.edit-btn{
-    background-image: url('../Image/ButtonIcon3.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 60%;
-}
 
 .side-container{
     margin-left: 25px;
@@ -274,4 +266,21 @@ body{
 .subtitle-presentation{
     font-size: 1.2em;
     color:black;
+}
+
+
+.button-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-info-container {
+    position: relative;
+    top: -170px;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
