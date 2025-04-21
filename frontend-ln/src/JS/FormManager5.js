@@ -1,4 +1,4 @@
-import User from './NewUser.js';
+import NewUser from './NewUser.js';
 
 const photoDiv = document.querySelector('.photo-input-container');
 const photo = document.querySelector('#profile-photo');
@@ -92,7 +92,7 @@ async function createUser(event) {
         const titular = titularDiv.innerHTML;
 
 
-        const newUser = new User(
+        const newUser = new NewUser(
             email,
             password,
             firstName,
