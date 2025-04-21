@@ -40,6 +40,7 @@ function formValidation(status){
         const invalidJobText = document.querySelector('.invalid-job-text');
         const invalidTypeJobText = document.querySelector('.invalid-type-job-text');
         const invalidPlaceJobText = document.querySelector('.invalid-job-place-text');
+        const datalistCompanies = document.querySelector('#company-list');
         invalidJobText.innerHTML = '';
         invalidTypeJobText.innerHTML = '';
         invalidPlaceJobText.innerHTML = '';
@@ -56,6 +57,10 @@ function formValidation(status){
             invalidPlaceJobText.innerHTML = 'Introduce el lugar de trabajo.';
             placeJobField.classList.add('invalid-input');
             return false;
+        }else if(!Array.from(datalistCompanies.options).some(option => option.value === placeJobField.value)){
+            invalidPlaceJobText.innerHTML = 'Introduce un lugar de trabajo valido.';
+            placeJobField.classList.add('invalid-input');
+            return false;
         }
     }
 
@@ -67,6 +72,7 @@ function formValidation(status){
         invalidYearText.innerHTML = '';
         invalidBirthDateText.innerHTML = '';
         schoolNameField.classList.remove('invalid-input');
+        const datalistSchools = document.querySelector('#institutions-list');
 
         if(RegexValidator.isEmpty(schoolNameField.value)){
             invalidSchoolText.innerHTML = 'Introduce el nombre de la escuela.';
@@ -79,8 +85,12 @@ function formValidation(status){
         else if(birthDayField.value === '' || birthMonthField.value === '' || birthYearField.value === ''){
             invalidBirthDateText.innerHTML = 'Introduce tu fecha de nacimiento.';
             return false;
-        }else if(firstYearField.value > lastYearField.value){
+        }else if((!RegexValidator.isEmpty(lastYearField.value))&&(firstYearField.value > lastYearField.value)){
             invalidYearText.innerHTML = 'Ingresa los años de estudios validos.';
+            return false;
+        }else if (!Array.from(datalistSchools.options).some(option => option.value === schoolNameField.value)){
+            invalidSchoolText.innerHTML = 'Introduce un nombre de la escuela valido.';
+            schoolNameField.classList.add('invalid-input');
             return false;
         }
     }
