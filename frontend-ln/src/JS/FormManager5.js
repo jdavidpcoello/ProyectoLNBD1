@@ -1,4 +1,4 @@
-import User from './User.js';
+import User from './NewUser.js';
 
 const photoDiv = document.querySelector('.photo-input-container');
 const photo = document.querySelector('#profile-photo');
