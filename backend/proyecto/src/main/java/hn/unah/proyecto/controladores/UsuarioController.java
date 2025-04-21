@@ -29,7 +29,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping("/signin")
-    public boolean iniciarSesion(@RequestParam String email, @RequestParam String password) {
+    public UsuariosDTO iniciarSesion(@RequestParam String email, @RequestParam String password) {
         return usuarioService.iniciarSesion(email, password);
     }
 
