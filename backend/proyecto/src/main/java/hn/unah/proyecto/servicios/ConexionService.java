@@ -109,9 +109,16 @@ public class ConexionService {
 
         for (Usuarios usuario : todos) {
             if (usuario.getCodigoUsuario() != codigoUsuario) {
-                int estado = mapaEstados.getOrDefault(usuario.getCodigoUsuario(), 0);
 
-                if (estado != EstadoConexion.ACEPTADA) {
+                Conexiones conexion = conexiones.stream()
+                    .filter(c -> (c.getUsuario1Id() == usuario.getCodigoUsuario() && c.getUsuario2Id() == codigoUsuario) || 
+                                  c.getUsuario2Id() == usuario.getCodigoUsuario() && c.getUsuario1Id() == codigoUsuario)
+                    .findFirst()
+                    .orElse(null);
+
+                    int estado = (conexion != null) ? conexion.getEstado().getCodigoEstado() : 0;
+
+                if (estado == 0 || (estado == EstadoConexion.PENDIENTE && conexion.getUsuario1Id() == codigoUsuario)) {
                     UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO();
                     dto.setCodigoUsuario(usuario.getCodigoUsuario());
                     dto.setNombre(usuario.getNombre());
@@ -121,6 +128,7 @@ public class ConexionService {
                     dto.setFotoPerfil(usuario.getFotoPerfil());
                     dto.setFotoPortada(usuario.getFotoPortada());
                     dto.setEstadoConexion(estado);
+                    dto.setCodigoConexion(conexion != null ? conexion.getCodigoConexion() : 0);
                     
                     Optional<Experiencias> experienciaConEmpresa = usuario.getExperiencias().stream()
                         .filter(e -> e.getEmpresa() != null)
@@ -129,17 +137,6 @@ public class ConexionService {
                     dto.setFotoEmpresa(experienciaConEmpresa.map(e -> e.getEmpresa().getFotoEmpresa()).orElse(null));
 
                     
-                    Conexiones conexion = conexiones.stream()
-                        .filter(c -> c.getUsuario1Id() == usuario.getCodigoUsuario() || c.getUsuario2Id() == usuario.getCodigoUsuario())
-                        .findFirst()
-                        .orElse(null);
-                        
-                    if (conexion != null) {
-                        dto.setCodigoConexion(conexion.getCodigoConexion());
-                    } else {
-                        dto.setCodigoConexion(0);
-                    }
-
                     resultado.add(dto);
                 }
             }

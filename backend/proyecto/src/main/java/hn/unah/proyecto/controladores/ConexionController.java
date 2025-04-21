@@ -26,10 +26,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @CrossOrigin(origins = "*")
-// @CrossOrigin(
-//     origins = {"http://localhost:5501", "http://192.168.0.12:5501"},
-//     allowedHeaders = "*",
-//     methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.OPTIONS})
 @RequestMapping("/api/conexiones")
 public class ConexionController {
     
@@ -48,9 +44,6 @@ public class ConexionController {
     @GetMapping("/amigos/{codigoUsuario}")
     public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerAmigos(@PathVariable int codigoUsuario) {
         List<UsuarioConEstadoDTO> amigos = conexionService.obtenerAmigosPorUsuario(codigoUsuario);
-        if (amigos.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(amigos);
     }
 

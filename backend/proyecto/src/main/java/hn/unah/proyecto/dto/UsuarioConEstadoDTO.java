@@ -46,5 +46,6 @@ public class UsuarioConEstadoDTO {
         this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : null;
         this.codigoConexion = conexion.getCodigoConexion();
         this.fechaConexion = conexion.getFechaConexion() != null ? conexion.getFechaConexion() : null;
+        this.codigoConexion = conexion.getCodigoConexion();
     }
 }

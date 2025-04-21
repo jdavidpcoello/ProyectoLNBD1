@@ -78,21 +78,18 @@ function agregarEventosConectar() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(conexion)
                 });
-
+                
                 if (response.ok) {
                     const data = await response.json();
 
-                    const nuevoBoton = document.createElement('button');
-                    nuevoBoton.className = "btn btn-outline-secondary btn-sm rounded-pill w-100 btn-cancelar";
-                    nuevoBoton.innerHTML = '<i class="bi bi-stopwatch"></i> Pendiente';
-                    nuevoBoton.addEventListener('click', () => {
-                        mostrarCancelarModal(data.codigoConexion);
-                    });
+                    const nuevoBoton = crearBotonPendiente(data.codigoConexion);
 
                     const tarjeta = boton.closest(".col");
-                    if (tarjeta) tarjeta.setAttribute("data-conexion-id", data.codigoConexion);
+                    if (tarjeta) {
+                        tarjeta.setAttribute("data-conexion-id", data.codigoConexion);
+                        boton.replaceWith(nuevoBoton);
+                    }
 
-                    boton.replaceWith(nuevoBoton);
                 } else {
                     alert("Error al enviar solicitud");
                 }
@@ -158,6 +155,7 @@ function crearCardHTML(usuario) {
 }
 
 let conexionIdSeleccionada = null;
+window.conexionIdSeleccionada = null;
 
 function mostrarCancelarModal(codigoConexion) {
     conexionIdSeleccionada = codigoConexion;
@@ -178,14 +176,22 @@ async function cancelarSolicitud() {
         const response = await fetch(`http://localhost:8080/api/conexiones/cancelar/${conexionIdSeleccionada}`, {
             method: 'PUT'
         });
-
         if (response.ok) {
             const tarjeta = document.querySelector(`[data-conexion-id="${conexionIdSeleccionada}"]`);
             if (tarjeta) {
-                tarjeta.classList.add("fade-out");
-                setTimeout(() => tarjeta.remove(), 300);
+                const nuevoBoton = document.createElement('button');
+                nuevoBoton.className = "btn btn-azul btn-sm rounded-pill w-100 btn-conectar";
+                nuevoBoton.setAttribute("data-usuario-id", tarjeta.getAttribute("data-usuario-id"));
+                nuevoBoton.innerHTML = '<i class="bi bi-person-plus-fill"></i> Conectar';
+        
+                nuevoBoton.addEventListener("click", async () => {
+                    tarjeta.querySelector(".btn-cancelar")?.replaceWith(crearBotonPendiente(conexionIdSeleccionada));
+                    await agregarEventosConectar();
+                });
+        
+                const botonActual = tarjeta.querySelector(".btn-cancelar");
+                if (botonActual) botonActual.replaceWith(nuevoBoton);
             }
-            cerrarModal();
         } else {
             alert("No se pudo cancelar");
         }
@@ -198,6 +204,17 @@ async function cancelarSolicitud() {
     if (modalInstance) {
       modalInstance.hide();
     }
+}
 
-    cerrarModal();
+window.cancelarSolicitud = cancelarSolicitud;
+window.mostrarCancelarModal = mostrarCancelarModal;
+
+function crearBotonPendiente(codigoConexion) {
+    const botonPendiente = document.createElement('button');
+    botonPendiente.className = "btn btn-outline-secondary btn-sm rounded-pill w-100 btn-cancelar";
+    botonPendiente.innerHTML = '<i class="bi bi-stopwatch"></i> Pendiente';
+    botonPendiente.addEventListener('click', () => {
+        mostrarCancelarModal(codigoConexion);
+    });
+    return botonPendiente;
 }
