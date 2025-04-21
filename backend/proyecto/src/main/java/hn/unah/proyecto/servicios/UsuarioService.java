@@ -135,7 +135,7 @@ public class UsuarioService {
                 ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
             }
             usuarioBd.setCiudad(ciudad);
-            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName() + "-" + nvoUsuario.getLastName());
+            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName().toLowerCase() + "-" + nvoUsuario.getLastName().toLowerCase());
 
             Educacion educacion = new Educacion();
             Experiencias experiencias = new Experiencias();
