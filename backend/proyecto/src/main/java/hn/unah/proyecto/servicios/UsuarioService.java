@@ -71,7 +71,6 @@ public class UsuarioService {
         usuariosDTO.setFotoPortada(usuario.getFotoPortada());
         usuariosDTO.setSector(usuario.getSector());
         usuariosDTO.setTitular(usuario.getTitular());
-        usuariosDTO.setNombreAdicional(usuariosDTO.getNombreAdicional());
         usuariosDTO.setFechaNacimiento(usuario.getFechaNacimiento());
         usuariosDTO.setUrlPerfil(usuario.getUrlPerfil());
         usuariosDTO.setNombreAdicional(usuario.getNombreAdicional());

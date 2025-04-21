@@ -36,6 +36,8 @@ async function submitSignin(event) {
 
     if (response.ok) {
       alert("Inicio de sesión exitoso");
+      localStorage.setItem('infoUsuario', JSON.stringify(responseData));
+      
       window.location.href = "../Pages/Inicio.html";
     } else {
       const invalidCredentials = document.querySelector(".invalid-credentials");
