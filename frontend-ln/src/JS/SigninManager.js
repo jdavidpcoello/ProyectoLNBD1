@@ -42,7 +42,6 @@ async function submitSignin(event) {
             alert('Inicio de sesión exitoso');
             window.location.href = '../Pages/Inicio.html';
         } else {
-            alert('Credenciales inválidas');
             const invalidCredentials = document.querySelector('.invalid-credentials');
             invalidCredentials.classList.remove('hidden');
             emailField.classList.add('invalid-input');
