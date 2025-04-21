@@ -1,6 +1,6 @@
 import { estaLogueado, obtenerUsuario, redirigirSiNoEstaLogueado} from './usuarioUtils.js'; 
 
-if(estaLogueado){
+if(estaLogueado()){
     const usuario = JSON.parse(localStorage.getItem('infoUsuario'));
 
     document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
@@ -23,8 +23,9 @@ if(estaLogueado){
     }
     else{
         document.querySelector('#background-photo').setAttribute('src','../Image/DefaultBackground.jpg');
-
     }
+
+
 
 }{
     redirigirSiNoEstaLogueado();
