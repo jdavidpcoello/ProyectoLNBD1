@@ -13,7 +13,6 @@ async function submitSignin(event) {
     
     const url = 'http://localhost:8080/api/usuarios/signin';
     
-    // Validación del formulario
     const validez = validateForm();
     if (!validez) {
         alert("Formulario no válido. Verifica los campos.");
