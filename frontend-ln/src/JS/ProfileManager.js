@@ -7,7 +7,7 @@ if(estaLogueado()){
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
     document.querySelector('.description-container').innerHTML = `${usuario.titular}`;
 
-    if(usuario.ciudad.ciudadPadre != null){
+    if(usuario.ciudad.ciudadPadre){
         document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
     }else{
         document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
