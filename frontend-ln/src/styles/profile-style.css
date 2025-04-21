@@ -37,9 +37,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../Image/frontpage.png');
-    background-size: cover;
-    background-position: center;
+    background-color: grey;
 }
 
 
@@ -50,15 +48,55 @@ body{
     margin-top: -75px;
     margin-left: 20px;
     padding: 5px;
-    border: 5px white solid;
-    background-color: #e1e1e1; 
-    background-image: url('../Image/elsa.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+#profile-photo{
+    border: 5px white solid;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#background-photo{
+    position: absolute;
+    height: 200px;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+}
+
+.file{
+    display: none;
+}
+
+#upload-bck-btn , #upload-pp-btn{
+    height: 40px;
+    width: 40px;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #b8b8b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-pp-btn{
+    transform: translateX(90%);
+    margin-top: 10px;
+    margin-left: 65px;
+}
+
+#upload-bck-btn{
+    margin-top: -130px;
+    margin-left: 700px;
+}
+
 
 .button-img-container{
     margin-top:-60px;

@@ -6,7 +6,6 @@ if(estaLogueado){
     document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
     document.querySelector('.description-container').innerHTML = `${usuario.titular}`;
-    document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
 
     if(usuario.ciudad.ciudadPadre.nombreCiudad != null){
         document.querySelector('.location-container').innerHTML = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
@@ -15,6 +14,16 @@ if(estaLogueado){
     }
 
     document.querySelector('.link-span').innerHTML = `${usuario.urlPerfil}`;
+    document.querySelector('#profile-photo').setAttribute('src',usuario.fotoPerfil);
+
+    if(usuario.fotoPortada != null){
+        document.querySelector('#background-photo').setAttribute('src',usuario.fotoPortada);
+    }
+    else{
+        document.querySelector('#background-photo').setAttribute('src','../Image/DefaultBackground.jpg');
+
+    }
+
 }{
     redirigirSiNoEstaLogueado();
 }
