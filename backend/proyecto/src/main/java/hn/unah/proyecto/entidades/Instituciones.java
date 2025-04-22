@@ -30,9 +30,6 @@ public class Instituciones {
     @Column(name="nombre_institucion_educativa")
     private String nombreInstitucion;
 
-    @Column(name="foto_institucion")
-    private String fotoInstitucion;
-
     @OneToMany(mappedBy = "institucionEducativa", fetch = FetchType.LAZY)
     private List<Educacion> educacion;
 }

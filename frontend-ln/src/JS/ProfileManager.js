@@ -137,15 +137,15 @@ if (estaLogueado()) {
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: JSON.stringify(data)
+                body: new URLSearchParams(data).toString()
             });
     
             const educationData = await response.json();
     
             if (response.ok && Array.isArray(educationData)) {
-                const educationList = document.getElementById("educationList");
+                const educationList = document.getElementById("education-list");
                 educationList.innerHTML = "";
     
                 educationData.forEach(item => {
@@ -162,8 +162,6 @@ if (estaLogueado()) {
                         educationList.appendChild(li);
                     }
                 });
-            } else {
-                alert('No se encontró información educativa.');
             }
         } catch (error) {
             console.error("Error en la solicitud:", error);
