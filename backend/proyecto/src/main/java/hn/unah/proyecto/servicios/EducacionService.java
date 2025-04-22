@@ -48,13 +48,12 @@ public class EducacionService {
                 educacionDTO.setDisciplinaAcademica(educacion.getDisciplinaAcademica());
                 educacionDTO.setNota(educacion.getNota());
                 educacionDTO.setActividadesGrupos(educacion.getActividadesGrupos());
-                educacionDTO.setAnioFinal(educacion.getAnioFinal());
                 educationListDto.add(educacionDTO);
+            }
         }
-    }
-    else{
-        educationListDto.add(null);
-    }
-    return educationListDto;
+        else{
+            educationListDto.add(null);
+        }
+        return educationListDto;
     }
 }

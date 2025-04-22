@@ -256,6 +256,7 @@ public class UsuarioService {
     public UsuariosDTO cambiarFotoPortada(int codigoUsuario, String fotoPortada){
         Usuarios usuario = usuariosRepository.findById(codigoUsuario).get();
         usuario.setFotoPortada(fotoPortada);
+        
         usuariosRepository.save(usuario);
 
         UsuariosDTO usuariosDTO = new UsuariosDTO();

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import hn.unah.proyecto.dto.EducacionDTO;
 import hn.unah.proyecto.servicios.EducacionService;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -22,7 +22,7 @@ public class EducacionController {
     @Autowired
     private EducacionService educacionService;
 
-    @GetMapping("/usuario")
+    @PostMapping("/usuario/obtenertodo")
     public List <EducacionDTO> educacionUsuario(@RequestParam int codigoUsuario) {
         return educacionService.educacionUsuario(codigoUsuario);
     }

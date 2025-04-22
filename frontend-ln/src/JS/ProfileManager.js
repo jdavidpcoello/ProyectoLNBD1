@@ -93,7 +93,7 @@ if (estaLogueado()) {
             } catch (error) {
                 console.error("Error en la solicitud:", error);
             }
-        }else {
+        }else if(i===1) {
             const url = 'http://localhost:8080/api/usuarios/newBackgroundPhoto';
 
             const data = {
@@ -112,7 +112,7 @@ if (estaLogueado()) {
 
                 if (response.ok) {
                     usuario.fotoPortada = result;
-                    document.querySelector('#background-photo').setAttribute('src', usuario.fotoPortada);
+                    document.querySelector('#background-photo').setAttribute('src', updatedUser.fotoPortada);
                     localStorage.setItem('infoUsuario', JSON.stringify(usuario));
                 }
                 else {
@@ -126,41 +126,50 @@ if (estaLogueado()) {
     }
 
 
-    async function EducationList(){
-        const url = 'http://localhost:8080/api/usuarios/newBackgroundPhoto';
-
-        let data = {
-            codigouUsuario: usuario.codigoUsuario
+    async function EducationList() {
+        const url = 'http://localhost:8080/api/educacion/usuario/obtenertodo';
+    
+        const data = {
+            codigoUsuario: usuario.codigoUsuario
         };
-
+    
         try {
             const response = await fetch(url, {
-                method: "GET",
+                method: "POST",
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/json"
                 },
-                body: new URLSearchParams(data).toString()
+                body: JSON.stringify(data)
             });
-
-            const responseData = await response.json();
-                        
-            if (response.ok) {
-
-                let list = JSON.parse(responseData);
-
-                educationList.innerHTML = 
-                `<li id="ed-1" class="education-items">
-                    <h2 class="school-name"><a href=""></a></h2>
-                    <h3 class="degree">Diseñador grafico.</h3>
-                    <p class="time">2003-2009</p>
-                </li>`
-            }
-            else {
-                alert('Error');
+    
+            const educationData = await response.json();
+    
+            if (response.ok && Array.isArray(educationData)) {
+                const educationList = document.getElementById("educationList");
+                educationList.innerHTML = "";
+    
+                educationData.forEach(item => {
+                    if (item !== null) {
+                        const li = document.createElement("li");
+                        li.className = "education-items";
+    
+                        li.innerHTML = `
+                            <h2 class="school-name"><a href="#">${item.institucionEducativa.nombreInstitucion || 'Institución Desconocida'}</a></h2>
+                            <h3 class="degree">${item.titulo || 'Título Desconocido'}</h3>
+                            <p class="time">${item.anioInicio} - ${item.anioFinal}</p>
+                        `;
+    
+                        educationList.appendChild(li);
+                    }
+                });
+            } else {
+                alert('No se encontró información educativa.');
             }
         } catch (error) {
             console.error("Error en la solicitud:", error);
         }
-
     }
+
+    window.addEventListener("DOMContentLoaded", EducationList);
+    
 }
