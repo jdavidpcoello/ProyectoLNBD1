@@ -1,5 +1,4 @@
 package hn.unah.proyecto.entidades;
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

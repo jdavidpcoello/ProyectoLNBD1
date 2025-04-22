@@ -14,4 +14,6 @@ public interface ExperienciaRepository extends JpaRepository<Experiencias, Integ
     List<Experiencias> findUltimaExperienciaPorUsuario(@Param("codigoUsuario") int codigoUsuario);
 
 
+    public List<Experiencias> findAllByUsuarioCodigoUsuario(int codigoUsuario);
+
 }
