@@ -2,7 +2,6 @@ package hn.unah.proyecto.dto;
 
 
 import hn.unah.proyecto.entidades.Instituciones;
-import hn.unah.proyecto.entidades.Usuarios;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

@@ -62,6 +62,9 @@ if (estaLogueado()) {
         }
     });
 
+    window.addEventListener("DOMContentLoaded", EducationList);
+
+
 
     //Funciones
     async function newPhoto(result, i) {
@@ -154,9 +157,9 @@ if (estaLogueado()) {
                         li.className = "education-items";
     
                         li.innerHTML = `
-                            <h2 class="school-name"><a href="#">${item.institucionEducativa.nombreInstitucion || 'Institución Desconocida'}</a></h2>
-                            <h3 class="degree">${item.titulo || 'Título Desconocido'}</h3>
-                            <p class="time">${item.anioInicio} - ${item.anioFinal}</p>
+                            <h2 class="school-name"><a href="#">${item.institucionEducativa.nombreInstitucion || ''}</a></h2>
+                            <h3 class="degree">${item.titulo != null ? item.titulo : ''}</h3>
+                            <p class="time">${item.anioInicio != null ? item.anioInicio : ''} - ${item.anioFinal != null ? item.anioFinal : ''}</p>
                         `;
     
                         educationList.appendChild(li);
@@ -167,7 +170,5 @@ if (estaLogueado()) {
             console.error("Error en la solicitud:", error);
         }
     }
-
-    window.addEventListener("DOMContentLoaded", EducationList);
     
 }
