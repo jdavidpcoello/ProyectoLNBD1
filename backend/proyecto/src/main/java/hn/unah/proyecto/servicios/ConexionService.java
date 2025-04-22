@@ -45,18 +45,24 @@ public class ConexionService {
     public ConexionDTO guardarConexion(ConexionDTO dto) {
         EstadoConexion estado = estadoConexionRepository.findById(dto.getEstado())
             .orElseThrow(() -> new RuntimeException("Estado no encontrado con código: " + dto.getEstado()));
-
+    
+        Usuarios usuario1 = new Usuarios();
+        usuario1.setCodigoUsuario(dto.getUsuario1());
+    
+        Usuarios usuario2 = new Usuarios();
+        usuario2.setCodigoUsuario(dto.getUsuario2());
+    
         Conexiones conexion = new Conexiones();
-        conexion.getUsuario1().setCodigoUsuario(dto.getUsuario1());
-        conexion.getUsuario2().setCodigoUsuario(dto.getUsuario2());
+        conexion.setUsuario1(usuario1);
+        conexion.setUsuario2(usuario2);
         conexion.setEstado(estado);
         conexion.setFechaConexion(LocalDateTime.now());
-
+    
         conexion = conexionRepository.save(conexion);
-
+    
         return new ConexionDTO(conexion);
     }
-
+    
     public void eliminarConexion(int id){
         Conexiones conexion = this.conexionRepository.findById(id).orElse(null);
         if (conexion != null) {
