@@ -1,9 +1,14 @@
 import { estaLogueado, obtenerUsuario, redirigirSiNoEstaLogueado } from './usuarioUtils.js';
 
 if (estaLogueado()) {
+    //Declaraciones
     const usuario = JSON.parse(localStorage.getItem('infoUsuario'));
+    const profileInput = document.querySelector('#pp-file');
+    const backgroundInput = document.querySelector('#bck-file');
+    const educationList = document.querySelector('#education-list');
 
 
+    //Asignar valores correspondientes
     document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
     document.querySelector('.description-container').innerHTML = `${usuario.titular}`;
@@ -26,11 +31,7 @@ if (estaLogueado()) {
         document.querySelector('#background-photo').setAttribute('src', '../Image/DefaultBackground.jpg');
     }
 
-    const profilePhoto = document.querySelector('#profilePhoto');
-    const backgroundPhoto = document.querySelector('#background-photo');
-    const profileInput = document.querySelector('#pp-file');
-    const backgroundInput = document.querySelector('#bck-file');
-
+    //Eventos
     profileInput.addEventListener('change', (event) => {
         const selectedFile = event.target.files[0];
 
@@ -62,7 +63,7 @@ if (estaLogueado()) {
     });
 
 
-
+    //Funciones
     async function newPhoto(result, i) {
         if (i === 0) {
             const url = 'http://localhost:8080/api/usuarios/newProfilePhoto';
@@ -120,6 +121,45 @@ if (estaLogueado()) {
             } catch (error) {
                 console.error("Error en la solicitud:", error);
             }
+        }
+
+    }
+
+
+    async function EducationList(){
+        const url = 'http://localhost:8080/api/usuarios/newBackgroundPhoto';
+
+        let data = {
+            codigouUsuario: usuario.codigoUsuario
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams(data).toString()
+            });
+
+            const responseData = await response.json();
+                        
+            if (response.ok) {
+
+                let list = JSON.parse(responseData);
+
+                educationList.innerHTML = 
+                `<li id="ed-1" class="education-items">
+                    <h2 class="school-name"><a href=""></a></h2>
+                    <h3 class="degree">Diseñador grafico.</h3>
+                    <p class="time">2003-2009</p>
+                </li>`
+            }
+            else {
+                alert('Error');
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
         }
 
     }

@@ -1,7 +1,10 @@
 package hn.unah.proyecto.dto;
 
 
+import java.time.LocalDate;
+
 import hn.unah.proyecto.entidades.Instituciones;
+import hn.unah.proyecto.entidades.Usuarios;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -20,15 +23,19 @@ public class EducacionDTO {
     
     private String disciplinaAcademica;
 
-    private String fechaInicio;
+    private LocalDate fechaInicio;
 
-    private String fechaFinal;
+    private LocalDate fechaFinal;
+
+    private String anioInicio;
+
+    private String anioFinal;
 
     private String nota;
 
     private String actividadesGrupos;
 
-    private UsuariosDTO usuario;
+    private Usuarios usuario;
 
     private Instituciones institucionEducativa;
 }
