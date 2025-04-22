@@ -71,8 +71,8 @@ function agregarEventosConectar() {
             const idUsuario2 = boton.getAttribute("data-usuario-id");
 
             const conexion = {
-                usuario1Id: idUsuario1,
-                usuario2Id: parseInt(idUsuario2),
+                usuario1: idUsuario1,
+                usuario2: parseInt(idUsuario2),
                 estado: 3
             };
 
@@ -238,6 +238,30 @@ async function cargarSolicitudesRecibidas(codigoUsuario) {
         }
 
         solicitudes.slice(0, 3).forEach(solicitud => {
+
+            let institucionEmpresaHTML = "";
+            if (
+                (solicitud.fotoInstitucion && solicitud.nombreInstitucion) ||
+                (solicitud.fotoEmpresa && solicitud.nombreEmpresa)
+            ) {
+            institucionEmpresaHTML = `
+                <div class="d-flex align-items-start mt-2">
+                    <img 
+                        src="${solicitud.fotoInstitucion && solicitud.nombreInstitucion 
+                                ? solicitud.fotoInstitucion 
+                                : solicitud.fotoEmpresa}" 
+                        alt="Organización"
+                        class="me-2 rounded"
+                        style="width: 30px; height: 30px; object-fit: cover;"
+                    >
+                    <p class="mb-1 small text-muted">
+                        ${solicitud.fotoInstitucion && solicitud.nombreInstitucion 
+                            ? solicitud.nombreInstitucion 
+                            : solicitud.nombreEmpresa}
+                    </p>
+                </div>`;
+            }
+
             const div = document.createElement("div");
             div.className = "d-flex justify-content-between align-items-center mb-2";
             div.innerHTML = `
@@ -251,20 +275,9 @@ async function cargarSolicitudesRecibidas(codigoUsuario) {
                     </div>
                     <div>
                         <p class="m-0 text-dark"><strong>${solicitud.nombre} ${solicitud.apellidos}</strong></p>
-                        <p class="m-0 small text-muted">${solicitud.titular || "Sin descripción"}</p>
+                        <p class="m-0 small text-muted">${solicitud.titular || ""}</p>
                         
-                        <div class="d-flex align-items-left mt-2">
-                            
-                                <img 
-                                    src="${solicitud.fotoInstitucion || "http://localhost:5501/public/Image/fotoEmpresaPorDefecto.png"}"
-                                    alt="Empresa"
-                                    class="me-2"
-                                    style="width: 30px; object-fit: cover;"
-                                >
-                              
-                                <p class="mb-1 small text-muted">${solicitud.nombreInstitucion}</p>
-                            
-                        </div> 
+                        ${institucionEmpresaHTML}
 
                     </div>
                 </a>
@@ -272,8 +285,11 @@ async function cargarSolicitudesRecibidas(codigoUsuario) {
                     <button class="btn btn-light" onclick="ignorarSolicitud(${solicitud.codigoConexion})">Ignorar</button>
                     <button class="btn btn-azul rounded-pill btn-conectar me-3" onclick="aceptarSolicitud(${solicitud.codigoConexion})">Aceptar</button>
                 </div>
+                
             `;
+            const hr = document.createElement("hr");
             contenedor.appendChild(div);
+            contenedor.appendChild(hr);
         });
     } catch (error) {
         console.error("Error al cargar solicitudes:", error);
@@ -287,7 +303,7 @@ async function aceptarSolicitud(codigoConexion) {
         });
         if (response.ok) {
             alert("Solicitud aceptada");
-            location.reload(); // o quitar el div con JS
+            location.reload();
         }
     } catch (e) {
         console.error("Error al aceptar:", e);
@@ -301,7 +317,7 @@ async function ignorarSolicitud(codigoConexion) {
         });
         if (response.ok) {
             alert("Solicitud ignorada");
-            location.reload(); // o quitar el div con JS
+            location.reload();
         }
     } catch (e) {
         console.error("Error al ignorar:", e);
