@@ -36,4 +36,5 @@ public class Mensajes {
     @ManyToOne()
     @JoinColumn(name = "CODIGO_RECEPTOR", referencedColumnName = "CODIGO_USUARIO")
     private Usuarios UsuarioReceptor;
+
 }
