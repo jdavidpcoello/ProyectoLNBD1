@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -29,17 +30,27 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping("/signin")
-    public boolean iniciarSesion(@RequestParam String email, @RequestParam String password) {
+    public UsuariosDTO iniciarSesion(@RequestParam String email, @RequestParam String password) {
         return usuarioService.iniciarSesion(email, password);
     }
 
     @PostMapping("/login")
     public UsuariosDTO registrarUsuario(@RequestBody NewUserDTO nvoUsuario){
-       return usuarioService.registrarUsuario(nvoUsuario);
+        return usuarioService.registrarUsuario(nvoUsuario);
     }
 
     @GetMapping("/{codigoUsuario}")
     public Usuarios obtenerUsuarioPorId(@PathVariable int codigoUsuario) {
         return usuarioService.obtenerUsuarioPorId(codigoUsuario);
+    }
+
+    @PutMapping("/newProfilePhoto")
+    public UsuariosDTO cambiarFotoPerfil(@RequestParam int codigoUsuario, @RequestParam String fotoPerfil){
+        return usuarioService.cambiarFotoPerfil(codigoUsuario, fotoPerfil);
+    }
+
+    @PutMapping("/newBackgroundPhoto")
+    public UsuariosDTO cambiarFotoPortada(@RequestParam int codigoUsuario, @RequestParam String fotoPortada){
+        return usuarioService.cambiarFotoPortada(codigoUsuario, fotoPortada);
     }
 }

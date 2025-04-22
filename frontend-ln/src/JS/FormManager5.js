@@ -1,5 +1,4 @@
-import User from './User.js';
-import RegexValidator from './RegexValidator.js';
+import NewUser from './NewUser.js';
 
 const photoDiv = document.querySelector('.photo-input-container');
 const photo = document.querySelector('#profile-photo');
@@ -90,9 +89,10 @@ async function createUser(event) {
         const birthMonth = localStorage.getItem('birthMonth');
         const birthYear = localStorage.getItem('birthYear');
         const profilePhoto = localStorage.getItem('profilePhoto');
+        const titular = titularDiv.innerHTML;
 
 
-        const newUser = new User(
+        const newUser = new NewUser(
             email,
             password,
             firstName,
@@ -109,7 +109,8 @@ async function createUser(event) {
             birthDay,
             birthMonth,
             birthYear,
-            profilePhoto
+            profilePhoto,
+            titular
         );
 
         try {
@@ -122,9 +123,9 @@ async function createUser(event) {
             });
         
             if (response.ok) {
+                alert('Registro extoso. Te redirigiremos al inicio.')
                 const responseData = await response.json();
-                
-                alert("Eres grande Franky, eres grande Rivers. te paso al inicio");
+                localStorage.setItem('infoUsuario', JSON.stringify(responseData));
                 window.location.href = 'inicio.html'
             } else {
                 const errorData = await response.json();
@@ -132,7 +133,7 @@ async function createUser(event) {
             }
         } catch (error) {
             console.error("Error en la solicitud:", error);
-            alert("Para la persona que recibio este error, corre con el backend primero y luego esto o internet.");
+            alert("Para la persona que recibio este error, ejecuta el backend primero y luego esto o internet.");
         }
     }
 }

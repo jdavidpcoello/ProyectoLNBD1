@@ -27,4 +27,5 @@ public class NewUserDTO {
     private String birthMonth;
     private String birthYear;
     private String profilePhoto;
+    private String titular;
 }

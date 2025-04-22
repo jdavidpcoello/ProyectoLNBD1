@@ -28,5 +28,5 @@ public class Empresas {
     private String nombreEmpresas;
 
     @Column(name = "foto_empresa")
-    private String fotoEmpresa = null;
+    private String fotoEmpresa;
 }

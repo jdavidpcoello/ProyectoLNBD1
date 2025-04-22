@@ -55,7 +55,7 @@ public class ConexionController {
     }
 
     @GetMapping("/sugerencias/{codigoUsuario}")
-    public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerUsuariosConEstado(@PathVariable int codigoUsuario) {
+    public ResponseEntity<List<UsuarioConEstadoDTO>> obtenerPosiblesContactos(@PathVariable int codigoUsuario) {
         List<UsuarioConEstadoDTO> sugerencias = conexionService.obtenerUsuariosNoAmigosConEstado(codigoUsuario);
         return ResponseEntity.ok(sugerencias);
     }

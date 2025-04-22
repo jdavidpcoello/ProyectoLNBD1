@@ -26,7 +26,7 @@ public class UsuarioConEstadoDTO {
     private String sector;
     private String fotoPerfil;
     private String fotoPortada;
-    private String fotoTitularUrl;
+    private String fotoEmpresa;
 
     private int codigoConexion;
     private int estadoConexion;
@@ -42,7 +42,7 @@ public class UsuarioConEstadoDTO {
         this.sector = usuario.getSector();
         this.fotoPerfil = usuario.getFotoPerfil();
         this.fotoPortada = usuario.getFotoPortada();
-        this.fotoTitularUrl = empresa.getFotoEmpresa() != null ? empresa.getFotoEmpresa() : null;
+        this.fotoEmpresa = (empresa != null) ? empresa.getFotoEmpresa() : null;
         this.estadoConexion = estadoConexion != null ? estadoConexion.getCodigoEstado() : null;
         this.codigoConexion = conexion.getCodigoConexion();
         this.fechaConexion = conexion.getFechaConexion() != null ? conexion.getFechaConexion() : null;
