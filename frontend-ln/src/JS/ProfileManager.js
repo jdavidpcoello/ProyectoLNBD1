@@ -34,63 +34,94 @@ if (estaLogueado()) {
 
     profileInput.addEventListener('change', (event) => {
         const selectedFile = event.target.files[0];
-    
+
         if (selectedFile) {
             const reader = new FileReader();
-    
+
             reader.addEventListener('load', function () {
-                newPhoto(reader.result);
+                newPhoto(reader.result, 0);
             });
-    
+
             reader.readAsDataURL(selectedFile);
         }
     });
-    
+
 
 
     backgroundInput.addEventListener('change', (event) => {
         const selectedFile = event.target.files[0];
-    
+
         if (selectedFile) {
             const reader = new FileReader();
-    
+
             reader.addEventListener('load', function () {
-                newPhoto(reader.result);
+                newPhoto(reader.result, 1);
             });
-    
+
             reader.readAsDataURL(selectedFile);
         }
     });
 
-    
-    
-    async function newPhoto(result) {
-        const url = 'http://localhost:8080/api/usuarios/newProfilePhoto';
-    
-        const data = {
-            codigoUsuario: usuario.codigoUsuario,
-            fotoPerfil: result
-        };
-    
-        try {
-            const response = await fetch(url, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams(data).toString()
-            });
-    
-            if (response.ok) {
-                usuario.fotoPerfil = result;
-                document.querySelector('#profile-photo').setAttribute('src', result); 
-                localStorage.setItem('infoUsuario', JSON.stringify(usuario));
+
+
+    async function newPhoto(result, i) {
+        if (i === 0) {
+            const url = 'http://localhost:8080/api/usuarios/newProfilePhoto';
+
+            const data = {
+                codigoUsuario: usuario.codigoUsuario,
+                fotoPerfil: result
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams(data).toString()
+                });
+
+                if (response.ok) {
+                    usuario.fotoPerfil = result;
+                    document.querySelector('#profile-photo').setAttribute('src', result);
+                    localStorage.setItem('infoUsuario', JSON.stringify(usuario));
+                }
+                else {
+                    alert('Error');
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
             }
-            else {
-                alert('Error');
+        }else {
+            const url = 'http://localhost:8080/api/usuarios/newBackgroundPhoto';
+
+            const data = {
+                codigoUsuario: usuario.codigoUsuario,
+                fotoPortada: result
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams(data).toString()
+                });
+
+                if (response.ok) {
+                    usuario.fotoPortada = result;
+                    document.querySelector('#background-photo').setAttribute('src', usuario.fotoPortada);
+                    localStorage.setItem('infoUsuario', JSON.stringify(usuario));
+                }
+                else {
+                    alert('Error');
+                }
+            } catch (error) {
+                console.error("Error en la solicitud:", error);
             }
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
         }
+
     }
 }

@@ -36,7 +36,7 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public UsuariosDTO registrarUsuario(@RequestBody NewUserDTO nvoUsuario){
-       return usuarioService.registrarUsuario(nvoUsuario);
+        return usuarioService.registrarUsuario(nvoUsuario);
     }
 
     @GetMapping("/{codigoUsuario}")
@@ -47,5 +47,10 @@ public class UsuarioController {
     @PutMapping("/newProfilePhoto")
     public UsuariosDTO cambiarFotoPerfil(@RequestParam int codigoUsuario, @RequestParam String fotoPerfil){
         return usuarioService.cambiarFotoPerfil(codigoUsuario, fotoPerfil);
+    }
+
+    @PutMapping("/newBackgroundPhoto")
+    public UsuariosDTO cambiarFotoPortada(@RequestParam int codigoUsuario, @RequestParam String fotoPortada){
+        return usuarioService.cambiarFotoPortada(codigoUsuario, fotoPortada);
     }
 }

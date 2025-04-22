@@ -253,4 +253,52 @@ public class UsuarioService {
         return usuariosDTO;
     }
 
+    public UsuariosDTO cambiarFotoPortada(int codigoUsuario, String fotoPortada){
+        Usuarios usuario = usuariosRepository.findById(codigoUsuario).get();
+        usuario.setFotoPortada(fotoPortada);
+        usuariosRepository.save(usuario);
+
+        UsuariosDTO usuariosDTO = new UsuariosDTO();
+
+        usuariosDTO.setCodigoUsuario(usuario.getCodigoUsuario());
+        usuariosDTO.setEmail(usuario.getEmail());
+        usuariosDTO.setNombre(usuario.getNombre());
+        usuariosDTO.setApellidos(usuario.getApellidos());
+        usuariosDTO.setFotoPerfil(usuario.getFotoPerfil());
+        usuariosDTO.setFotoPortada(usuario.getFotoPortada());
+        usuariosDTO.setSector(usuario.getSector());
+        usuariosDTO.setTitular(usuario.getTitular());
+        usuariosDTO.setFechaNacimiento(usuario.getFechaNacimiento());
+        usuariosDTO.setUrlPerfil(usuario.getUrlPerfil());
+        usuariosDTO.setNombreAdicional(usuario.getNombreAdicional());
+
+        Paises pais = paisesRepository.findById(usuario.getPais().getCodigoPais()).get();
+        Ciudades ciudad = ciudadesRepository.findById(usuario.getCiudad().getCodigoCiudad()).get();
+        Ciudades parentCity;
+        
+        PaisesDTO paisDTO = new PaisesDTO();
+        paisDTO.setCodigoPais(pais.getCodigoPais());
+        paisDTO.setNombre(pais.getNombre());
+
+        CiudadesDTO ciudadDTO = new CiudadesDTO();
+        ciudadDTO.setCodigoCiudad(ciudad.getCodigoCiudad());
+        ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
+        ciudadDTO.setPais(paisDTO);
+
+
+        if(ciudad.getCiudadPadre()!=null){
+            parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
+        }else{
+            parentCity = null;
+        }
+
+        ciudadDTO.setCiudadPadre(parentCity);
+
+
+        usuariosDTO.setCiudad(ciudadDTO);
+        usuariosDTO.setPais(paisDTO);
+        
+        return usuariosDTO;
+    }
+
 }
