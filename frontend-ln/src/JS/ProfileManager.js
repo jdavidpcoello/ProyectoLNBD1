@@ -82,8 +82,8 @@ if (estaLogueado()) {
             });
     
             if (response.ok) {
-                usuario.fotoPerfil = result; // Primero actualizas el objeto
-                document.querySelector('#profile-photo').setAttribute('src', result); // Luego cambias el src con la nueva foto
+                usuario.fotoPerfil = result;
+                document.querySelector('#profile-photo').setAttribute('src', result); 
                 localStorage.setItem('infoUsuario', JSON.stringify(usuario));
             }
             else {
