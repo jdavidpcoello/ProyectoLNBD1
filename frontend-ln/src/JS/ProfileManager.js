@@ -62,7 +62,7 @@ if (estaLogueado()) {
         }
     });
 
-    window.addEventListener("DOMContentLoaded", EducationList);
+    window.addEventListener("DOMContentLoaded", load);
 
 
 
@@ -128,6 +128,14 @@ if (estaLogueado()) {
 
     }
 
+    async function load() {
+        EducationList();
+    }
+    
+
+    async function JobsList() {
+        
+    }
 
     async function EducationList() {
         const url = 'http://localhost:8080/api/educacion/usuario/obtenertodo';
@@ -170,5 +178,5 @@ if (estaLogueado()) {
             console.error("Error en la solicitud:", error);
         }
     }
-    
+
 }

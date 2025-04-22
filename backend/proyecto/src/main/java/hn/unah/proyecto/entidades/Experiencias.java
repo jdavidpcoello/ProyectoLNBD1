@@ -31,11 +31,18 @@ public class Experiencias {
     @Column(name = "cargo")
     private String cargo;
 
-    @Column(name = "fecha_inicio")
-    private LocalDate fechaInicio;
+    @Column(name = "mes_inicio")
+    private String mesInicio;
 
-    @Column(name = "fecha_finalizacion")
-    private LocalDate fechaFin;
+    @Column(name = "mes_final")
+    private String mesFinal;
+
+
+    @Column(name="anio_inicio")
+    private String anioInicio;
+
+    @Column(name="anio_final")
+    private String anioFinal;
 
     @Column(name = "descripcion")
     private String descripcion;
