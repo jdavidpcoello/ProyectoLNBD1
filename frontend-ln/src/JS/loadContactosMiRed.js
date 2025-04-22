@@ -2,7 +2,9 @@ import { obtenerCodigoUsuario, redirigirSiNoEstaLogueado } from './usuarioUtils.
 
 document.addEventListener("DOMContentLoaded", () => {
     redirigirSiNoEstaLogueado();
+    const codigoUsuario = obtenerCodigoUsuario();
     cargarPosiblesConexiones();
+    cargarSolicitudesRecibidas(codigoUsuario); 
 
     fetch('seguirMiRed.html')
         .then(response => response.text())
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarPosiblesConexiones() {
     const codigoUsuario = obtenerCodigoUsuario();
+
+    
 
     if (!codigoUsuario) {
         alert("Usuario no encontrado. Vuelve a iniciar sesión.");
@@ -218,3 +222,92 @@ function crearBotonPendiente(codigoConexion) {
     });
     return botonPendiente;
 }
+
+
+async function cargarSolicitudesRecibidas(codigoUsuario) {
+    const url = `http://localhost:8080/api/conexiones/solicitudes/${codigoUsuario}`;
+    const contenedor = document.getElementById("listaSolicitudes");
+
+    try {
+        const response = await fetch(url);
+        const solicitudes = await response.json();
+
+        if (solicitudes.length === 0) {
+            contenedor.innerHTML = "<p>No tienes solicitudes de conexión.</p>";
+            return;
+        }
+
+        solicitudes.slice(0, 3).forEach(solicitud => {
+            const div = document.createElement("div");
+            div.className = "d-flex justify-content-between align-items-center mb-2";
+            div.innerHTML = `
+                <a class="d-flex col text-decoration-none" href="../Pages/invitation-manager.html">
+                    <div class="col-md-1 mx-3">
+                        <img 
+                            src=${solicitud.fotoPerfil} class="img-fluid rounded-circle" 
+                            style="width: 200px;
+                            object-fit: cover;" 
+                        >
+                    </div>
+                    <div>
+                        <p class="m-0 text-dark"><strong>${solicitud.nombre} ${solicitud.apellidos}</strong></p>
+                        <p class="m-0 small text-muted">${solicitud.titular || "Sin descripción"}</p>
+                        
+                        <div class="d-flex align-items-left mt-2">
+                            
+                                <img 
+                                    src="${solicitud.fotoInstitucion || "http://localhost:5501/public/Image/fotoEmpresaPorDefecto.png"}"
+                                    alt="Empresa"
+                                    class="me-2"
+                                    style="width: 30px; object-fit: cover;"
+                                >
+                              
+                                <p class="mb-1 small text-muted">${solicitud.nombreInstitucion}</p>
+                            
+                        </div> 
+
+                    </div>
+                </a>
+                <div class="d-flex flex-row gap-3">
+                    <button class="btn btn-light" onclick="ignorarSolicitud(${solicitud.codigoConexion})">Ignorar</button>
+                    <button class="btn btn-azul rounded-pill btn-conectar me-3" onclick="aceptarSolicitud(${solicitud.codigoConexion})">Aceptar</button>
+                </div>
+            `;
+            contenedor.appendChild(div);
+        });
+    } catch (error) {
+        console.error("Error al cargar solicitudes:", error);
+    }
+}
+
+async function aceptarSolicitud(codigoConexion) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/conexiones/aceptar/${codigoConexion}`, {
+            method: "PUT"
+        });
+        if (response.ok) {
+            alert("Solicitud aceptada");
+            location.reload(); // o quitar el div con JS
+        }
+    } catch (e) {
+        console.error("Error al aceptar:", e);
+    }
+}
+
+async function ignorarSolicitud(codigoConexion) {
+    try {
+        const response = await fetch(`http://localhost:8080/api/conexiones/eliminar/${codigoConexion}`, {
+            method: "DELETE"
+        });
+        if (response.ok) {
+            alert("Solicitud ignorada");
+            location.reload(); // o quitar el div con JS
+        }
+    } catch (e) {
+        console.error("Error al ignorar:", e);
+    }
+}
+
+window.aceptarSolicitud = aceptarSolicitud;
+window.ignorarSolicitud = ignorarSolicitud;
+

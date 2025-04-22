@@ -90,14 +90,20 @@
             <!--Main content-->
             <div class="col-md-9">
                 <div class="row border rounded ms-3 mb-3 bg-white general-border-style">
-                    <div class="d-flex justify-content-between">
-                        <p class="mt-3 mb-3 ps-3">No hay invitaciones pendientes</p>
-                        <button class="btn">Gestionar</button>
+                    <div id="solicitudesContainer">
+                        <div class="d-flex justify-content-between">
+                            <p class="mt-3 mb-3 ps-3">Invitaciones</p>
+                            <button class="btn">Gestionar</button>                    
+                        </div>                          
+                        <div id="listaSolicitudes"></div>
+                        <hr>
+                        <a href="../Pages/invitation-manager.html" class="btn btn-link w-100 justify-content-center text-decoration-none mb-2">Mostrar más</a>
                     </div>
                 </div>
+            
 
                 <!--Probar premium-->
-                <div class="row border rounded ms-3 ps-3 mb-3 bg-white general-border-style">
+                <!-- <div class="row border rounded ms-3 ps-3 mb-3 bg-white general-border-style">
                     <div class="d-flex justify-content-between my-3">
                         <div>
                             <p>Búsqueda de empleo más eficaz con Premium</p>
@@ -116,7 +122,7 @@
                             <button class="btn m-0 p-0"><i class="bi bi-x icone-close"></i></button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!--Sugerencias de contactos-->
                 <div class="row border rounded ms-3 mb-3 ps-3 bg-white general-border-style">
