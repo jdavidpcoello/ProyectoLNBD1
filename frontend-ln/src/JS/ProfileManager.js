@@ -112,7 +112,7 @@ if (estaLogueado()) {
 
                 if (response.ok) {
                     usuario.fotoPortada = result;
-                    document.querySelector('#background-photo').setAttribute('src', updatedUser.fotoPortada);
+                    document.querySelector('#background-photo').setAttribute('src', usuario.fotoPortada);
                     localStorage.setItem('infoUsuario', JSON.stringify(usuario));
                 }
                 else {
