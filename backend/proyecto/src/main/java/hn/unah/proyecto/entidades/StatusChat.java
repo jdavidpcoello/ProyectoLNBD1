@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tbl_status_chat")
+@Table(name = "tbl_status_chats")
 @Entity
 public class StatusChat {
     @Id
@@ -21,6 +21,6 @@ public class StatusChat {
     @Column(name = "codigo_status")
     private int codigoStatus;
 
-    @Column(name = "statusChat")
+    @Column(name = "status_chats")
     private String statusChat;
 }

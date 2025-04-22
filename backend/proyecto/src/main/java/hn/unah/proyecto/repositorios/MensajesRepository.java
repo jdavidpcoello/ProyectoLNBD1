@@ -15,6 +15,9 @@ public interface MensajesRepository extends JpaRepository<Mensajes, Integer>{
     @Query("SELECT m FROM Mensajes m WHERE m.codigoChat = :codigoChat")
     public Mensajes findByCodigoMensaje(int codigoMensaje);
     
-    @Query("SELECT m FROM Mensajes m ")
-    public List<Mensajes> obtenerTodosLosMensajes();
+    @Query("SELECT m FROM Mensajes m where m.codigoChat = :codigoChat")
+    public List<Mensajes> findByCodigoChat(int codigoChat);
+
+    // @Query("select max(fecha_mensaje) from Mensajes.m")
+    // public Mensajes findUltimoMensaje(int codigoChat);
 }
