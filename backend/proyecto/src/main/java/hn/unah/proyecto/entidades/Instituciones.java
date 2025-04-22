@@ -2,6 +2,8 @@ package hn.unah.proyecto.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,6 +32,7 @@ public class Instituciones {
     @Column(name="nombre_institucion_educativa")
     private String nombreInstitucion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "institucionEducativa", fetch = FetchType.LAZY)
     private List<Educacion> educacion;
 }

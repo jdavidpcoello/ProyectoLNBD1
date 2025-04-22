@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 import hn.unah.proyecto.dto.EducacionDTO;
 import hn.unah.proyecto.entidades.Educacion;
 import hn.unah.proyecto.entidades.Instituciones;
-import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.repositorios.EducacionRepository;
 import hn.unah.proyecto.repositorios.InstitucionesRepository;
-import hn.unah.proyecto.repositorios.UsuariosRepository;
 
 @Service
 public class EducacionService {
@@ -23,26 +21,21 @@ public class EducacionService {
     @Autowired
     private InstitucionesRepository institucionesRepository;
 
-    @Autowired
-    private UsuariosRepository usuariosRepository;
 
     public List <EducacionDTO> educacionUsuario(int codigoUsuario){
        List <Educacion> educationList = educacionRepository.findAllByUsuarioCodigoUsuario(codigoUsuario);
 
        List <EducacionDTO> educationListDto = new ArrayList<>();
 
-       Usuarios usuario = usuariosRepository.findById(codigoUsuario).get();
-
        if(!educationList.isEmpty()){
             for (Educacion educacion : educationList) {
                 EducacionDTO educacionDTO = new EducacionDTO();
                 educacionDTO.setCodigoEducacion(educacion.getCodigoEducacion());
                 educacionDTO.setTitulo(educacion.getTitulo());
-                educacion.setUsuario(usuario);
                 
-                Instituciones instiucion = institucionesRepository.findById(educacion.getCodigoEducacion()).get();
+                Instituciones institucion = institucionesRepository.findById(educacion.getInstitucionEducativa().getCodigoInstitucionEducativa()).get();
 
-                educacionDTO.setInstitucionEducativa(instiucion);
+                educacionDTO.setInstitucionEducativa(institucion);
                 educacionDTO.setAnioInicio(educacion.getAnioInicio());
                 educacionDTO.setAnioFinal(educacion.getAnioFinal());
                 educacionDTO.setDisciplinaAcademica(educacion.getDisciplinaAcademica());

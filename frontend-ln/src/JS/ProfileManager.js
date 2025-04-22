@@ -62,6 +62,9 @@ if (estaLogueado()) {
         }
     });
 
+    window.addEventListener("DOMContentLoaded", load);
+
+
 
     //Funciones
     async function newPhoto(result, i) {
@@ -112,7 +115,7 @@ if (estaLogueado()) {
 
                 if (response.ok) {
                     usuario.fotoPortada = result;
-                    document.querySelector('#background-photo').setAttribute('src', updatedUser.fotoPortada);
+                    document.querySelector('#background-photo').setAttribute('src', usuario.fotoPortada);
                     localStorage.setItem('infoUsuario', JSON.stringify(usuario));
                 }
                 else {
@@ -125,6 +128,14 @@ if (estaLogueado()) {
 
     }
 
+    async function load() {
+        EducationList();
+    }
+    
+
+    async function JobsList() {
+        
+    }
 
     async function EducationList() {
         const url = 'http://localhost:8080/api/educacion/usuario/obtenertodo';
@@ -154,9 +165,9 @@ if (estaLogueado()) {
                         li.className = "education-items";
     
                         li.innerHTML = `
-                            <h2 class="school-name"><a href="#">${item.institucionEducativa.nombreInstitucion || 'Institución Desconocida'}</a></h2>
-                            <h3 class="degree">${item.titulo || 'Título Desconocido'}</h3>
-                            <p class="time">${item.anioInicio} - ${item.anioFinal}</p>
+                            <h2 class="school-name"><a href="#">${item.institucionEducativa.nombreInstitucion || ''}</a></h2>
+                            <h3 class="degree">${item.titulo != null ? item.titulo : ''}</h3>
+                            <p class="time">${item.anioInicio != null ? item.anioInicio : ''} - ${item.anioFinal != null ? item.anioFinal : ''}</p>
                         `;
     
                         educationList.appendChild(li);
@@ -168,6 +179,4 @@ if (estaLogueado()) {
         }
     }
 
-    window.addEventListener("DOMContentLoaded", EducationList);
-    
 }

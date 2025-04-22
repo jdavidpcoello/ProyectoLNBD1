@@ -2,7 +2,6 @@ package hn.unah.proyecto.dto;
 
 
 import hn.unah.proyecto.entidades.Instituciones;
-import hn.unah.proyecto.entidades.Usuarios;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -32,8 +31,6 @@ public class EducacionDTO {
     private String nota;
 
     private String actividadesGrupos;
-
-    private Usuarios usuario;
 
     private Instituciones institucionEducativa;
 }
