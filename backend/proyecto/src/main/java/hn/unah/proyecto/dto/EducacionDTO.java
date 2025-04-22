@@ -1,11 +1,8 @@
 package hn.unah.proyecto.dto;
 
 
-import java.time.LocalDate;
-
 import hn.unah.proyecto.entidades.Instituciones;
 import hn.unah.proyecto.entidades.Usuarios;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
