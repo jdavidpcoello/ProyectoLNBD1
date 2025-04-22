@@ -25,7 +25,39 @@ if(estaLogueado()){
         document.querySelector('#background-photo').setAttribute('src','../Image/DefaultBackground.jpg');
     }
 
+    
 
+    function uploadNewFile() {
+        const selectedFile = this.files[0];
+        if (selectedFile) {
+            const reader = new FileReader();
+    
+            reader.addEventListener('load', function () {
+                newPhoto(reader.result);
+            });
+    
+            reader.readAsDataURL(selectedFile);
+        }
+    }
+    
+    function validareForm(){
+        const invalidPhotoDiv = document.querySelector('.invalid-photo-text');
+        invalidPhotoDiv.innerHTML = '';
+        const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    
+    
+        const file = photoInput.files[0];
+    
+        if(!file){
+            invalidPhotoDiv.innerHTML = 'Suba una foto de perfil.';
+            return false;
+        } else if (!validTypes.includes(file.type)) {
+            invalidPhotoDiv.innerHTML = 'Sube una foto valida.';
+            return false;
+        }
+    
+        return true;
+    }
 
 }{
     redirigirSiNoEstaLogueado();
