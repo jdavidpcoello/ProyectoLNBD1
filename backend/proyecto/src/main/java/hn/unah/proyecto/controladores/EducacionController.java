@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/api/educacion")
 @CrossOrigin(origins = "*")
-public class EduacionController {
+public class EducacionController {
     
     @Autowired
     private EducacionService educacionService;

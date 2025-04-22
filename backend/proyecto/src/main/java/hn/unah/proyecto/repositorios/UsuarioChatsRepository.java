@@ -1,4 +1,4 @@
-package hn.unah.proyecto.repositorios;
+/*package hn.unah.proyecto.repositorios;
 
 import java.util.List;
 
@@ -19,3 +19,4 @@ public interface UsuarioChatsRepository extends JpaRepository<UsuariosChats, Int
     @Query("SELECT e FROM UsuariosChats e WHERE e.codigoChat = :codigoChat")
     public List<UsuariosChats> findByCodigoChat(@Param("codigoChat") int codigoChat);
 }
+ */

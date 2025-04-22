@@ -1,4 +1,4 @@
-package hn.unah.proyecto.servicios;
+/*package hn.unah.proyecto.servicios;
 
 
 import java.util.List;
@@ -29,5 +29,5 @@ public class UsuarioChatsService {
             .collect(Collectors.toList());
     }
 
-}
+} */
 
