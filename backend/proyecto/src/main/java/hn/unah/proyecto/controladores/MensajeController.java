@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import hn.unah.proyecto.dto.UsuarioChatsDTO;
 import hn.unah.proyecto.dto.MensajeDTO;
 import hn.unah.proyecto.entidades.Mensajes;
 import hn.unah.proyecto.entidades.Usuarios;
@@ -22,10 +24,10 @@ public class MensajeController {
         return mensajeService.obtenerMensajeDTO(codigoMensaje);
     }
 
-    @GetMapping("/todos")
-    public List<MensajeDTO> obtenerTodosLosMensajes() {
-        return mensajeService.obtenerTodosLosMensajes();
-    }
+    // @GetMapping("/todos")
+    // public List<UsuarioChatsDTO> obtenerTodosLosMensajes(@PathVariable int codigoChat) {
+    //     return mensajeService.obte(codigoChat);
+    // }
 
     @PostMapping("/demo")
     public MensajeDTO crearMensajeDemo() {

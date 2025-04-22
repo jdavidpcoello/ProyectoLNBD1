@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import hn.unah.proyecto.dto.MensajeDTO;
 import hn.unah.proyecto.entidades.Mensajes;
 import hn.unah.proyecto.repositorios.MensajesRepository;
+import hn.unah.proyecto.dto.UsuarioChatsDTO;
 
 @Service
 public class MensajeService {
@@ -20,6 +21,7 @@ public class MensajeService {
         try {
             Mensajes mensaje = this.mensajesRepository.findById(codigoMensaje).orElse(null);
             MensajeDTO mensajeDTO = new MensajeDTO(mensaje);
+            System.out.println("MensajeDTO: " + mensajeDTO.toString());
             return mensajeDTO;
         } catch (Exception e) {
             System.err.println("Error al buscar el mensaje: " + e.getMessage());
@@ -29,19 +31,21 @@ public class MensajeService {
         
     }
 
-    public List<MensajeDTO> obtenerTodosLosMensajes() {
-        return mensajesRepository.findAll().stream()
-            .map(m -> new MensajeDTO(
-            m.getMensaje(),
-            m.getFechaMensaje(),
-            m.getMensajePadre() != null ? m.getMensajePadre().getMensaje() : null,
-            m.getUsuarioEmisor().getNombre(),
-            m.getUsuarioEmisor().getApellidos(),
-            m.getUsuarioEmisor().getTitular(),
-            m.getUsuarioEmisor().getFotoPerfil()
-            ))
-            .collect(Collectors.toList());
+
+    public List<MensajeDTO> obtenerMensajesPorChat(int codigoChat) {
+        try {
+            List<Mensajes> mensajes = this.mensajesRepository.findByCodigoChat(codigoChat);
+            List<MensajeDTO> mensajesDTO = mensajes.stream()
+                    .map(MensajeDTO::new)
+                    .collect(Collectors.toList());
+            return mensajesDTO;
+        } catch (Exception e) {
+            System.err.println("Error al buscar los mensajes: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
+
     
     public Mensajes guardarMensaje(Mensajes mensaje) {
         return this.mensajesRepository.save(mensaje);

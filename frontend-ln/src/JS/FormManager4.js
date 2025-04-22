@@ -1,6 +1,6 @@
 import RegexValidator from './RegexValidator.js';
 
-/*Si es 0 es el JobForm y si es StudentForm*/ 
+
 let status = 0;
 const jobDiv = document.querySelector('.step-4');
 const studentDiv = document.querySelector('.step-5');

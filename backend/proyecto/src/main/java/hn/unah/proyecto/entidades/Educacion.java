@@ -1,7 +1,5 @@
 package hn.unah.proyecto.entidades;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,11 +33,12 @@ public class Educacion {
     @Column(name = "disciplina_academica")
     private String disciplinaAcademica;
 
-    @Column(name = "fecha_inicio")
-    private LocalDate fechaInicio;
+    @Column(name = "mes_inicio")
+    private String mesInicio;
 
-    @Column(name = "fecha_final")
-    private LocalDate fechaFinal;
+    @Column(name = "mes_final")
+    private String mesFinal;
+
 
     @Column(name="anio_inicio")
     private String anioInicio;

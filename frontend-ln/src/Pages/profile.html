@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nombre Apellido | LinkedIn</title>
+    <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../styles/styles-in.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="../Image/favicon.png" type="image/x-icon"/>
     <link rel="stylesheet" href="../styles/profile-style.css" />
 </head>
 
@@ -20,9 +22,15 @@
         <div class="personal-info-container">
             <div class="main-container">
                 <div class="background-container">
+                    <img id="background-photo" src="">
+                    <input type="file" id="bck-file" class="file">
+                    <label for="bck-file" id="upload-bck-btn"><i class="bi bi-camera-fill fs-4" ></i></label>
                 </div>
                 <div class="profile-container">
                     <div class="img-profile-container">
+                        <img id="profile-photo" src="">
+                        <input type="file" id="pp-file" class="file">
+                        <label for="pp-file" id="upload-pp-btn"><i class="bi bi-camera-fill fs-4" ></i></label>
                     </div>
                     <div class="button-img-container">
                         <button class="edit-img-button"></button>
@@ -36,7 +44,6 @@
                     </div>
                     <div class="location-contact-container">
                         <div class="location-container">
-                            Tegucigalpa, Francisco Morazan, Honduras
                         </div>
                         <a class="contact-container" data-bs-toggle="modal"
                         data-bs-target="#contact-info" href="#">Informacion de contacto</a>
@@ -44,7 +51,7 @@
                 </div>
                 <div class="edit-info-container">
                     <button data-bs-toggle="modal" data-bs-target="#edit-presentation"
-                        class="btn-style edit-btn"></button>
+                        class="btn-style edit-btn"><img src="../Image/pencil-24.svg"></img></button>
                 </div>
             </div>
 
@@ -54,8 +61,8 @@
                         <h2>Experiencia</h2>
                     </div>
                     <div class="button-container">
-                        <button class="btn-style add-btn" data-bs-toggle="modal" data-bs-target="#edit-job"></button>
-                        <button class="btn-style edit-btn"></button>
+                        <button class="btn-style add-btn" data-bs-toggle="modal" data-bs-target="#edit-job"><i class="bi bi-plus-lg fs-3"></i></button>
+                        <button class="btn-style edit-btn"><img src="../Image/pencil-24.svg"></img></button>
                     </div>
                 </div>
                 <div class="experience-list">
@@ -68,8 +75,8 @@
                         <h2>Conocimientos y aptitudes</h2>
                     </div>
                     <div class="button-container">
-                        <button class="btn-style add-btn"></button>
-                        <button class="btn-style edit-btn"></button>
+                        <button class="btn-style add-btn"><i class="bi bi-plus-lg fs-3"></i></button>
+                        <button class="btn-style edit-btn"><img src="../Image/pencil-24.svg"></img></button>
                     </div>
                 </div>
             </div>
@@ -78,10 +85,14 @@
                 <div class="container-header-items">
                     <div class="subtitle-container">
                         <h2>Educación</h2>
+                        <div class="education-info">
+                            <ul id="education-list">
+                            </ul>
+                        </div>
                     </div>
                     <div class="button-container">
-                        <button class="btn-style add-btn" data-bs-toggle="modal" data-bs-target="#edit-education"></button>
-                        <button class="btn-style edit-btn"></button>
+                        <button class="btn-style add-btn" data-bs-toggle="modal" data-bs-target="#edit-education"><i class="bi bi-plus-lg fs-3"></i></button>
+                        <button class="btn-style edit-btn"><img src="../Image/pencil-24.svg"></img></button>
                     </div>
                 </div>
             </div>
@@ -99,7 +110,7 @@
                     <div class="title-btn">
                         <h4>URL y perfil público</h4>
                     </div>
-                    <span class="link-span">www.linkedin.com/in/nombre-apellido-123456789</span>
+                    <span class="link-span"></span>
                 </div>
             </div>
             <div class="img-whos-hiring">
@@ -861,7 +872,7 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
         <script src="../JS/loadMenu.js"></script>
-        <script src="../JS/ProfileManager.js"></script>
+        <script type="module" src="../JS/ProfileManager.js"></script>
 </body>
 
 </html>

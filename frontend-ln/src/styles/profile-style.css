@@ -2,7 +2,7 @@ body{
     background-color: #f4f2ee;
 }
 .profile-photo{
-    width: 100%px;
+    width: 100%;
     border-radius: 50%;
     margin-top: -75px;
     padding: 5px;
@@ -16,7 +16,7 @@ body{
 }
 
 .profile-page-container{
-    padding: 10px  60px;
+    padding: 10px 60px;
     display: inline-flex;
 }
 
@@ -28,6 +28,7 @@ body{
     border-radius: 10px;
     border:1px solid #e1e1e1;
     position: relative;
+    
 }
 
 .background-container{
@@ -37,9 +38,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../Image/frontpage.png');
-    background-size: cover;
-    background-position: center;
+    background-color: grey;
 }
 
 
@@ -50,15 +49,59 @@ body{
     margin-top: -75px;
     margin-left: 20px;
     padding: 5px;
-    border: 5px white solid;
-    background-color: #e1e1e1; 
-    background-image: url('../Image/elsa.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+#profile-photo{
+    border: 5px white solid;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#background-photo{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+}
+
+.file{
+    display: none;
+}
+
+
+
+#upload-bck-btn , #upload-pp-btn{
+    height: 40px;
+    width: 40px;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #b8b8b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-pp-btn{
+    transform: translateX(90%);
+    margin-top: 10px;
+    margin-left: 65px;
+}
+
+#upload-bck-btn{
+    margin-top: -130px;
+    margin-left: 700px;
+    z-index: 10;
+}
+
 
 .button-img-container{
     margin-top:-60px;
@@ -123,18 +166,6 @@ body{
     border: none;
 }
 
-.add-btn{
-    background-image: url('../Image/ButtonIcon2.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.edit-btn{
-    background-image: url('../Image/ButtonIcon3.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 60%;
-}
 
 .side-container{
     margin-left: 25px;
@@ -236,4 +267,39 @@ body{
 .subtitle-presentation{
     font-size: 1.2em;
     color:black;
+}
+
+
+.button-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-info-container {
+    position: absolute;
+    top: 200px;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#education-list{
+    list-style: none;
+}
+
+.school-name a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.degree{
+    font-size: 16px;
+}
+
+.time{
+    color: rgba(0, 0, 0, 0.6);
 }

@@ -29,7 +29,6 @@ async function submitSignin(event) {
         });
     
         const responseData = await response.json();
-        console.log(responseData);
         
         if (response.ok) {
           alert("Inicio de sesión exitoso");
