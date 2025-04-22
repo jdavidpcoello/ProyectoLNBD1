@@ -114,7 +114,6 @@ public class UsuarioService {
             usuarioDTO = null;
         } else {
             Usuarios usuarioBd = new Usuarios();
-            usuarioDTO.setCodigoUsuario(usuarioBd.getCodigoUsuario());
             usuarioBd.setEmail(nvoUsuario.getEmail());
             usuarioBd.setContrasenia(nvoUsuario.getPassword());
             usuarioBd.setNombre(nvoUsuario.getFirstName());
@@ -148,7 +147,7 @@ public class UsuarioService {
                 LocalDate birthDate = LocalDate.of(anio, mes, dia);
 
                 usuarioBd.setFechaNacimiento(birthDate);
-                educacion.setAnioInicio(nvoUsuario.getFirtYear());
+                educacion.setAnioInicio(nvoUsuario.getFirstYear());
                 educacion.setAnioFinal(nvoUsuario.getLastYear());
 
                 Instituciones instituciones = institucionesRepository

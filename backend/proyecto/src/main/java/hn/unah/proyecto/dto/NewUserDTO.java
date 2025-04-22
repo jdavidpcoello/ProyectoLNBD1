@@ -21,7 +21,7 @@ public class NewUserDTO {
     private String typeJob;
     private String placeJob;
     private String schoolName;
-    private String firtYear;
+    private String firstYear;
     private String lastYear;
     private String birthDay;
     private String birthMonth;
