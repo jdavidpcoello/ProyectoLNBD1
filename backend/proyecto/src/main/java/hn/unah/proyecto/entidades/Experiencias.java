@@ -37,7 +37,6 @@ public class Experiencias {
     @Column(name = "mes_final")
     private String mesFinal;
 
-
     @Column(name="anio_inicio")
     private String anioInicio;
 
