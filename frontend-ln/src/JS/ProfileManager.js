@@ -3,7 +3,6 @@ import { estaLogueado, obtenerUsuario, redirigirSiNoEstaLogueado } from './usuar
 if (estaLogueado()) {
     const usuario = JSON.parse(localStorage.getItem('infoUsuario'));
 
-    console.log(usuario.codigoUsuario);
 
     document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
