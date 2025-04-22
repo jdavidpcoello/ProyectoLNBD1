@@ -10,7 +10,7 @@ import hn.unah.proyecto.entidades.Experiencias;
 
 public interface ExperienciaRepository extends JpaRepository<Experiencias, Integer>{
     
-     @Query("SELECT e FROM Experiencias e WHERE e.usuario.codigoUsuario = :codigoUsuario ORDER BY e.fechaFin DESC")
+     @Query("SELECT e FROM Experiencias e WHERE e.usuario.codigoUsuario = :codigoUsuario ORDER BY e.mesFinal DESC")
     List<Experiencias> findUltimaExperienciaPorUsuario(@Param("codigoUsuario") int codigoUsuario);
 
 }
