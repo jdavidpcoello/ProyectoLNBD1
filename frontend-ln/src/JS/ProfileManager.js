@@ -25,39 +25,45 @@ if(estaLogueado()){
         document.querySelector('#background-photo').setAttribute('src','../Image/DefaultBackground.jpg');
     }
 
-    
+    const profilePhoto = document.querySelector('#profilePhoto');
+const backgroundPhoto = document.querySelector('#background-photo');
+const profileInput = document.querySelector('#pp-file');
+const backgroundInput = document.querySelector('#bck-file');
 
-    function uploadNewFile() {
-        const selectedFile = this.files[0];
-        if (selectedFile) {
-            const reader = new FileReader();
-    
-            reader.addEventListener('load', function () {
-                newPhoto(reader.result);
-            });
-    
-            reader.readAsDataURL(selectedFile);
-        }
+profileInput.addEventListener('change', uploadNewFile.bind(profileInput, profilePhoto, 'profilePhoto'));
+backgroundInput.addEventListener('change', uploadNewFile.bind(backgroundInput, backgroundPhoto, 'backgroundPhoto'));
+
+function uploadNewFile(imgElement, storageKey) {
+    const selectedFile = this.files[0];
+    if (selectedFile) {
+        if (!validareForm(this)) return;
+
+        const reader = new FileReader();
+        reader.addEventListener('load', function () {
+            newPhoto(imgElement, storageKey, reader.result);
+        });
+
+        reader.readAsDataURL(selectedFile);
     }
-    
-    function validareForm(){
-        const invalidPhotoDiv = document.querySelector('.invalid-photo-text');
-        invalidPhotoDiv.innerHTML = '';
-        const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-    
-    
-        const file = photoInput.files[0];
-    
-        if(!file){
-            invalidPhotoDiv.innerHTML = 'Suba una foto de perfil.';
-            return false;
-        } else if (!validTypes.includes(file.type)) {
-            invalidPhotoDiv.innerHTML = 'Sube una foto valida.';
-            return false;
-        }
-    
-        return true;
+}
+
+function validareForm(input) {
+    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    const file = input.files[0];
+
+    if (!validTypes.includes(file.type)) {
+        alert('Sube una foto válida (jpg, jpeg o png).');
+        return false;
     }
+
+    return true;
+}
+
+function newPhoto(imgElement, key, result) {
+    imgElement.setAttribute('src', result);
+    localStorage.setItem(key, result);
+}
+
 
 }{
     redirigirSiNoEstaLogueado();
