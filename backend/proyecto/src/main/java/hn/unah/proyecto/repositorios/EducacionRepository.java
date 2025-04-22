@@ -8,6 +8,7 @@ import hn.unah.proyecto.entidades.Educacion;
 
 public interface EducacionRepository extends JpaRepository<Educacion, Integer> {
     
-    public List<Educacion> findAllByUsuario(int codigoUsuario);
+    public List<Educacion> findAllByUsuarioCodigoUsuario(int codigoUsuario);
+
     
 }

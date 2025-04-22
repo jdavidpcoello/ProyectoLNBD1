@@ -22,7 +22,7 @@ public class EducacionService {
     private InstitucionesRepository institucionesRepository;
 
     public List <EducacionDTO> educacionUsuario(int codigoUsuario){
-       List <Educacion> educationList = educacionRepository.findAllByUsuario(codigoUsuario);
+       List <Educacion> educationList = educacionRepository.findAllByUsuarioCodigoUsuario(codigoUsuario);
 
        List <EducacionDTO> educationListDto = new ArrayList<>();
 
