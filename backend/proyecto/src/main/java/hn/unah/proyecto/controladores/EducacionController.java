@@ -11,6 +11,7 @@ import hn.unah.proyecto.dto.EducacionDTO;
 import hn.unah.proyecto.servicios.EducacionService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -27,5 +28,9 @@ public class EducacionController {
         return educacionService.educacionUsuario(codigoUsuario);
     }
     
+    @PostMapping("/nuevo")
+    public EducacionDTO nuevoEducacionUsuario(@RequestBody EducacionDTO nvoRegistro){
+        return educacionService.nuevoEducacionUsuario(nvoRegistro);
+    }
 
 }
