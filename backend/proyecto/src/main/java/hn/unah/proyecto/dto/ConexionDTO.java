@@ -3,6 +3,7 @@ package hn.unah.proyecto.dto;
 import java.time.LocalDateTime;
 
 import hn.unah.proyecto.entidades.Conexiones;
+import hn.unah.proyecto.entidades.Usuarios;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,9 +17,9 @@ public class ConexionDTO {
 
     private int codigoConexion;
     
-    private int usuario1Id;
+    private int usuario1;
     
-    private int usuario2Id;
+    private int usuario2;
     
     private int estado;
     
@@ -26,8 +27,8 @@ public class ConexionDTO {
 
     public ConexionDTO(Conexiones conexion) {
         this.codigoConexion = conexion.getCodigoConexion();
-        this.usuario1Id = conexion.getUsuario1Id();
-        this.usuario2Id = conexion.getUsuario2Id();
+        this.usuario1 = conexion.getUsuario1().getCodigoUsuario();
+        this.usuario2 = conexion.getUsuario2().getCodigoUsuario();
         this.estado = conexion.getEstado().getCodigoEstado();
         this.fechaConexion = conexion.getFechaConexion();
     }

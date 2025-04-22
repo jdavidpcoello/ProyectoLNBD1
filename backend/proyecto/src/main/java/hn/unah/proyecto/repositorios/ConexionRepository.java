@@ -12,20 +12,22 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ConexionRepository extends JpaRepository<Conexiones,Integer> {
 
-    List<Conexiones> findByUsuario1Id(int codigoUsuario1);
+    @Query("SELECT c FROM Conexiones c WHERE c.usuario1.codigoUsuario = :codigoUsuario1 ")
+    List<Conexiones> findByUsuario(int usuario1);
 
-    @Query("SELECT c FROM Conexiones c WHERE (c.usuario1Id = :usuario1Id OR c.usuario2Id = :usuario2Id) AND c.estado.codigoEstado = :estado")
-    List<Conexiones> findByUsuario1IdOrUsuario2IdAndEstado(
-        @Param("usuario1Id") int usuario1Id,
-        @Param("usuario2Id") int usuario2Id,
+    @Query("SELECT c FROM Conexiones c WHERE (c.usuario1.codigoUsuario = :codigoUsuario1 OR c.usuario2.codigoUsuario = :codigoUsuario2) AND c.estado.codigoEstado = :estado")
+    List<Conexiones> findByUsuario1OrUsuario2AndEstado(
+        @Param("codigoUsuario1") int usuario1,
+        @Param("codigoUsuario2") int usuario2,
         @Param("estado") int estado
     );
 
-    // @Query("SELECT c FROM Conexiones c WHERE (c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario) AND c.estado.codigoEstado = :codigoEstado")
-    // List<Conexiones> findConexionesActivasPorUsuarioYEstado(@Param("codigoUsuario") int codigoUsuario, @Param("estado") int codigoEstado);
+    @Query("SELECT c FROM Conexiones c WHERE c.usuario1.codigoUsuario = :codigoUsuario OR c.usuario2.codigoUsuario = :codigoUsuario")
+    List<Conexiones> findConexionesPorUsuario1(@Param("codigoUsuario") int codigoUsuario);
 
-    @Query("SELECT c FROM Conexiones c WHERE c.usuario1Id = :codigoUsuario OR c.usuario2Id = :codigoUsuario")
-    List<Conexiones> findConexionesPorUsuario(@Param("codigoUsuario") int codigoUsuario);
+
+    List<Conexiones> findByUsuario2CodigoUsuarioAndEstadoCodigoEstado(int codigoUsuario, int codigoEstado);
+
 }
 
 

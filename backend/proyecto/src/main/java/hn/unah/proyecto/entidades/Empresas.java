@@ -1,8 +1,12 @@
 package hn.unah.proyecto.entidades;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,4 +33,8 @@ public class Empresas {
 
     @Column(name = "foto_empresa")
     private String fotoEmpresa;
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    private List<Experiencias> experiencias;
+    
 }

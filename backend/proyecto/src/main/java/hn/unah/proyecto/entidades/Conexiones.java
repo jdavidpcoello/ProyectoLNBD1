@@ -18,11 +18,13 @@ public class Conexiones {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoConexion;
 
-    @Column(name = "CODIGO_USUARIO_1", nullable = false)
-    private int usuario1Id;
+    @ManyToOne
+    @JoinColumn(name = "CODIGO_USUARIO_1", referencedColumnName = "codigo_usuario")
+    private Usuarios usuario1;
 
-    @Column(name = "CODIGO_USUARIO_2", nullable = false)
-    private int usuario2Id;
+    @ManyToOne
+    @JoinColumn(name = "CODIGO_USUARIO_2", referencedColumnName = "codigo_usuario")
+    private Usuarios usuario2;
 
     @ManyToOne
     @JoinColumn(name = "CODIGO_ESTADO", nullable = false)

@@ -8,15 +8,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.unah.proyecto.dto.ConexionDTO;
+import hn.unah.proyecto.dto.SolicitudDTO;
 import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.entidades.Conexiones;
+import hn.unah.proyecto.entidades.Educacion;
 import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.EstadoConexion;
 import hn.unah.proyecto.entidades.Experiencias;
+import hn.unah.proyecto.entidades.Instituciones;
 import hn.unah.proyecto.repositorios.ConexionRepository;
 import hn.unah.proyecto.repositorios.EstadoConexionRepository;
 import hn.unah.proyecto.repositorios.ExperienciaRepository;
@@ -43,8 +47,8 @@ public class ConexionService {
             .orElseThrow(() -> new RuntimeException("Estado no encontrado con código: " + dto.getEstado()));
 
         Conexiones conexion = new Conexiones();
-        conexion.setUsuario1Id(dto.getUsuario1Id());
-        conexion.setUsuario2Id(dto.getUsuario2Id());
+        conexion.getUsuario1().setCodigoUsuario(dto.getUsuario1());
+        conexion.getUsuario2().setCodigoUsuario(dto.getUsuario2());
         conexion.setEstado(estado);
         conexion.setFechaConexion(LocalDateTime.now());
 
@@ -65,15 +69,15 @@ public class ConexionService {
     }
         
     public List<UsuarioConEstadoDTO> obtenerAmigosPorUsuario(int codigoUsuario) {
-        List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario(codigoUsuario);
+        List<Conexiones> conexiones = this.conexionRepository.findConexionesPorUsuario1(codigoUsuario);
     
         List<UsuarioConEstadoDTO> amigos = new ArrayList<>();
     
         for (Conexiones conexion : conexiones) {
             if (conexion.getEstado().getCodigoEstado() == EstadoConexion.ACEPTADA) {
-                int amigoId = (conexion.getUsuario1Id() == codigoUsuario) 
-                    ? conexion.getUsuario2Id() 
-                    : conexion.getUsuario1Id();
+                int amigoId = (conexion.getUsuario1().getCodigoUsuario() == codigoUsuario) 
+                    ? conexion.getUsuario2().getCodigoUsuario() 
+                    : conexion.getUsuario1().getCodigoUsuario();
     
                 Usuarios amigo = this.usuariosRepository.findById(amigoId).orElse(null);
                 if (amigo != null) {
@@ -96,11 +100,11 @@ public class ConexionService {
     }
     
     public List<UsuarioConEstadoDTO> obtenerUsuariosNoAmigosConEstado(int codigoUsuario) {
-        List<Conexiones> conexiones = conexionRepository.findConexionesPorUsuario(codigoUsuario);
+        List<Conexiones> conexiones = conexionRepository.findConexionesPorUsuario1(codigoUsuario);
         
         Map<Integer, Integer> mapaEstados = new HashMap<>();
         for (Conexiones c : conexiones) {
-            int otroId = (c.getUsuario1Id() == codigoUsuario) ? c.getUsuario2Id() : c.getUsuario1Id();
+            int otroId = (c.getUsuario1().getCodigoUsuario() == codigoUsuario) ? c.getUsuario2().getCodigoUsuario() : c.getUsuario1().getCodigoUsuario();
             mapaEstados.put(otroId, c.getEstado().getCodigoEstado());
         }
 
@@ -111,14 +115,15 @@ public class ConexionService {
             if (usuario.getCodigoUsuario() != codigoUsuario) {
 
                 Conexiones conexion = conexiones.stream()
-                    .filter(c -> (c.getUsuario1Id() == usuario.getCodigoUsuario() && c.getUsuario2Id() == codigoUsuario) || 
-                                  c.getUsuario2Id() == usuario.getCodigoUsuario() && c.getUsuario1Id() == codigoUsuario)
+                    .filter(c -> (c.getUsuario1().getCodigoUsuario() == usuario.getCodigoUsuario() && c.getUsuario2().getCodigoUsuario() == codigoUsuario) || 
+                                  c.getUsuario2().getCodigoUsuario() == usuario.getCodigoUsuario() && c.getUsuario1().getCodigoUsuario() == codigoUsuario)
                     .findFirst()
                     .orElse(null);
 
                     int estado = (conexion != null) ? conexion.getEstado().getCodigoEstado() : 0;
 
-                if (estado == 0 || (estado == EstadoConexion.PENDIENTE && conexion.getUsuario1Id() == codigoUsuario)) {
+                if (estado == 0 || (conexion != null && estado == EstadoConexion.PENDIENTE && conexion.getUsuario1().getCodigoUsuario() == codigoUsuario)) {
+
                     UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO();
                     dto.setCodigoUsuario(usuario.getCodigoUsuario());
                     dto.setNombre(usuario.getNombre());
@@ -129,8 +134,8 @@ public class ConexionService {
                     dto.setFotoPortada(usuario.getFotoPortada());
                     dto.setEstadoConexion(estado);
                     dto.setCodigoConexion(conexion != null ? conexion.getCodigoConexion() : 0);
-                    
-                    Optional<Experiencias> experienciaConEmpresa = usuario.getExperiencias().stream()
+                                        
+                    Optional<Experiencias> experienciaConEmpresa = this.experienciaRepository.findUltimaExperienciaPorUsuario(usuario.getCodigoUsuario()).stream()
                         .filter(e -> e.getEmpresa() != null)
                         .findFirst();
 
@@ -142,5 +147,54 @@ public class ConexionService {
             }
         }
         return resultado;
-    }    
+    }
+
+    public List<SolicitudDTO> obtenerSolicitudesRecibidas(int codigoUsuario) {
+        List<Conexiones> conexiones = conexionRepository.findByUsuario2CodigoUsuarioAndEstadoCodigoEstado(codigoUsuario, 3);
+        
+        List<SolicitudDTO> solicitudes = new ArrayList<>();
+        
+        for (Conexiones conexion : conexiones) {
+            Usuarios usuario1 = conexion.getUsuario1();
+
+            Empresas empresa = null;
+            if (!usuario1.getExperiencias().isEmpty()) {
+                List<Experiencias> experiencias = usuario1.getExperiencias();
+                empresa = experiencias.get(experiencias.size() - 1).getEmpresa();
+            }
+
+            Instituciones institucion = null;
+            if (!usuario1.getEducacion().isEmpty()) {
+                List<Educacion> educacion = usuario1.getEducacion();
+                institucion = educacion.get(educacion.size() - 1).getInstitucionEducativa();
+            }
+
+            solicitudes.add(new SolicitudDTO(usuario1, empresa, institucion, conexion));
+        }
+
+        return solicitudes;
+    }
+   
+
+    public void aceptarSolicitud(int codigoConexion) {
+        Conexiones conexion = conexionRepository.findById(codigoConexion)
+            .orElseThrow(() -> new RuntimeException("No encontrada"));
+    
+        EstadoConexion estadoAceptado = estadoConexionRepository.findById(1)
+            .orElseThrow(() -> new RuntimeException("Estado no válido"));
+    
+        conexion.setEstado(estadoAceptado);
+        conexionRepository.save(conexion);
+    }
+
+    public void rechazarSolicitud(int codigoConexion) {
+        Conexiones conexion = conexionRepository.findById(codigoConexion)
+            .orElseThrow(() -> new RuntimeException("No encontrada"));
+    
+        EstadoConexion estadoRechazado = estadoConexionRepository.findById(3)
+            .orElseThrow(() -> new RuntimeException("Estado no válido"));
+    
+        conexion.setEstado(estadoRechazado);
+        conexionRepository.save(conexion);
+    }
 }

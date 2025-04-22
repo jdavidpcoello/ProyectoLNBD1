@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.proyecto.dto.ConexionDTO;
+import hn.unah.proyecto.dto.SolicitudDTO;
 import hn.unah.proyecto.dto.UsuarioConEstadoDTO;
 import hn.unah.proyecto.servicios.ConexionService;
 import hn.unah.proyecto.servicios.EstadoConexionService;
@@ -79,4 +80,22 @@ public class ConexionController {
         conexionService.eliminarConexion(codigoConexion);
         return ResponseEntity.ok("Conexión eliminada");
     }
+
+    @GetMapping("/solicitudes/{codigoUsuario}")
+    public List<SolicitudDTO> obtenerSolicitudesRecibidas(@PathVariable int codigoUsuario) {
+        return conexionService.obtenerSolicitudesRecibidas(codigoUsuario);
+    }
+
+    @PutMapping("/aceptar/{codigoConexion}")
+    public ResponseEntity<?> aceptarSolicitud(@PathVariable int codigoConexion) {
+        conexionService.aceptarSolicitud(codigoConexion);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/rechazar/{codigoConexion}")
+    public ResponseEntity<?> rechazarSolicitud(@PathVariable int codigoConexion) {
+        conexionService.rechazarSolicitud(codigoConexion);
+        return ResponseEntity.ok().build(); 
+    }    
+
 }
