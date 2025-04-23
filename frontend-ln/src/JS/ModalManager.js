@@ -36,10 +36,11 @@ const jobButton = document.querySelector('#job-btn');
 
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
-jobButton.addEventListener('click');
+jobButton.addEventListener('click',createNewJob);
 
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
+const urlJob = 'http://localhost:8080/api/experiencia/nuevo';
 
 //Funciones
 async function createNewEducation(event){
@@ -68,8 +69,6 @@ async function createNewEducation(event){
             body: JSON.stringify(data)
         });
     
-        
-
         if (response.ok) {
             location.reload();
         } else {
@@ -82,3 +81,43 @@ async function createNewEducation(event){
     }
 }
 
+async function createNewJob(event) {
+    event.preventDefault();
+
+    const data = new NewExperience (
+        cargo.value,
+        empresa.value,
+        mesInicioJob.value,
+        anioInicioJob.value,
+        mesFinalJob.value,
+        anioFinalJob.value,
+        tipoEmpleo.value,
+        tipoLugarTrabajo.value,
+        jobDescription.value,
+        codigoUsuario
+    )
+    
+
+    try {
+        const response = await fetch(urlJob, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+
+        if (response.ok) {
+            location.reload();
+        } else {
+            const errorData = await response.json();
+            alert("Error al crear un nuevo registro");
+        }
+
+    } catch (error) {
+        alert("Error en la solicitud. Revisa la consola.");
+        console.error("Error en la solicitud:", error);
+    }
+
+}

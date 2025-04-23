@@ -27,6 +27,7 @@ public class ExperienciaController {
         return experienciaService.trabajoUsuario(codigoUsuario);
     }
 
+    @PostMapping("/nuevo")
     public ExperienciasDTO nuevaExperienciasUsuario(@RequestBody NewExperienceDTO nvoRegistro){
         return experienciaService.nuevaExperienciasUsuario(nvoRegistro);
     }
