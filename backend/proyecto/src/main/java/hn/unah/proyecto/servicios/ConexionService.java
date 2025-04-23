@@ -59,8 +59,20 @@ public class ConexionService {
         conexion.setFechaConexion(LocalDateTime.now());
     
         conexion = conexionRepository.save(conexion);
+
+        Empresas empresa = null;
+        Instituciones institucion = null;
+        if (!usuario1.getExperiencias().isEmpty()) {
+            List<Experiencias> experiencias = usuario1.getExperiencias();
+            empresa = experiencias.get(experiencias.size() - 1).getEmpresa();
+        }
+        if (!usuario1.getEducacion().isEmpty()) {
+            List<Educacion> educacion = usuario1.getEducacion();
+            institucion = educacion.get(educacion.size() - 1).getInstitucionEducativa();
+        }
+
     
-        return new ConexionDTO(conexion);
+        return new ConexionDTO(conexion, institucion, empresa);
     }
     
     public void eliminarConexion(int id){
@@ -96,7 +108,13 @@ public class ConexionService {
                         empresa = ultima.getEmpresa();                     
                     }
 
-                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, empresa);
+                    Instituciones institucion = null;
+                    if (!amigo.getEducacion().isEmpty()) {
+                        List<Educacion> educacion = amigo.getEducacion();
+                        institucion = educacion.get(educacion.size() - 1).getInstitucionEducativa();
+                    }
+
+                    UsuarioConEstadoDTO dto = new UsuarioConEstadoDTO(amigo, conexion.getEstado(), conexion, empresa, institucion);
                     amigos.add(dto);
                 }
             }

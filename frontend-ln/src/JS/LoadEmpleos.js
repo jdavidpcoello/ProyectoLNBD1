@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="d-flex mt-3">
                         <a href="./recommendedJobs.html" class="text-decoration-none text-dark d-flex flex-grow-1">
                             <div>
-                                <img src="${empleo.fotoEmpresa}" alt="">
+                                <img src="${empleo.fotoEmpresa}" alt="" width="100">
                             </div>
                             <div class="d-flex flex-grow-1 flex-column">
                                 <div>
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                 </li>`;
+
                 
                 empleosList.insertAdjacentHTML('beforeend', empleoHTML);
             });

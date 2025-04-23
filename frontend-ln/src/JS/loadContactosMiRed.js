@@ -129,28 +129,47 @@ function crearCardHTML(usuario) {
             </button>`;
     }
 
+    let institucionEmpresaHTML = "";
+    if (
+        (usuario.nombreInstitucion) ||
+        (usuario.nombreEmpresa)
+    ) {            
+
+    institucionEmpresaHTML = `
+        <div class="d-flex align-items-start mt-2">
+            <img 
+                src="${usuario.nombreInstitucion 
+                        ? usuario.fotoInstitucion 
+                        : usuario.fotoEmpresa || fotoEmpresa}" 
+                alt="Organización"
+                class="me-2 rounded"
+                style="width: 30px; height: 30px; object-fit: cover;"
+            >
+            <p class="small text-muted">
+                ${usuario.nombreInstitucion 
+                    ? usuario.nombreInstitucion 
+                    : usuario.nombreEmpresa || ""}
+            </p>
+        </div>`;
+    }
+
     return `
         <div class="col" data-conexion-id="${usuario.codigoConexion || ''}">
-            <div class="card h-100 card-custom position-relative">
+            <div class="card h-100 card-custom position-relative" >
                 <div class="position-relative" style="height: 100px;">
                     <img src="${fotoPortada}" class="w-100 rounded-top" alt="Cover Photo">
                     <button class="btn m-2 position-absolute top-0 end-0 btn-close-custom text-light">
                         <i class="bi bi-x"></i>
                     </button>
-                    <img src="${fotoPerfil}" class="rounded-circle position-absolute start-50 translate-middle img-contenedor-mired perfil-superpuesto" alt="Profile Photo">
+                    <img src="${fotoPerfil}" class="rounded-circle position-absolute start-50 translate-middle img-contenedor-mired mt-2" alt="Profile Photo">
                 </div>
-                <div class="position-relative mt-5 mb-3">
+                <div class="position-relative mt-3 mb-3 mt-3">
                     <div class="text-center texto-usuario">
                         <p class="mb-1 fw-bold">${usuario.nombre} ${usuario.apellidos}</p>
                         <p class="mb-1 text-muted">${usuario.titular}</p>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="my-3 mx-2 px-2 w-25">
-                            <img src="${fotoEmpresa}" alt="Empresa" class="img-responsive img-fluid">
-                        </div>
-                        <div class="d-flex align-items-center me-3 w-75">
-                            <small class="mb-1 text-small text-muted">${usuario.sector}</small>
-                        </div>
+                    <div class="d-flex justify-content-between mt-2 mb-5">
+                        ${institucionEmpresaHTML}
                     </div>
                     <div class="mx-2">${botonHTML}</div>
                 </div>

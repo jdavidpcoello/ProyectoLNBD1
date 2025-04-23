@@ -39,7 +39,8 @@ public class SolicitudDTO {
         this.fotoEmpresa = (empresa != null) ? empresa.getFotoEmpresa() : null;
 
         this.nombreInstitucion = (institucion != null) ? institucion.getNombreInstitucion() : null;
-        //this.fotoInstitucion = (institucion != null) ? institucion.getFotoInstitucion() : null;
+        this.fotoInstitucion = (institucion != null) ? institucion.getFotoInstitucion() : null;
+        
         this.codigoConexion = conexion.getCodigoConexion();
     }
     
