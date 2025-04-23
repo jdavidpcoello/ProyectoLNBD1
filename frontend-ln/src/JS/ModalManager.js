@@ -20,6 +20,9 @@ const educationDescription = document.querySelector('#education-description');
 const educationButton = document.querySelector('#education-btn');
 
 
+//JobModal ADD
+
+
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
 
