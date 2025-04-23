@@ -1,4 +1,5 @@
 import NewEducation from './NewEducation.js';
+import NewExperience from './NewExperience.js'
 
 //Modales
 
@@ -21,14 +22,21 @@ const educationButton = document.querySelector('#education-btn');
 
 
 //JobModal ADD
+const cargo = document.querySelector('#cargo');
 const empresa = document.querySelector('#empresa');
 const mesInicioJob = document.querySelector('#mes-inicio-job');
 const anioInicioJob = document.querySelector('#anio-inicio-job');
 const mesFinalJob = document.querySelector('#mes-final-job');
 const anioFinalJob = document.querySelector('#anio-final-job');
+const tipoEmpleo = document.querySelector('#tipo-empleo');
+const tipoLugarTrabajo = document.querySelector('#tipo-lugar-trabajo');
+const jobDescription = document.querySelector('#job-description');
+const jobButton = document.querySelector('#job-btn');
+
 
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
+jobButton.addEventListener('click');
 
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';

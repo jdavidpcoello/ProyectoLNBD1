@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import hn.unah.proyecto.dto.MensajeDTO;
 import hn.unah.proyecto.entidades.Mensajes;
 import hn.unah.proyecto.repositorios.MensajesRepository;
-import hn.unah.proyecto.dto.UsuarioChatsDTO;
 
 @Service
 public class MensajeService {

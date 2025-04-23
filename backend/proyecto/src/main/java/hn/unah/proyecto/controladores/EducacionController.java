@@ -34,4 +34,5 @@ public class EducacionController {
         return educacionService.nuevoEducacionUsuario(nvoRegistro);
     }
 
+
 }

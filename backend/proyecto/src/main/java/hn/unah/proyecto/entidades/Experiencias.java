@@ -57,4 +57,8 @@ public class Experiencias {
     @JoinColumn(name = "empresa", referencedColumnName = "codigo_empresas")
     private Empresas empresa;
 
+    @ManyToOne()
+    @JoinColumn(name="tipo_lugar_trabajo", referencedColumnName = "codigo_tipo_lugar_trabajo")
+    private TipoLugarTrabajo tipoLugarTrabajo;
+
 }
