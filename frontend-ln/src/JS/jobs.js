@@ -1,5 +1,12 @@
+import { obtenerCodigoUsuario, redirigirSiNoEstaLogueado } from './usuarioUtils.js';
+
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:8080/api/empleos/recomendados/2')
+
+    redirigirSiNoEstaLogueado();
+
+    const codigoUsuario = obtenerCodigoUsuario();
+
+    fetch(`http://localhost:8080/api/empleos/recomendados/${codigoUsuario}`)
         .then(response => response.json())
         .then(data => {
             const empleosList = document.getElementById('empleosList');

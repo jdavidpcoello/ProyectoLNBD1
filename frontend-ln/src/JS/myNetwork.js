@@ -109,7 +109,8 @@ function crearCardHTML(usuario) {
     const baseUrl = 'http://localhost:5501';
     const fotoPortada = usuario.fotoPortada || '';
     const fotoPerfil = usuario.fotoPerfil || '';
-    const fotoEmpresa = usuario.fotoEmpresa ? `${baseUrl}${usuario.fotoEmpresa}` : `${baseUrl}/public/Image/fotoEmpresaPorDefecto.png`;
+    const fotoEmpresa = usuario.fotoEmpresa ? `${usuario.fotoEmpresa}` : `${baseUrl}/public/Image/fotoEmpresaPorDefecto.png`;
+    const fotoInstitucion = usuario.fotoInstitucion ? `${usuario.fotoInstitucion}` : `${baseUrl}../Image/UNAH.jpg`;
 
     const botonId = `btn-conectar-${usuario.codigoUsuario}`;
     let botonHTML = '';
@@ -139,7 +140,7 @@ function crearCardHTML(usuario) {
         <div class="d-flex align-items-start mt-2">
             <img 
                 src="${usuario.nombreInstitucion 
-                        ? usuario.fotoInstitucion 
+                        ? usuario.fotoInstitucion || fotoInstitucion
                         : usuario.fotoEmpresa || fotoEmpresa}" 
                 alt="Organización"
                 class="me-2 rounded"
