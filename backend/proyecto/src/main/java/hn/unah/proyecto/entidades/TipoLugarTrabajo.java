@@ -2,8 +2,6 @@ package hn.unah.proyecto.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,7 +21,6 @@ public class TipoLugarTrabajo {
 
     @Id
     @Column(name = "codigo_tipo_lugar_trabajo")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoTipoLugarTrabajo;
 
     @Column(name = "tipo_lugar_trabajo")

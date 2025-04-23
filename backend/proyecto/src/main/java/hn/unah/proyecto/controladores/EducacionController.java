@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.proyecto.dto.EducacionDTO;
+import hn.unah.proyecto.dto.NewEducacionDTO;
 import hn.unah.proyecto.servicios.EducacionService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +30,9 @@ public class EducacionController {
     }
     
     @PostMapping("/nuevo")
-    public EducacionDTO nuevoEducacionUsuario(@RequestBody EducacionDTO nvoRegistro){
+    public EducacionDTO nuevoEducacionUsuario(@RequestBody NewEducacionDTO nvoRegistro){
         return educacionService.nuevoEducacionUsuario(nvoRegistro);
     }
+
 
 }

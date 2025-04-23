@@ -58,4 +58,6 @@ public class Educacion {
     @ManyToOne()
     @JoinColumn(name = "institucion_educativa", referencedColumnName = "codigo_institucion_educativa")
     private Instituciones institucionEducativa;
+
+    private String descripcion;
 }
