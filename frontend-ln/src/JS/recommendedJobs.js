@@ -1,7 +1,19 @@
+import { obtenerCodigoUsuario, redirigirSiNoEstaLogueado } from './usuarioUtils.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Hay que cambiar el id del usuario por el id del usuario logueado
-    cargarEmpleos(2);   
+    
+    redirigirSiNoEstaLogueado();
+
+    const codigoUsuario = obtenerCodigoUsuario();
+    console.log("Código de usuario obtenido:", codigoUsuario);
+    
+    cargarEmpleos(codigoUsuario);   
 });
+
+function actualizarContador(resultados) {
+    const contador = document.getElementById("empleosCount");
+    contador.textContent = `${resultados} resultado${resultados !== 1 ? 's' : ''}`;
+}
 
 async function cargarEmpleos(codigoUsuario) {
     try {
@@ -12,7 +24,7 @@ async function cargarEmpleos(codigoUsuario) {
 
         data.forEach(empleo => {
             const empleoHTML = `
-                <li class="list-group-item empleo p-2" onclick="seleccionarEmpleo(this)" data-empleo='${JSON.stringify(empleo)}'>
+                <li class="list-group-item empleo p-2" data-empleo='${JSON.stringify(empleo)}'>
                     <div class="d-flex mt-3">
                         <a href="#" class="text-decoration-none text-dark d-flex flex-grow-1">
                             <div>
@@ -41,6 +53,17 @@ async function cargarEmpleos(codigoUsuario) {
             `;
             empleosList.insertAdjacentHTML('beforeend', empleoHTML);
         });
+
+        document.querySelectorAll('.empleo').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.empleo').forEach(el => el.classList.remove('activo'));
+                this.classList.add('activo');
+                const empleo = JSON.parse(this.getAttribute('data-empleo'));
+                mostrarInformacionDesdeObjeto(empleo);
+            });
+        });
+
+        actualizarContador(data.length);
 
         mostrarPrimerEmpleo();
     } catch (error) {
