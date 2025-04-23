@@ -34,6 +34,39 @@ const jobDescription = document.querySelector('#job-description');
 const jobButton = document.querySelector('#job-btn');
 
 
+//Personal ADD
+const nombre = document.querySelector('#nombre');
+const apellidos = document.querySelector('#apellidos');
+const nombreAdicional = document.querySelector('#nombre-adicional');
+const titular = document.querySelector('#titular');
+const ciudad = document.querySelector('#ciudad');
+const pais = document.querySelector('#pais');
+const enlace = document.querySelector('#enlace');
+const textoEnlace = document.querySelector('#texto-enlace');
+const sector = document.querySelector('#sector');
+
+nombre.value = usuario.nombre;
+apellidos.value = usuario.apellidos;
+nombreAdicional.value = usuario.nombreAdicional != null ? nombreAdicional : '';
+titular.value = usuario.titular;
+sector.value = usuario.sector != null ? sector: '';
+pais.value = usuario.pais.nombre;
+
+
+//Informacion de contacto
+document.querySelector('#name-contact').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
+
+
+
+
+if (usuario.ciudad.ciudadPadre) {
+    ciudad.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}`
+} else {
+    ciudad.value = usuario.ciudad.nombreCiudad;
+}
+
+
+
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
 jobButton.addEventListener('click',createNewJob);

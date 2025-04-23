@@ -222,4 +222,6 @@ if (estaLogueado()) {
         }
     }
 
+}else {
+    redirigirSiNoEstaLogueado();
 }

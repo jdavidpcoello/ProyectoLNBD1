@@ -143,19 +143,19 @@
                         <form>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Nombre</label>
-                                <input class="info-input-info" type="text">
+                                <input id="nombre" class="info-input-info" type="text">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Apellidos</label>
-                                <input type="text" class="info-input-info">
+                                <input id="apellidos" type="text" class="info-input-info">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Nombre Adicional</label>
-                                <input type="text" class="info-input-info">
+                                <input id="nombre-adicional" type="text" class="info-input-info">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Titular</label>
-                                <textarea class="info-input-info__textarea form-control"></textarea>
+                                <textarea id="titular" class="info-input-info__textarea form-control"></textarea>
                             </div>
                             <div class="mb-3">
                                 <h4 class="subtitle-section title-presentation">Puesto actual</h4>
@@ -163,7 +163,7 @@
                                     data-bs-target="#edit-job"><span class="plus-svg">+</span> Añadir nuevo puesto</a>
                                 <div class="mb-3">
                                     <label class="info-input-info-label">Sector</label>
-                                    <input type="text" placeholder="Ejemplo: venta al por menor"
+                                    <input id="sector" type="text" placeholder="Ejemplo: venta al por menor"
                                         class="info-input-info">
                                 </div>
                             </div>
@@ -172,23 +172,16 @@
                                 <a href="#" class="adding-info-anchor" data-bs-toggle="modal"
                                 data-bs-target="#edit-education"><span class="plus-svg">+</span> Añadir nueva
                                     educación</a>
-                                <div class="mb-3">
-                                    <label class="info-input-info-label">Institución educativa</label>
-                                    <select class="form-select">
-                                        <option selected>Selecciona una opción</option>
-                                        <option value="Nombre de universidad">Nombre de universidad</option>
-                                    </select>
-                                </div>
                             </div>
                             <div class="mb-3">
                                 <h4 class="title-presentation">Ubicación</h4>
                                 <div class="mb-3">
                                     <label class="info-input-info-label">País/región</label>
-                                    <input type="text" placeholder="P. ej. Estados Unidos" class="info-input-info">
+                                    <input id="pais" type="text" placeholder="P. ej. Illinois, Estados Unidos" class="info-input-info">
                                 </div>
                                 <div class="mb-3">
                                     <label class="info-input-info-label">Ciudad</label>
-                                    <input type="text" class="info-input-info">
+                                    <input id="ciudad" type="text" class="info-input-info">
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -196,12 +189,12 @@
                                 <p class="link-description">Añade un enlace que aparecerá en la parte superior de tu
                                     perfil</p>
                                 <div class="mb-3">
-                                    <label class="info-input-info-label">Cargo</label>
-                                    <input type="text" class="info-input-info">
+                                    <label class="info-input-info-label">Enlace</label>
+                                    <input id="enlace" type="text" class="info-input-info">
                                 </div>
                                 <div class="mb-3">
                                     <label class="info-input-info-label">Texto del enlace</label>
-                                    <input type="text" class="info-input-info">
+                                    <input id="texto-enlace" type="text" class="info-input-info">
                                 </div>
                             </div>
                         </form>
@@ -1305,7 +1298,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title title-presentation">Elsa Capunta</h1>
+                  <h1 id="name-contact" class="modal-title title-presentation"></h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
