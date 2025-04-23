@@ -20,7 +20,7 @@ import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.repositorios.CiudadesRepository;
 import hn.unah.proyecto.repositorios.EducacionRepository;
 import hn.unah.proyecto.repositorios.EmpresaRepository;
-import hn.unah.proyecto.repositorios.ExperienciasRepository;
+import hn.unah.proyecto.repositorios.ExperienciaRepository;
 import hn.unah.proyecto.repositorios.InstitucionesRepository;
 import hn.unah.proyecto.repositorios.PaisesRepository;
 import hn.unah.proyecto.repositorios.TipoEmpleoRepository;
@@ -48,7 +48,7 @@ public class UsuarioService {
     private EmpresaRepository empresaRepository;
 
     @Autowired
-    private ExperienciasRepository experienciasRepository;
+    private ExperienciaRepository experienciasRepository;
 
     @Autowired
     private EducacionRepository educacionRepository;

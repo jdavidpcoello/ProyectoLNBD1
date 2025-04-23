@@ -1,7 +1,5 @@
 package hn.unah.proyecto.dto;
 
-import java.time.LocalDate;
-
 import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.TipoEmpleos;
 import lombok.AllArgsConstructor;
@@ -18,9 +16,13 @@ public class ExperienciasDTO {
 
     private String cargo;
 
-    private LocalDate fechaInicio;
+    private String mesInicio;
 
-    private LocalDate fechaFinalizacion;
+    private String mesFinal;
+
+    private String anioInicio;
+
+    private String anioFinal;
 
     private String descripcion;
 

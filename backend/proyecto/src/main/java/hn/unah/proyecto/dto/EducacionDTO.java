@@ -33,4 +33,6 @@ public class EducacionDTO {
     private String actividadesGrupos;
 
     private Instituciones institucionEducativa;
+
+    private UsuariosDTO usuariosDTO;
 }

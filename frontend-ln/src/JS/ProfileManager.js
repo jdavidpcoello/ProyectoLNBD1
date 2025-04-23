@@ -6,6 +6,8 @@ if (estaLogueado()) {
     const profileInput = document.querySelector('#pp-file');
     const backgroundInput = document.querySelector('#bck-file');
     const educationList = document.querySelector('#education-list');
+    const jobList = document.getElementById("job-list");
+
 
 
     //Asignar valores correspondientes
@@ -129,15 +131,57 @@ if (estaLogueado()) {
     }
 
     async function load() {
-        EducationList();
+        educationListInfo();
+        jobsListInfo();
     }
     
 
-    async function JobsList() {
-        
+    async function jobsListInfo() {
+        const url = 'http://localhost:8080/api/experiencia/usuario/obtenertodos';
+    
+        const data = {
+            codigoUsuario: usuario.codigoUsuario
+        };
+    
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams(data).toString()
+            });
+    
+            const jobData = await response.json();
+    
+            if (response.ok && Array.isArray(jobData)) {
+                jobList.innerHTML = "";
+    
+                jobData.forEach(item => {
+                    if (item !== null) {
+                        const li = document.createElement("li");
+                        li.className = "job-items";
+    
+                        li.innerHTML = 
+                        `<h2 class="cargo"><a href="#">${item.cargo}</a></h2>
+                        <h3 class="empresa">${item.empresas.nombreEmpresas}</h3>
+                        <div class="relevant info">
+                            <p class="time">${item.mesInicio != null ? item.mesInicio : '' } ${item.anioInicio != null ? item.anioInicio : '' }
+                            - ${item.mesFinal != null ? item.mesFinal : '' } ${item.anioFinal != null ? item.anioFinal : '' }
+                            </p>
+                            <p class="description">${item.descripcion != null ? item.descripcion: ''}</p>
+                        </div>`;
+    
+                        jobList.appendChild(li);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+        }
     }
 
-    async function EducationList() {
+    async function educationListInfo() {
         const url = 'http://localhost:8080/api/educacion/usuario/obtenertodo';
     
         const data = {
@@ -156,7 +200,6 @@ if (estaLogueado()) {
             const educationData = await response.json();
     
             if (response.ok && Array.isArray(educationData)) {
-                const educationList = document.getElementById("education-list");
                 educationList.innerHTML = "";
     
                 educationData.forEach(item => {

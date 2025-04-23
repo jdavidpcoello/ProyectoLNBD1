@@ -1,5 +1,4 @@
 package hn.unah.proyecto.entidades;
-import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +35,6 @@ public class Experiencias {
 
     @Column(name = "mes_final")
     private String mesFinal;
-
 
     @Column(name="anio_inicio")
     private String anioInicio;
