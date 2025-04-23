@@ -13,4 +13,6 @@ public interface ExperienciaRepository extends JpaRepository<Experiencias, Integ
      @Query("SELECT e FROM Experiencias e WHERE e.usuario.codigoUsuario = :codigoUsuario ORDER BY e.anioFinal DESC")
     List<Experiencias> findUltimaExperienciaPorUsuario(@Param("codigoUsuario") int codigoUsuario);
 
+    public List<Experiencias> findAllByUsuarioCodigoUsuario(int codigoUsuario);
+
 }
