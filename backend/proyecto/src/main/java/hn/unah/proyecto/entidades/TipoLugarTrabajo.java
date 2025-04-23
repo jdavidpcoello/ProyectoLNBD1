@@ -23,7 +23,6 @@ public class TipoLugarTrabajo {
 
     @Id
     @Column(name = "codigo_tipo_lugar_trabajo")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoTipoLugarTrabajo;
 
     @Column(name = "tipo_lugar_trabajo")

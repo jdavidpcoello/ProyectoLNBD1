@@ -21,7 +21,11 @@ const educationButton = document.querySelector('#education-btn');
 
 
 //JobModal ADD
-
+const empresa = document.querySelector('#empresa');
+const mesInicioJob = document.querySelector('#mes-inicio-job');
+const anioInicioJob = document.querySelector('#anio-inicio-job');
+const mesFinalJob = document.querySelector('#mes-final-job');
+const anioFinalJob = document.querySelector('#anio-final-job');
 
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
@@ -62,11 +66,11 @@ async function createNewEducation(event){
             location.reload();
         } else {
             const errorData = await response.json();
-            alert("Error al crear nuevo registro");
+            alert("Error al crear un nuevo registro");
         }
     } catch (error) {
+        alert("Error en la solicitud. Revisa la consola.");
         console.error("Error en la solicitud:", error);
-        alert("Error en la solicitud. Revisa la consola");
     }
 }
 

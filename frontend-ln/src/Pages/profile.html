@@ -262,8 +262,8 @@
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Empresa u organización</label>
-                                <input type="text" list="company-list" placeholder="P. ej. Microsoft" class="info-input-info">
-                                <datalist id="company-list">
+                                <input type="text" id="empresa" list="company-list" placeholder="P. ej. Microsoft" class="info-input-info">
+                                <datalist  id="company-list">
                                     <option value="Google"></option>
                                     <option value="Apple"></option>
                                     <option value="Microsoft"></option>
@@ -536,24 +536,24 @@
                             </div>
                             <label class="info-input-info-label">Fecha de inicio</label>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="mes-inicio-job" class="form-select">
                                     <option value="">Mes</option>
-                                    <option value="1">Enero</option>
-                                    <option value="2">Febrero</option>
-                                    <option value="3">Marzo</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Mayo</option>
-                                    <option value="6">Junio</option>
-                                    <option value="7">Julio</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Septiembre</option>
-                                    <option value="10">Octubre</option>
-                                    <option value="11">Noviembre</option>
-                                    <option value="12">Diciembre</option>
+                                    <option value="Enero">Enero</option>
+                                    <option value="Febrero">Febrero</option>
+                                    <option value="Marzo">Marzo</option>
+                                    <option value="Abril">Abril</option>
+                                    <option value="Mayo">Mayo</option>
+                                    <option value="Junio">Junio</option>
+                                    <option value="Julio">Julio</option>
+                                    <option value="Agosto">Agosto</option>
+                                    <option value="Septiembre">Septiembre</option>
+                                    <option value="Octubre">Octubre</option>
+                                    <option value="Noviembre">Noviembre</option>
+                                    <option value="Diciembre">Diciembre</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select  class="form-select">
+                                <select id="anio-inicio-job" class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -660,24 +660,24 @@
                             </div>
                             <label class="info-input-info-label">Fecha de finalización</label>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="mes-final-job" class="form-select">
                                     <option value="">Mes</option>
-                                    <option value="1">Enero</option>
-                                    <option value="2">Febrero</option>
-                                    <option value="3">Marzo</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Mayo</option>
-                                    <option value="6">Junio</option>
-                                    <option value="7">Julio</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Septiembre</option>
-                                    <option value="10">Octubre</option>
-                                    <option value="11">Noviembre</option>
-                                    <option value="12">Diciembre</option>
+                                    <option value="Enero">Enero</option>
+                                    <option value="Febrero">Febrero</option>
+                                    <option value="Marzo">Marzo</option>
+                                    <option value="Abril">Abril</option>
+                                    <option value="Mayo">Mayo</option>
+                                    <option value="Junio">Junio</option>
+                                    <option value="Julio">Julio</option>
+                                    <option value="Agosto">Agosto</option>
+                                    <option value="Septiembre">Septiembre</option>
+                                    <option value="Octubre">Octubre</option>
+                                    <option value="Noviembre">Noviembre</option>
+                                    <option value="Diciembre">Diciembre</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select  class="form-select">
+                                <select id="anio-final-job" class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -784,7 +784,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Tipo de ubicación</label>
-                                <select class="form-select">
+                                <select id="tipo-" class="form-select">
                                     <option selected>Selecciona una opción</option>
                                     <option value="Presencial">Presencial</option>
                                     <option value="Hibrido">Hibrido</option>
