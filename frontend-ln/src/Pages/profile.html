@@ -225,11 +225,11 @@
                         <form class="row">
                             <div class="mb-3">
                                 <label class="info-input-info-label">Cargo</label>
-                                <input class="info-input-info" placeholder="Ejemplo: responsable de ventas minoristas" type="text">
+                                <input id="cargo" class="info-input-info" placeholder="Ejemplo: responsable de ventas minoristas" type="text">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Tipo de empleo</label>
-                                <select class="form-select">
+                                <select id="tipo-empleo" class="form-select">
                                     <option value="Selecciona una opción" selected>
                                         Selecciona una opción
                                     </option>
@@ -283,7 +283,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select  class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -407,7 +407,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select  class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -579,18 +579,191 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="row">
+                        <form class="row" id="education-form">
                             <div class="mb-3">
-                                <label class="info-input-info-label">Institución educativa</label>
-                                <input class="info-input-info" placeholder="P. ej. Universidad de Salamanca" type="text">
+                                <label  class="info-input-info-label">Institución educativa</label>
+                                <input id="nombre-escuela" class="info-input-info" list="institutions-list" placeholder="P. ej. Universidad de Salamanca" type="text">
+                                <datalist id="institutions-list">
+                                    <!-- Honduras -->
+                                    <option value="Universidad Nacional Autónoma de Honduras (UNAH)">
+                                    <option value="Universidad Tecnológica de Honduras (UTH)">
+                                    <option value="Universidad de San Pedro Sula (USAP)">
+                                    <option value="Universidad Católica de Honduras (UNICAH)">
+                                    <option value="Universidad Pedagógica Nacional Francisco Morazán (UPNFM)">
+                                    <option value="Universidad Tecnológica Centroamericana (UNITEC)">
+                                    <option value="Escuela Agrícola Panamericana (Zamorano)">
+                                    <option value="Universidad Nacional de Agricultura (UNA)">
+                                    <option value="Escuela Militar de Aviación (EMA)">
+                                    <option value="Universidad Politécnica de Ingeniería (UPI)">
+        
+                                        <!-- Estados Unidos -->
+                                    <option value="Harvard University">
+                                    <option value="Massachusetts Institute of Technology (MIT)">
+                                    <option value="Stanford University">
+                                    <option value="University of California, Berkeley (UC Berkeley)">
+                                    <option value="University of Chicago">
+                                    <option value="Princeton University">
+                                    <option value="Columbia University">
+                                    <option value="New York University (NYU)">
+                                    <option value="University of Michigan">
+                                    <option value="Texas A&M University">
+                                    <option value="University of California, Los Angeles (UCLA)">
+                                    <option value="University of Washington">
+                                    <option value="University of Florida">
+                                    <option value="California State University, Fullerton">
+                                    <option value="University of Pennsylvania">
+                                    <option value="University of California, San Diego (UCSD)">
+                                    <option value="University of Virginia">
+                                    <option value="University of North Carolina at Chapel Hill">
+                                    <option value="Georgia Institute of Technology">
+                                    <option value="University of Texas at Austin">
+                                    <option value="University of Wisconsin-Madison">
+        
+                                        <!-- Perú -->
+                                    <option value="Pontificia Universidad Católica del Perú (PUCP)">
+                                    <option value="Universidad Nacional Mayor de San Marcos (UNMSM)">
+                                    <option value="Universidad de Lima">
+                                    <option value="Universidad Nacional Agraria La Molina">
+                                    <option value="Universidad del Pacífico">
+                                    <option value="Universidad Peruana Cayetano Heredia (UPCH)">
+                                    <option value="Universidad Nacional de Ingeniería (UNI)">
+                                    <option value="Universidad de Piura">
+                                    <option value="Universidad San Ignacio de Loyola (USIL)">
+                                    <option value="Universidad Nacional de Trujillo (UNT)">
+                                    <option value="Universidad Ricardo Palma">
+                                    <option value="Universidad Nacional de San Agustín de Arequipa (UNSA)">
+                                    <option value="Universidad Nacional de San Martín (UNSAM)">
+                                    <option value="Universidad ESAN">
+                                    <option value="Universidad de la República (URP)">
+                                    <option value="Universidad Nacional de Cajamarca (UNC)">
+        
+                                        <!-- México -->
+                                    <option value="Universidad Nacional Autónoma de México (UNAM)">
+                                    <option value="Tecnológico de Monterrey">
+                                    <option value="Universidad Autónoma Metropolitana (UAM)">
+                                    <option value="Universidad de Guadalajara">
+                                    <option value="Universidad Autónoma de Nuevo León (UANL)">
+                                    <option value="Universidad Iberoamericana">
+                                    <option value="Universidad Autónoma de San Luis Potosí (UASLP)">
+                                    <option value="Universidad Anáhuac">
+                                    <option value="Universidad de las Américas Puebla (UDLAP)">
+                                    <option value="Universidad Veracruzana">
+                                    <option value="Universidad Autónoma de Yucatán (UADY)">
+                                    <option value="Universidad Autónoma de Baja California (UABC)">
+                                    <option value="Universidad Autónoma de Coahuila">
+                                    <option value="Universidad de Monterrey (UDEM)">
+                                    <option value="Universidad Autónoma de Sinaloa">
+                                    <option value="Instituto Politécnico Nacional (IPN)">
+                                    <option value="Universidad Autónoma de Querétaro (UAQ)">
+                                    <option value="Universidad Autónoma de Chiapas (UNACH)">
+                                    <option value="Universidad del Valle de México (UVM)">
+                                    <option value="Universidad de Celaya">
+        
+                                        <!-- Canadá -->
+                                    <option value="University of Toronto">
+                                    <option value="McGill University">
+                                    <option value="University of British Columbia (UBC)">
+                                    <option value="Université de Montréal">
+                                    <option value="University of Ottawa">
+                                    <option value="York University">
+                                    <option value="Université Laval">
+                                    <option value="Simon Fraser University">
+                                    <option value="University of Calgary">
+                                    <option value="University of Waterloo">
+                                    <option value="Concordia University">
+                                    <option value="Dalhousie University">
+                                    <option value="University of Saskatchewan">
+                                    <option value="University of Alberta">
+                                    <option value="University of Manitoba">
+                                    <option value="Université du Québec à Montréal (UQAM)">
+                                    <option value="University of Victoria">
+                                    <option value="Université de Sherbrooke">
+                                    <option value="University of New Brunswick">
+                                    <option value="Memorial University of Newfoundland">
+        
+                                        <!-- Argentina -->
+                                    <option value="Universidad de Buenos Aires (UBA)">
+                                    <option value="Universidad Nacional de La Plata (UNLP)">
+                                    <option value="Universidad Torcuato Di Tella (UTDT)">
+                                    <option value="Universidad Nacional de Córdoba (UNC)">
+                                    <option value="Universidad Nacional de Rosario (UNR)">
+                                    <option value="Universidad Nacional de Tucumán (UNT)">
+                                    <option value="Universidad Nacional del Litoral (UNL)">
+                                    <option value="Universidad Nacional de Mar del Plata (UNMDP)">
+                                    <option value="Universidad de Palermo">
+                                    <option value="Universidad Tecnológica Nacional (UTN)">
+                                    <option value="Instituto Tecnológico de Buenos Aires (ITBA)">
+                                    <option value="Universidad Nacional de San Juan (UNSJ)">
+                                    <option value="Universidad Nacional de Salta (UNSa)">
+                                    <option value="Universidad Nacional de San Luis (UNSL)">
+                                    <option value="Universidad Nacional de Quilmes (UNQ)">
+                                    <option value="Universidad Nacional de Cuyo (UNCuyo)">
+                                    <option value="Universidad Nacional de Comahue (UNCo)">
+                                    <option value="Universidad Nacional de Entre Ríos (UNER)">
+        
+                                    <option value="University of Oxford">
+                                    <option value="University of Cambridge">
+                                    <option value="Imperial College London">
+                                    <option value="London School of Economics and Political Science (LSE)">
+                                    <option value="ETH Zurich - Swiss Federal Institute of Technology">
+                                    <option value="University of Copenhagen">
+                                    <option value="Université Paris-Saclay">
+                                    <option value="Université de Strasbourg">
+                                    <option value="LMU Munich">
+                                    <option value="Universität Heidelberg">
+                                    <option value="Universität Zürich">
+                                    <option value="Universidade de Lisboa">
+                                    <option value="Università Bocconi">
+                                    <option value="Universität Wien">
+                                    <option value="Tsinghua University">
+                                    <option value="Peking University">
+                                    <option value="National University of Singapore (NUS)">
+                                    <option value="University of Tokyo">
+                                    <option value="Seoul National University">
+                                    <option value="Kyoto University">
+                                    <option value="Hong Kong University of Science and Technology (HKUST)">
+                                    <option value="Fudan University">
+                                    <option value="Indian Institute of Technology (IIT) Bombay">
+                                    <option value="Indian Institute of Technology (IIT) Delhi">
+                                    <option value="Shanghai Jiao Tong University">
+                                    <option value="Zhejiang University">
+                                    <option value="University of Hong Kong">
+                                    <option value="Peking University">
+                                    <option value="Chulalongkorn University">
+                                    <option value="Australian National University">
+                                    <option value="University of Melbourne">
+                                    <option value="University of Sydney">
+                                    <option value="University of Queensland">
+                                    <option value="University of New South Wales">
+                                    <option value="University of Auckland">
+                                    <option value="University of Otago">
+                                    <option value="Monash University">
+                                    <option value="University of Western Australia">
+                                    <option value="University of Tasmania">
+                                </datalist>
                             </div>
                             <div class="mb-3">
-                                <label class="info-input-info-label">Grado</label>
-                                <input type="text" placeholder="P. ej. Grado" class="info-input-info">
+                                <label  class="info-input-info-label">Grado</label>
+                                <input id="degree" list="grados" type="text" placeholder="P. ej. Grado" class="info-input-info">
+                                <datalist id="grados">
+                                    <option value="Técnico">
+                                    <option value="Técnico Superior Universitario">
+                                    <option value="Profesional Asociado">
+                                    <option value="Licenciatura">
+                                    <option value="Ingeniería">
+                                    <option value="Arquitectura">
+                                    <option value="Profesorado">
+                                    <option value="Maestría">
+                                    <option value="Doctorado">
+                                    <option value="Postdoctorado">
+                                    <option value="Especialización">
+                                    <option value="Diplomado">
+                                    <option value="Certificación Profesional">
+                                  </datalist>
                             </div>
                             <label class="info-input-info-label">Fecha de inicio</label>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="mes-inicio-education" class="form-select">
                                     <option value="">Mes</option>
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
@@ -607,7 +780,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="anio-inicio-education" class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -714,7 +887,7 @@
                             </div>
                             <label class="info-input-info-label">Fecha de finalización (o fecha prevista)</label>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="mes-final-education" class="form-select">
                                     <option value="">Mes</option>
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
@@ -731,7 +904,7 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="form-select">
+                                <select id="anio-final-education" class="form-select">
                                     <option value="">Año</option>
                                     <option value="2025">2025</option>
                                     <option value="2024">2024</option>
@@ -838,24 +1011,24 @@
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Titulo</label>
-                                <input type="text" placeholder="P. ej. Empresariales" class="info-input-info">
+                                <input id="titulo" type="text" placeholder="P. ej. Empresariales" class="info-input-info">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Nota</label>
-                                <input type="text" class="info-input-info">
+                                <input id="nota" type="text" class="info-input-info">
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Actividades y grupos</label>
-                                <textarea class="info-input-info__textarea form-control" placeholder="Ejemplos: equipo de fútbol, tuna, coro"></textarea>
+                                <textarea id="actividades" class="info-input-info__textarea form-control" placeholder="Ejemplos: equipo de fútbol, tuna, coro"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Descripción</label>
-                                <textarea class="info-input-info__textarea form-control"></textarea>
+                                <textarea id="education-description" class="info-input-info__textarea form-control"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button class="modal-btn-style">Guardar</button>
+                        <button type="cubmit" id="education-btn" form="education-form" class="modal-btn-style">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -883,6 +1056,7 @@
             crossorigin="anonymous"></script>
         <script src="../JS/loadMenu.js"></script>
         <script type="module" src="../JS/ProfileManager.js"></script>
+        <script type="module" src="../JS/ModalManager.js"></script>
 </body>
 
 </html>

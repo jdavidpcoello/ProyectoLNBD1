@@ -66,6 +66,7 @@ public class EducacionService {
         educacionBd.setMesInicio(nvoRegistro.getMesInicio());
         educacionBd.setMesFinal(nvoRegistro.getMesFinal());
         educacionBd.setNota(nvoRegistro.getNota());
+        educacionBd.setDescripcion(nvoRegistro.getDescripcion());
         educacionBd.setActividadesGrupos(nvoRegistro.getActividadesGrupos());
         
         Instituciones institucion = institucionesRepository.findByNombreInstitucion(nvoRegistro.getInstitucionEducativa());
@@ -83,6 +84,7 @@ public class EducacionService {
         educacionDTO.setNota(educacionBd.getNota());
         educacionDTO.setActividadesGrupos(educacionBd.getActividadesGrupos());
         educacionDTO.setInstitucionEducativa(institucion);
+        educacionDTO.setCodigoEducacion(educacionBd.getCodigoEducacion());
         
 
         return educacionDTO;

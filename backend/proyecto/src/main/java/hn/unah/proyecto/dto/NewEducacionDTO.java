@@ -12,8 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewEducacionDTO {
-    private int codigoEducacion;
-
     private String titulo;
     
     private String disciplinaAcademica;
@@ -33,4 +31,6 @@ public class NewEducacionDTO {
     private String institucionEducativa;
 
     private int codigoUsuario;
+
+    private String descripcion;
 }
