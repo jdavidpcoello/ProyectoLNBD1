@@ -15,7 +15,7 @@ const mesFinalEducation = document.querySelector('#mes-final-education');
 const anioFinalEducation = document.querySelector('#anio-final-education');
 const titulo = document.querySelector('#titulo');
 const nota = document.querySelector('#nota');
-const actividades = document.querySelector('#actividadess');
+const actividades = document.querySelector('#actividades');
 const educationDescription = document.querySelector('#education-description');
 const educationButton = document.querySelector('#education-btn');
 
@@ -27,7 +27,8 @@ educationButton.addEventListener('click',createNewEducation);
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
 
 //Funciones
-async function createNewEducation(){
+async function createNewEducation(event){
+    event.preventDefault();
 
     const data = new NewEducation (
         titulo.value,
@@ -52,15 +53,17 @@ async function createNewEducation(){
             body: JSON.stringify(data)
         });
     
+        
+
         if (response.ok) {
-            alert('Registro extoso. Te redirigiremos al inicio.')
+            location.reload();
         } else {
             const errorData = await response.json();
-            alert("Error al iniciar sesión: " + errorData.message || "Cambiate a Trabajo social.");
+            alert("Error al crear nuevo registro");
         }
     } catch (error) {
         console.error("Error en la solicitud:", error);
-        alert("Para la persona que recibio este error, ejecuta el backend primero y luego esto o internet.");
+        alert("Error en la solicitud. Revisa la consola");
     }
 }
 

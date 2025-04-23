@@ -1,4 +1,4 @@
-class NewEducation {
+export default class NewEducation {
     constructor(titulo,disciplinaAcademica,anioInicio,anioFinal,mesInicio,mesFinal,nota,actividadesGrupos,institucionEducativa,codigoUsuario,descripcion
     ) {
         this.titulo = titulo;
