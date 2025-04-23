@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import hn.unah.proyecto.entidades.Conexiones;
 import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.Instituciones;
-import hn.unah.proyecto.entidades.Usuarios;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
