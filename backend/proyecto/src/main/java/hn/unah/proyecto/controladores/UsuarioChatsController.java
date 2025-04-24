@@ -1,4 +1,4 @@
-/*package hn.unah.proyecto.controladores;
+package hn.unah.proyecto.controladores;
 
 
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.proyecto.servicios.UsuarioChatsService;
+import hn.unah.proyecto.dto.ChatDetalleDTO;
 import hn.unah.proyecto.dto.UsuarioChatsDTO;
 
 
@@ -22,27 +23,21 @@ public class UsuarioChatsController {
     @Autowired
     private UsuarioChatsService usuarioChatsService;
 
-    // @GetMapping("/chat/{codigoChat}")
-    // public MensajeDTO obtenerMensajeDTO(int codigoMensaje) {
-    //     try {
-    //         Mensajes mensaje = this.usuarioChatsRepository.findById(codigoChat).orElse(null);
-    //         MensajeDTO mensajeDTO = new MensajeDTO(mensaje);
-    //         System.out.println("MensajeDTO: " + mensajeDTO.toString());
-    //         return mensajeDTO;
-    //     } catch (Exception e) {
-    //         System.err.println("Error al buscar el mensaje: " + e.getMessage());
-    //         e.printStackTrace();
-    //         return null;
-    //     }
-        
-    // }
-
+    
     @GetMapping("/{codigoChat}")
-    public List<UsuarioChatsDTO> findByCodigoChat(@PathVariable int codigoChat) {
+    public UsuarioChatsDTO findByCodigoChat(@PathVariable int codigoChat) {
 
         return usuarioChatsService.findByCodigoChat(codigoChat);
     }
 
-    
-}*/
+    // @GetMapping("/receptor/{codigoReceptor}")
+    // public List<UsuarioChatsDTO> obtenerChatsPorReceptor(@PathVariable int codigoReceptor) {
+    //     return usuarioChatsService.obtenerChatsDTOPorReceptor(codigoReceptor);
+    // }
 
+    @GetMapping("/receptor/{codigoReceptor}")
+    public List<ChatDetalleDTO> obtenerChatsPorReceptor(@PathVariable int codigoReceptor) {
+        return usuarioChatsService.obtenerChatsDetallePorReceptor(codigoReceptor);
+    }
+
+}

@@ -12,7 +12,7 @@ public class UsuariosChats {
     @ManyToOne
     @MapsId("codigoUsuario")
     @JoinColumn(name = "codigo_usuario")
-    private Usuarios emisor;
+    private Usuarios receptor;
 
     @Column(name = "codigo_chat", insertable = false, updatable = false)
     private int codigoChat;
@@ -29,12 +29,12 @@ public class UsuariosChats {
         this.id = id;
     }
 
-    public Usuarios getEmisor() {
-        return emisor;
+    public Usuarios getReceptor() {
+        return receptor;
     }
 
-    public void setEmisor(Usuarios emisor) {
-        this.emisor = emisor;
+    public void setReceptor(Usuarios receptor) {
+        this.receptor = receptor;
     }
 
     public int getCodigoChat() {
