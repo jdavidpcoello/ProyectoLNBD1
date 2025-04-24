@@ -3,6 +3,8 @@ package hn.unah.proyecto.entidades;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -76,9 +78,11 @@ public class Usuarios {
         this.codigoUsuario = codigoUsuario;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Experiencias> experiencias;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Educacion> educacion;
 

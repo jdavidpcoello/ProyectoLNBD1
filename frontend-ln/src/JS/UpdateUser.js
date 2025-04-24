@@ -1,6 +1,6 @@
 class UpdateUser {
 
-    constructor(nombre,apellido,nombreAdicional,titular,ciudad,ciudadPadre,pais,enlace,textoEnlace,sector,codigoUsuario){
+    constructor(nombre,apellido,nombreAdicional,titular,ciudad,ciudadPadre,pais,enlace,tipoWeb,textoEnlace,sector,codigoUsuario){
         this.nombre=nombre;
         this.apellido=apellido;
         this.nombreAdicional=nombreAdicional;
@@ -9,6 +9,7 @@ class UpdateUser {
         this.ciudadPadre=ciudadPadre;
         this.pais = pais;
         this.enlace = enlace;
+        this.tipoWeb = tipoWeb;
         this.textoEnlace = textoEnlace;
         this.sector = sector;
         this.codigoUsuario =codigoUsuario;

@@ -1,5 +1,6 @@
 import NewEducation from './NewEducation.js';
 import NewExperience from './NewExperience.js'
+import UpdateUser from './UpdateUser.js'
 
 //Modales
 
@@ -39,37 +40,36 @@ const nombre = document.querySelector('#nombre');
 const apellidos = document.querySelector('#apellidos');
 const nombreAdicional = document.querySelector('#nombre-adicional');
 const titular = document.querySelector('#titular');
-const ciudad = document.querySelector('#ciudad');
-const pais = document.querySelector('#pais');
+const location = document.querySelector('#location');
 const enlace = document.querySelector('#enlace');
 const textoEnlace = document.querySelector('#texto-enlace');
+const tipoWeb = document.querySelector('#tipo-web');
 const sector = document.querySelector('#sector');
+const userButton = document.querySelector('#user-btn');
 
 nombre.value = usuario.nombre;
 apellidos.value = usuario.apellidos;
 nombreAdicional.value = usuario.nombreAdicional != null ? nombreAdicional : '';
 titular.value = usuario.titular;
 sector.value = usuario.sector != null ? sector: '';
-pais.value = usuario.pais.nombre;
 
+if (usuario.ciudad.ciudadPadre) {
+    location.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
+} else {
+    location.value = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
+}
 
 //Informacion de contacto
 document.querySelector('#name-contact').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
 
 
 
-
-if (usuario.ciudad.ciudadPadre) {
-    ciudad.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}`
-} else {
-    ciudad.value = usuario.ciudad.nombreCiudad;
-}
-
-
-
 //Eventos
 educationButton.addEventListener('click',createNewEducation);
 jobButton.addEventListener('click',createNewJob);
+userButton.addEventListener('click',updateInfoUser);
+
+asignCountryandCity(location.value);
 
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
@@ -153,4 +153,42 @@ async function createNewJob(event) {
         console.error("Error en la solicitud:", error);
     }
 
+}
+
+async function updateInfoUser(event){
+    event.preventDefault();
+
+    const data = new UpdateUser(
+        nombre.value,
+        apellidos.value,
+        nombreAdicional.value,
+        titular.value,
+        localStorage.getItem('city'),
+        localStorage.getItem('city2'),
+        localStorage.getItem('country'),
+        enlace.value,
+        tipoWeb.value,
+        textoEnlace.value,
+        sector.value,
+        codigoUsuario
+    );
+    
+}
+
+function asignCountryandCity(location){
+    const parts = location.split(',').map(p => p.trim());
+
+    if (parts.length === 3) {
+        localStorage.setItem('city', parts[0]);
+        localStorage.setItem('city2', parts[1]);
+        localStorage.setItem('country', parts[2]);
+    } else if (parts.length === 2) {
+        localStorage.setItem('city', parts[0]);
+        localStorage.setItem('city2', ''); 
+        localStorage.setItem('country', parts[1]);
+    } else {
+        localStorage.setItem('city', '');
+        localStorage.setItem('city2', '');
+        localStorage.setItem('country', parts[0] || '');
+    }
 }

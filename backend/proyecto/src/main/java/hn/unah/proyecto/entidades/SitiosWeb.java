@@ -41,5 +41,8 @@ public class SitiosWeb {
     @JoinColumn(name="codigo_usuario", referencedColumnName = "codigo_usuario")
     private Usuarios usuario;
 
+    @ManyToOne()
+    @JoinColumn(name="tipo_sitio_web",referencedColumnName = "codigo_tipo_web")
+    private TiposSitiosWeb tiposSitioWeb;
 
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hn.unah.proyecto.dto.ActualizarUsuarioDTO;
 import hn.unah.proyecto.dto.CiudadesDTO;
 import hn.unah.proyecto.dto.NewUserDTO;
 import hn.unah.proyecto.dto.PaisesDTO;
@@ -15,7 +16,9 @@ import hn.unah.proyecto.entidades.Empresas;
 import hn.unah.proyecto.entidades.Experiencias;
 import hn.unah.proyecto.entidades.Instituciones;
 import hn.unah.proyecto.entidades.Paises;
+import hn.unah.proyecto.entidades.SitiosWeb;
 import hn.unah.proyecto.entidades.TipoEmpleos;
+import hn.unah.proyecto.entidades.TiposSitiosWeb;
 import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.repositorios.CiudadesRepository;
 import hn.unah.proyecto.repositorios.EducacionRepository;
@@ -23,7 +26,9 @@ import hn.unah.proyecto.repositorios.EmpresaRepository;
 import hn.unah.proyecto.repositorios.ExperienciaRepository;
 import hn.unah.proyecto.repositorios.InstitucionesRepository;
 import hn.unah.proyecto.repositorios.PaisesRepository;
+import hn.unah.proyecto.repositorios.SitioWebRepository;
 import hn.unah.proyecto.repositorios.TipoEmpleoRepository;
+import hn.unah.proyecto.repositorios.TiposWebRepository;
 import hn.unah.proyecto.repositorios.UsuariosRepository;
 
 @Service
@@ -53,6 +58,12 @@ public class UsuarioService {
     @Autowired
     private EducacionRepository educacionRepository;
 
+    @Autowired
+    private TiposWebRepository tiposWebRepository;
+
+    @Autowired
+    private SitioWebRepository sitioWebRepository;
+
     public UsuariosDTO iniciarSesion(String email, String password) {
         Usuarios usuario = usuariosRepository.findByEmail(email);
         if (usuario == null) {
@@ -79,7 +90,7 @@ public class UsuarioService {
         Paises pais = paisesRepository.findById(usuario.getPais().getCodigoPais()).get();
         Ciudades ciudad = ciudadesRepository.findById(usuario.getCiudad().getCodigoCiudad()).get();
         Ciudades parentCity;
-        
+
         PaisesDTO paisDTO = new PaisesDTO();
         paisDTO.setCodigoPais(pais.getCodigoPais());
         paisDTO.setNombre(pais.getNombre());
@@ -89,19 +100,16 @@ public class UsuarioService {
         ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
         ciudadDTO.setPais(paisDTO);
 
-
-        if(ciudad.getCiudadPadre()!=null){
+        if (ciudad.getCiudadPadre() != null) {
             parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
-        }else{
+        } else {
             parentCity = null;
         }
 
         ciudadDTO.setCiudadPadre(parentCity);
 
-
         usuariosDTO.setCiudad(ciudadDTO);
         usuariosDTO.setPais(paisDTO);
-
 
         return usuariosDTO;
     }
@@ -134,7 +142,8 @@ public class UsuarioService {
                 ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(nvoUsuario.getCity(), ciudadPadre);
             }
             usuarioBd.setCiudad(ciudad);
-            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName().toLowerCase() + "-" + nvoUsuario.getLastName().toLowerCase());
+            usuarioBd.setUrlPerfil("www.linkedin.com/in/" + nvoUsuario.getFirstName().toLowerCase() + "-"
+                    + nvoUsuario.getLastName().toLowerCase());
 
             Educacion educacion = new Educacion();
             Experiencias experiencias = new Experiencias();
@@ -203,7 +212,7 @@ public class UsuarioService {
         return usuariosRepository.findById(codigoUsuario).orElse(null);
     }
 
-    public UsuariosDTO cambiarFotoPerfil(int codigoUsuario, String fotoPerfil){
+    public UsuariosDTO cambiarFotoPerfil(int codigoUsuario, String fotoPerfil) {
         Usuarios usuario = usuariosRepository.findById(codigoUsuario).get();
         usuario.setFotoPerfil(fotoPerfil);
 
@@ -226,7 +235,7 @@ public class UsuarioService {
         Paises pais = paisesRepository.findById(usuario.getPais().getCodigoPais()).get();
         Ciudades ciudad = ciudadesRepository.findById(usuario.getCiudad().getCodigoCiudad()).get();
         Ciudades parentCity;
-        
+
         PaisesDTO paisDTO = new PaisesDTO();
         paisDTO.setCodigoPais(pais.getCodigoPais());
         paisDTO.setNombre(pais.getNombre());
@@ -236,26 +245,24 @@ public class UsuarioService {
         ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
         ciudadDTO.setPais(paisDTO);
 
-
-        if(ciudad.getCiudadPadre()!=null){
+        if (ciudad.getCiudadPadre() != null) {
             parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
-        }else{
+        } else {
             parentCity = null;
         }
 
         ciudadDTO.setCiudadPadre(parentCity);
 
-
         usuariosDTO.setCiudad(ciudadDTO);
         usuariosDTO.setPais(paisDTO);
-        
+
         return usuariosDTO;
     }
 
-    public UsuariosDTO cambiarFotoPortada(int codigoUsuario, String fotoPortada){
+    public UsuariosDTO cambiarFotoPortada(int codigoUsuario, String fotoPortada) {
         Usuarios usuario = usuariosRepository.findById(codigoUsuario).get();
         usuario.setFotoPortada(fotoPortada);
-        
+
         usuariosRepository.save(usuario);
 
         UsuariosDTO usuariosDTO = new UsuariosDTO();
@@ -275,7 +282,7 @@ public class UsuarioService {
         Paises pais = paisesRepository.findById(usuario.getPais().getCodigoPais()).get();
         Ciudades ciudad = ciudadesRepository.findById(usuario.getCiudad().getCodigoCiudad()).get();
         Ciudades parentCity;
-        
+
         PaisesDTO paisDTO = new PaisesDTO();
         paisDTO.setCodigoPais(pais.getCodigoPais());
         paisDTO.setNombre(pais.getNombre());
@@ -285,20 +292,88 @@ public class UsuarioService {
         ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
         ciudadDTO.setPais(paisDTO);
 
-
-        if(ciudad.getCiudadPadre()!=null){
+        if (ciudad.getCiudadPadre() != null) {
             parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
-        }else{
+        } else {
             parentCity = null;
         }
 
         ciudadDTO.setCiudadPadre(parentCity);
 
-
         usuariosDTO.setCiudad(ciudadDTO);
         usuariosDTO.setPais(paisDTO);
-        
+
         return usuariosDTO;
     }
 
+    public UsuariosDTO actualizarUsuario(ActualizarUsuarioDTO usuario) {
+        Usuarios usuariobd = usuariosRepository.findById(usuario.getCodigoUsuario()).get();
+
+        usuariobd.setNombre(usuario.getNombre());
+        usuariobd.setApellidos(usuario.getApellido());
+        usuariobd.setNombreAdicional(usuario.getNombreAdicional());
+        usuariobd.setTitular(usuario.getTitular());
+        usuariobd.setSector(usuario.getSector());
+
+        Paises pais = paisesRepository.findByNombre(usuario.getPais());
+
+        Ciudades ciudad;
+        if (usuario.getCiudadPadre().equals("")) {
+            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(usuario.getCiudad(), null);
+        }
+        {
+            Ciudades ciudadPadre = ciudadesRepository.findByNombreCiudadAndCiudadPadre(usuario.getCiudadPadre(),
+                    null);
+            ciudad = ciudadesRepository.findByNombreCiudadAndCiudadPadre(usuario.getCiudad(), ciudadPadre);
+        }
+
+        if (usuario.getEnlace() != "") {
+            SitiosWeb sitiosWeb = new SitiosWeb();
+            sitiosWeb.setUrl(usuario.getEnlace());
+            sitiosWeb.setUsuario(usuariobd);
+            sitiosWeb.setTextoEnlace(usuario.getTextoEnlace());
+
+            TiposSitiosWeb tiposSitiosWeb = tiposWebRepository.findBySitioWeb(usuario.getTipoWeb());
+            sitiosWeb.setTiposSitioWeb(tiposSitiosWeb);
+            sitioWebRepository.save(sitiosWeb);
+        }
+
+        UsuariosDTO usuariosDTO = new UsuariosDTO();
+
+        usuariosDTO.setCodigoUsuario(usuariobd.getCodigoUsuario());
+        usuariosDTO.setEmail(usuariobd.getEmail());
+        usuariosDTO.setNombre(usuariobd.getNombre());
+        usuariosDTO.setApellidos(usuariobd.getApellidos());
+        usuariosDTO.setFotoPerfil(usuariobd.getFotoPerfil());
+        usuariosDTO.setFotoPortada(usuariobd.getFotoPortada());
+        usuariosDTO.setSector(usuariobd.getSector());
+        usuariosDTO.setTitular(usuariobd.getTitular());
+        usuariosDTO.setFechaNacimiento(usuariobd.getFechaNacimiento());
+        usuariosDTO.setUrlPerfil(usuariobd.getUrlPerfil());
+        usuariosDTO.setNombreAdicional(usuariobd.getNombreAdicional());
+
+        PaisesDTO paisDTO = new PaisesDTO();
+        paisDTO.setCodigoPais(pais.getCodigoPais());
+        paisDTO.setNombre(pais.getNombre());
+
+        CiudadesDTO ciudadDTO = new CiudadesDTO();
+        ciudadDTO.setCodigoCiudad(ciudad.getCodigoCiudad());
+        ciudadDTO.setNombreCiudad(ciudad.getNombreCiudad());
+        ciudadDTO.setPais(paisDTO);
+
+        Ciudades parentCity;
+        if (ciudad.getCiudadPadre() != null) {
+            parentCity = ciudadesRepository.findById(ciudad.getCiudadPadre().getCodigoCiudad()).get();
+        } else {
+            parentCity = null;
+        }
+
+        ciudadDTO.setCiudadPadre(parentCity);
+
+        usuariosDTO.setCiudad(ciudadDTO);
+        usuariosDTO.setPais(paisDTO);
+
+        return usuariosDTO;
+
+    }
 }

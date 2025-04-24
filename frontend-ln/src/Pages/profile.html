@@ -176,12 +176,123 @@
                             <div class="mb-3">
                                 <h4 class="title-presentation">Ubicación</h4>
                                 <div class="mb-3">
-                                    <label class="info-input-info-label">País/región</label>
-                                    <input id="pais" type="text" placeholder="P. ej. Illinois, Estados Unidos" class="info-input-info">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="info-input-info-label">Ciudad</label>
-                                    <input id="ciudad" type="text" class="info-input-info">
+                                    <label class="info-input-info-label">País y ciudad</label>
+                                    <input id="location" list="location-list" type="text" placeholder="P. ej. Illinois, Estados Unidos" class="info-input-info">
+                                    <datalist id="location-list">
+                                        <!-- Honduras -->
+                                        <option value="Atlántida, Honduras">Atlántida, Honduras</option>
+                                        <option value="Choluteca, Honduras">Choluteca, Honduras</option>
+                                        <option value="Colón, Honduras">Colón, Honduras</option>
+                                        <option value="Comayagua, Honduras">Comayagua, Honduras</option>
+                                        <option value="Copán, Honduras">Copán, Honduras</option>
+                                        <option value="Cortés, Honduras">Cortés, Honduras</option>
+                                        <option value="El Paraíso, Honduras">El Paraíso, Honduras</option>
+                                        <option value="Francisco Morazán, Honduras">Francisco Morazán, Honduras</option>
+                                        <option value="Gracias a Dios, Honduras">Gracias a Dios, Honduras</option>
+                                        <option value="Intibucá, Honduras">Intibucá, Honduras</option>
+                                        <option value="Islas de la Bahía, Honduras">Islas de la Bahía, Honduras</option>
+                                        <option value="La Paz, Honduras">La Paz, Honduras</option>
+                                        <option value="Lempira, Honduras">Lempira, Honduras</option>
+                                        <option value="Ocotepeque, Honduras">Ocotepeque, Honduras</option>
+                                        <option value="Olancho, Honduras">Olancho, Honduras</option>
+                                        <option value="Santa Bárbara, Honduras">Santa Bárbara, Honduras</option>
+                                        <option value="Valle, Honduras">Valle, Honduras</option>
+                                        <option value="Yoro, Honduras">Yoro, Honduras</option>
+                                        <option value="Tegucigalpa, Francisco Morazán, Honduras">Tegucigalpa, Francisco Morazán, Honduras</option>
+                                        <option value="Comayagüela, Francisco Morazán, Honduras">Comayagüela, Francisco Morazán, Honduras</option>
+                                        <option value="San Pedro Sula, Cortés, Honduras">San Pedro Sula, Cortés, Honduras</option>
+                                        <option value="La Ceiba, Atlántida, Honduras">La Ceiba, Atlántida, Honduras</option>
+                                        <option value="Juticalpa, Olancho, Honduras">Juticalpa, Olancho, Honduras</option>
+                                        <option value="Santa Rosa de Copán, Copán, Honduras">Santa Rosa de Copán, Copán, Honduras</option>
+                                        <option value="Choluteca, Choluteca, Honduras">Choluteca, Choluteca, Honduras</option>
+                                        <option value="Puerto Cortés, Cortés, Honduras">Puerto Cortés, Cortés, Honduras</option>
+                                        <option value="El Progreso, Yoro, Honduras">El Progreso, Yoro, Honduras</option>
+                                        <option value="Gracias, Lempira, Honduras">Gracias, Lempira, Honduras</option>
+            
+                                        <!-- México -->
+                                        <option value="CDMX, México">CDMX, México</option>
+                                        <option value="Jalisco, México">Jalisco, México</option>
+                                        <option value="Nuevo León, México">Nuevo León, México</option>
+                                        <option value="Quintana Roo, México">Quintana Roo, México</option>
+                                        <option value="Puebla, México">Puebla, México</option>
+                                        <option value="Baja California, México">Baja California, México</option>
+                                        <option value="Yucatán, México">Yucatán, México</option>
+                                        <option value="Oaxaca, México">Oaxaca, México</option>                        
+                                        <option value="Ciudad de México, CDMX, México">Ciudad de México, CDMX, México</option>
+                                        <option value="Guadalajara, Jalisco, México">Guadalajara, Jalisco, México</option>
+                                        <option value="Monterrey, Nuevo León, México">Monterrey, Nuevo León, México</option>
+                                        <option value="Cancún, Quintana Roo, México">Cancún, Quintana Roo, México</option>
+                                        <option value="Puebla, Puebla, México">Puebla, Puebla, México</option>
+                                        <option value="Tijuana, Baja California, México">Tijuana, Baja California, México</option>
+                                        <option value="Mérida, Yucatán, México">Mérida, Yucatán, México</option>
+                                        <option value="Oaxaca de Juárez, Oaxaca, México">Oaxaca de Juárez, Oaxaca, México</option>
+            
+                                        <!-- Estados Unidos -->
+                                        <option value="California, Estados Unidos">California, Estados Unidos</option>
+                                        <option value="Texas, Estados Unidos">Texas, Estados Unidos</option>
+                                        <option value="Florida, Estados Unidos">Florida, Estados Unidos</option>
+                                        <option value="New York, Estados Unidos">New York, Estados Unidos</option>
+                                        <option value="Illinois, Estados Unidos">Illinois, Estados Unidos</option>
+                                        <option value="Washington, Estados Unidos">Washington, Estados Unidos</option>
+                                        <option value="Georgia, Estados Unidos">Georgia, Estados Unidos</option>
+                                        <option value="Los Ángeles, California, Estados Unidos">Los Ángeles, California, Estados Unidos</option>
+                                        <option value="San Francisco, California, Estados Unidos">San Francisco, California, Estados Unidos</option>
+                                        <option value="Houston, Texas, Estados Unidos">Houston, Texas, Estados Unidos</option>
+                                        <option value="Dallas, Texas, Estados Unidos">Dallas, Texas, Estados Unidos</option>
+                                        <option value="Miami, Florida, Estados Unidos">Miami, Florida, Estados Unidos</option>
+                                        <option value="Orlando, Florida, Estados Unidos">Orlando, Florida, Estados Unidos</option>
+                                        <option value="New York City, New York, Estados Unidos">New York City, New York, Estados Unidos</option>
+                                        <option value="Chicago, Illinois, Estados Unidos">Chicago, Illinois, Estados Unidos</option>
+                                        <option value="Seattle, Washington, Estados Unidos">Seattle, Washington, Estados Unidos</option>
+                                        <option value="Atlanta, Georgia, Estados Unidos">Atlanta, Georgia, Estados Unidos</option>
+            
+            
+                                        <!-- Canadá -->
+                                        <option value="Ontario, Canadá">Ontario, Canadá</option>
+                                        <option value="Columbia Británica, Canadá">Columbia Británica, Canadá</option>
+                                        <option value="Quebec, Canadá">Quebec, Canadá</option>
+                                        <option value="Alberta, Canadá">Alberta, Canadá</option>
+                                        <option value="Toronto, Ontario, Canadá">Toronto, Ontario, Canadá</option>
+                                        <option value="Vancouver, Columbia Británica, Canadá">Vancouver, Columbia Británica, Canadá</option>
+                                        <option value="Montreal, Quebec, Canadá">Montreal, Quebec, Canadá</option>
+                                        <option value="Ottawa, Ontario, Canadá">Ottawa, Ontario, Canadá</option>
+                                        <option value="Calgary, Alberta, Canadá">Calgary, Alberta, Canadá</option>
+                                        <option value="Edmonton, Alberta, Canadá">Edmonton, Alberta, Canadá</option>
+            
+                                        <!--Argentina-->
+                                        <option value="Buenos Aires, Argentina">Buenos Aires, Argentina</option>
+                                        <option value="Córdoba, Argentina">Córdoba, Argentina</option>
+                                        <option value="Santa Fe, Argentina">Santa Fe, Argentina</option>
+                                        <option value="Mendoza, Argentina">Mendoza, Argentina</option>
+                                        <option value="Tucumán, Argentina">Tucumán, Argentina</option>
+                                        <option value="Salta, Argentina">Salta, Argentina</option>
+                                        <option value="Entre Ríos, Argentina">Entre Ríos, Argentina</option>
+                                        <option value="Misiones, Argentina">Misiones, Argentina</option>
+                                        <option value="Chaco, Argentina">Chaco, Argentina</option>
+                                        <option value="Corrientes, Argentina">Corrientes, Argentina</option>
+                                        <option value="La Plata, Buenos Aires, Argentina">La Plata, Buenos Aires, Argentina</option>
+                                        <option value="Córdoba, Córdoba, Argentina">Córdoba, Córdoba, Argentina</option>
+                                        <option value="Rosario, Santa Fe, Argentina">Rosario, Santa Fe, Argentina</option>
+                                        <option value="Mendoza, Mendoza, Argentina">Mendoza, Mendoza, Argentina</option>
+                                        <option value="San Miguel de Tucumán, Tucumán, Argentina">San Miguel de Tucumán, Tucumán, Argentina</option>
+                                        <option value="Salta, Salta, Argentina">Salta, Salta, Argentina</option>
+                                        <option value="Paraná, Entre Ríos, Argentina">Paraná, Entre Ríos, Argentina</option>
+                                        <option value="Posadas, Misiones, Argentina">Posadas, Misiones, Argentina</option>
+                                        <option value="Resistencia, Chaco, Argentina">Resistencia, Chaco, Argentina</option>
+                                        <option value="Corrientes, Corrientes, Argentina">Corrientes, Corrientes, Argentina</option>
+            
+                                        <!--Colombia-->
+                                        <option value="Cundinamarca, Colombia">Cundinamarca, Colombia</option>
+                                        <option value="Antioquia, Colombia">Antioquia, Colombia</option>
+                                        <option value="Valle del Cauca, Colombia">Valle del Cauca, Colombia</option>
+                                        <option value="Atlántico, Colombia">Atlántico, Colombia</option>
+                                        <option value="Bolívar, Colombia">Cartagena, Bolívar, Colombia</option>
+                                        <option value="Bogotá, Cundinamarca, Colombia">Bogotá, Cundinamarca, Colombia</option>
+                                        <option value="Medellín, Antioquia, Colombia">Medellín, Antioquia, Colombia</option>
+                                        <option value="Cali, Valle del Cauca, Colombia">Cali, Valle del Cauca, Colombia</option>
+                                        <option value="Barranquilla, Atlántico, Colombia">Barranquilla, Atlántico, Colombia</option>
+                                        <option value="Cartagena, Bolívar, Colombia">Cartagena, Bolívar, Colombia</option>
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -194,7 +305,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="info-input-info-label">Enlace</label>
-                                    <select id="]tipo-web" class="form-select">
+                                    <select id="tipo-web" class="form-select">
                                         <option value="Personal">Personal</option>
                                         <option value="Empresa">Empresa</option>
                                         <option value="Blog">Blog</option>
@@ -211,7 +322,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button class="modal-btn-style">Guardar</button>
+                        <button id="user-btn" class="modal-btn-style">Guardar</button>
                     </div>
                 </div>
             </div>
