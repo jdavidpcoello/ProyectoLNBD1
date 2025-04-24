@@ -69,8 +69,6 @@ educationButton.addEventListener('click',createNewEducation);
 jobButton.addEventListener('click',createNewJob);
 userButton.addEventListener('click',updateInfoUser);
 
-asignCountryandCity(locationField.value);
-
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
 const urlJob = 'http://localhost:8080/api/experiencia/nuevo';
@@ -117,6 +115,8 @@ async function createNewEducation(event){
 
 async function createNewJob(event) {
     event.preventDefault();
+    
+    asignCountryandCity(locationField.value);
 
     const data = new NewExperience (
         cargo.value,
@@ -156,8 +156,12 @@ async function createNewJob(event) {
 
 }
 
+
+
 async function updateInfoUser(event){
     event.preventDefault();
+
+    asignCountryandCity(locationField.value);
 
     const data = new UpdateUser(
         nombre.value,
@@ -173,6 +177,7 @@ async function updateInfoUser(event){
         sector.value,
         codigoUsuario
     );
+
 
     try {
         const response = await fetch(urlUser, {
@@ -198,8 +203,8 @@ async function updateInfoUser(event){
     
 }
 
-function asignCountryandCity(location){
-    const parts = location.split(',').map(p => p.trim());
+function asignCountryandCity(locationField){
+    const parts = locationField.split(',').map(p => p.trim());
 
     if (parts.length === 3) {
         localStorage.setItem('city', parts[0]);
