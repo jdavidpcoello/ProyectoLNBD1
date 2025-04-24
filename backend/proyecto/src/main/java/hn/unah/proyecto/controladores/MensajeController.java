@@ -12,7 +12,7 @@ import hn.unah.proyecto.entidades.Mensajes;
 import hn.unah.proyecto.entidades.Usuarios;
 import hn.unah.proyecto.servicios.MensajeService;
 
-@CrossOrigin(origins = "http://192.168.0.5:5501")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/mensajes")
 public class MensajeController {
