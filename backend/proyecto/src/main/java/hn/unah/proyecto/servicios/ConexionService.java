@@ -46,11 +46,17 @@ public class ConexionService {
         EstadoConexion estado = estadoConexionRepository.findById(dto.getEstado())
             .orElseThrow(() -> new RuntimeException("Estado no encontrado con código: " + dto.getEstado()));
     
-        Usuarios usuario1 = new Usuarios();
-        usuario1.setCodigoUsuario(dto.getUsuario1());
+        // Usuarios usuario1 = new Usuarios();
+        // usuario1.setCodigoUsuario(dto.getUsuario1());
+
+        Usuarios usuario1 = usuariosRepository.findById(dto.getUsuario1())
+        .orElseThrow(() -> new RuntimeException("Usuario1 no encontrado"));
     
-        Usuarios usuario2 = new Usuarios();
-        usuario2.setCodigoUsuario(dto.getUsuario2());
+        // Usuarios usuario2 = new Usuarios();
+        // usuario2.setCodigoUsuario(dto.getUsuario2());
+
+        Usuarios usuario2 = usuariosRepository.findById(dto.getUsuario2())
+        .orElseThrow(() -> new RuntimeException("Usuario2 no encontrado"));
     
         Conexiones conexion = new Conexiones();
         conexion.setUsuario1(usuario1);
@@ -62,14 +68,16 @@ public class ConexionService {
 
         Empresas empresa = null;
         Instituciones institucion = null;
-        if (!usuario1.getExperiencias().isEmpty()) {
-            List<Experiencias> experiencias = usuario1.getExperiencias();
-            empresa = experiencias.get(experiencias.size() - 1).getEmpresa();
-        }
-        if (!usuario1.getEducacion().isEmpty()) {
-            List<Educacion> educacion = usuario1.getEducacion();
-            institucion = educacion.get(educacion.size() - 1).getInstitucionEducativa();
-        }
+
+    if (usuario1.getExperiencias() != null && !usuario1.getExperiencias().isEmpty()) {
+        List<Experiencias> experiencias = usuario1.getExperiencias();
+        empresa = experiencias.get(experiencias.size() - 1).getEmpresa();
+    }
+
+    if (usuario1.getEducacion() != null && !usuario1.getEducacion().isEmpty()) {
+        List<Educacion> educacion = usuario1.getEducacion();
+        institucion = educacion.get(educacion.size() - 1).getInstitucionEducativa();
+    }
 
     
         return new ConexionDTO(conexion, institucion, empresa);

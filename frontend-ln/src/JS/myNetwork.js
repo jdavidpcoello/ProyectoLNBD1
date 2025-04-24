@@ -82,9 +82,13 @@ function agregarEventosConectar() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(conexion)
                 });
+                // const text = await response.text();
+                // console.log("Status:", response.status);
+                // console.log("Respuesta:", text);
                 
                 if (response.ok) {
                     const data = await response.json();
+                    console.log("Respuesta:", data);
 
                     const nuevoBoton = crearBotonPendiente(data.codigoConexion);
 
@@ -95,6 +99,8 @@ function agregarEventosConectar() {
                     }
 
                 } else {
+                    const errorText = await response.text(); 
+                    console.error("Error del servidor:", errorText);
                     alert("Error al enviar solicitud");
                 }
             } catch (err) {
