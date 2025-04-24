@@ -346,10 +346,11 @@
                                 <label class="info-input-info-label">Cargo</label>
                                 <input id="cargo" class="info-input-info" placeholder="Ejemplo: responsable de ventas minoristas" type="text">
                             </div>
+                            <div class="invalid-div cargo-invalid"></div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Tipo de empleo</label>
                                 <select id="tipo-empleo" class="form-select">
-                                    <option value="Selecciona una opción" selected>
+                                    <option value="" selected>
                                         Selecciona una opción
                                     </option>
                                     <option value="Jornada completa">
@@ -379,6 +380,7 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="invalid-div tipo-empleo-invalid"></div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Empresa u organización</label>
                                 <input type="text" id="empresa" list="company-list" placeholder="P. ej. Microsoft" class="info-input-info">
@@ -653,6 +655,7 @@
                                     <option value="Televisa"></option>
                                 </datalist>
                             </div>
+                            <div class="invalid-div empresa-invalid"></div>
                             <label class="info-input-info-label">Fecha de inicio</label>
                             <div class="col-md-6 mb-3">
                                 <select id="mes-inicio-job" class="form-select">
@@ -777,6 +780,7 @@
                                     <option value="1925">1925</option>
                                 </select>
                             </div>
+                            <div class="invalid-div date-job-invalid"></div>
                             <label class="info-input-info-label">Fecha de finalización</label>
                             <div class="col-md-6 mb-3">
                                 <select id="mes-final-job" class="form-select">
@@ -909,6 +913,7 @@
                                     <option value="Hibrido">Hibrido</option>
                                     <option value="Remoto">Remoto</option>
                                 </select>
+                                <div class="invalid-div tipo-lugar-trabajo-invalid"></div>
                             </div>
                             <div class="mb-3">
                                 <label class="info-input-info-label">Descripción</label>
@@ -917,7 +922,7 @@
                             <div>
                                 <label class="info-input-info-label">¿Dónde encontraste este empleo?</label>
                                 <select id="" class="form-select">
-                                    <option value="Selecciona una opción">
+                                    <option value="">
                                       Selecciona una opción
                                     </option>
                                     <option value="LinkedIn">

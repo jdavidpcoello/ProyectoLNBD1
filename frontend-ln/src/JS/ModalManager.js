@@ -120,44 +120,47 @@ async function createNewEducation(event) {
 }
 
 async function createNewJob(event) {
-    event.preventDefault();
 
-    asignCountryandCity(locationField.value);
+    let validez = validateForm(1);
 
-    const data = new NewExperience(
-        cargo.value,
-        empresa.value,
-        mesInicioJob.value,
-        anioInicioJob.value,
-        mesFinalJob.value,
-        anioFinalJob.value,
-        tipoEmpleo.value,
-        tipoLugarTrabajo.value,
-        jobDescription.value,
-        codigoUsuario
-    )
+    if (validez) {
+        event.preventDefault();
 
-
-    try {
-        const response = await fetch(urlJob, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+        const data = new NewExperience(
+            cargo.value,
+            empresa.value,
+            mesInicioJob.value,
+            anioInicioJob.value,
+            mesFinalJob.value,
+            anioFinalJob.value,
+            tipoEmpleo.value,
+            tipoLugarTrabajo.value,
+            jobDescription.value,
+            codigoUsuario
+        )
 
 
-        if (response.ok) {
-            location.reload();
-        } else {
-            const errorData = await response.json();
-            alert("Error al crear un nuevo registro");
+        try {
+            const response = await fetch(urlJob, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+
+            if (response.ok) {
+                location.reload();
+            } else {
+                const errorData = await response.json();
+                alert("Error al crear un nuevo registro");
+            }
+
+        } catch (error) {
+            alert("Error en la solicitud. Revisa la consola.");
+            console.error("Error en la solicitud:", error);
         }
-
-    } catch (error) {
-        alert("Error en la solicitud. Revisa la consola.");
-        console.error("Error en la solicitud:", error);
     }
 
 }
@@ -267,7 +270,7 @@ function validateForm(i) {
             titular.classList.add('invalid-input');
             invalidTitular.innerHTML = 'Ingresa el titular.';
             return false;
-        } else if(RegexValidator.isEmpty(locationField.value)){
+        } else if (RegexValidator.isEmpty(locationField.value)) {
             locationField.classList.add('invalid-input');
             invalidLocation.innerHTML = 'Ingresa tu ubicacion';
             return false;
@@ -285,6 +288,44 @@ function validateForm(i) {
             invalidLocation.innerHTML = 'Ingresa una ubicacion valida.';
             return false;
         }
+    }
+    if (i === 1) {
+        const cargoInvalid = document.querySelector('.cargo-invalid');
+        const tipoEmpleoInvalid = document.querySelector('.tipo-empleo-invalid');
+        const empresaInvalid = document.querySelector('.empresa-invalid');
+        const empresaDataList = document.querySelector('#company-list')
+        const dateInvalid = document.querySelector('.date-job-invalid');
+        const lugarTrabajoInvalid = document.querySelector('.tipo-lugar-trabajo-invalid');
+
+        cargo.classList.remove('invalid-input');
+        empresa.classList.remove('invalid-input');
+
+        cargoInvalid.value = '';
+        tipoEmpleoInvalid.value = '';
+        empresaInvalid.value = '';
+        dateInvalid.value = '';
+        lugarTrabajoInvalid.value = ''
+
+        if (RegexValidator.isEmpty(cargo.value)) {
+            cargo.classList.add('invalid-input');
+            cargoInvalid.innerHTML = 'Ingrese un cargo';
+            return false;
+        } else if (tipoEmpleo.value === '') {
+            tipoEmpleoInvalid.innerHTML = 'Ingresa un opcion valida.';
+            return false;
+        } else if (RegexValidator.isEmpty(empresa.value)) {
+            empresa.classList.add('invalid-input');
+            empresaInvalid.innerHTML = 'Ingrese un nombre de empresa.';
+            return false;
+        } else if (mesInicioJob.value === '' || anioInicioJob.value==='') {
+            dateInvalid.innerHTML = 'Campos de mes y año obligatorios';
+            return false;
+        } else if (!Array.from(empresaDataList.options).some(option => option.value === empresa.value)) {
+            empresa.classList.add('invalid-input');
+            empresaInvalid.innerHTML = 'Ingrese un nombre de empresa valida.';
+            return false;
+        }
+
     }
     return true;
 }
