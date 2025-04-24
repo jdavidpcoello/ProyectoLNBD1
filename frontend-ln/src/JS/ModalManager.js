@@ -200,9 +200,9 @@ async function updateInfoUser(event) {
             });
 
             if (response.ok) {
-                location.reload();
                 const responseData = await response.json();
                 localStorage.setItem('infoUsuario', JSON.stringify(responseData));
+                location.reload();
             } else {
                 const errorData = await response.json();
                 alert("Error al actualizar registro");

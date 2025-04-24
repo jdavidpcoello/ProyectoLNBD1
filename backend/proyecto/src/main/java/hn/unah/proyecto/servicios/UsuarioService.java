@@ -117,10 +117,6 @@ public class UsuarioService {
     public UsuariosDTO registrarUsuario(NewUserDTO nvoUsuario) {
 
         UsuariosDTO usuarioDTO = new UsuariosDTO();
-
-        if (usuariosRepository.existsByEmail(nvoUsuario.getEmail())) {
-            usuarioDTO = null;
-        } else {
             Usuarios usuarioBd = new Usuarios();
             usuarioBd.setEmail(nvoUsuario.getEmail());
             usuarioBd.setContrasenia(nvoUsuario.getPassword());
@@ -204,7 +200,6 @@ public class UsuarioService {
             usuarioDTO.setCiudad(ciudadesDTO);
             usuarioDTO.setPais(paisDTO);
             usuarioDTO.setUrlPerfil(usuarioBd.getUrlPerfil());
-        }
         return usuarioDTO;
     }
 
