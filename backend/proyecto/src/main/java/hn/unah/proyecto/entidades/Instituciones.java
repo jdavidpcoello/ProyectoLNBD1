@@ -35,12 +35,6 @@ public class Instituciones {
     @JsonIgnore
     @OneToMany(mappedBy = "institucionEducativa", fetch = FetchType.LAZY)
     private List<Educacion> educacion;
-
-<<<<<<< HEAD
-
-   @Column(name = "foto_institucion")
-    private String fotoInstitucion;
-=======
     @Column(name = "foto_institucion")
     private String fotoInstitucion;
 
