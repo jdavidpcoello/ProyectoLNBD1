@@ -24,31 +24,31 @@
             <div class="col-md-3 bg-transparent rounded m-0 p-0 ">
                 <div class="border rounded mb-3 bg-white general-border-style">
                     <a class="text-decoration-none text-dark" href="profile.html">
-                        <div class="mb-2" >
-                            <img class="w-100" src="../Image/frontpage.png" alt="">
+                        <div class="mb-2">
+                            <img class="w-100" id="foto-portada" src="" alt="Foto de portada">
                         </div>
                         <div class="position-relative div-img">
-                            <img src="../Image/elsa.jpg" class="rounded-circle position-absolute top-0 mx-3 border border-white border-4 img-left" alt="Profile Photo">
+                            <img id="foto-perfil" class="rounded-circle position-absolute top-0 mx-3 border border-white border-4 img-left" alt="Foto de perfil">
                         </div>
-
                         <div class="mx-3 mt-4">
                             <div class="d-flex flex-column me-3">
-                                <h3>Elsa Capunta</h3>
-                                <small class="">Fue a la Universidad Autómata de Honduras (UNAH)</small>
-                                <small class="text-muted">Tegucigalpa, Francisco Morazán</small>
+                                <h3 id="nombre-usuario"></h3>
+                                <small id="info-institucion"></small>
+                                <small class="text-muted" id="ubicacion-usuario"></small>
                             </div>
-
                             <div class="mx-0 my-2 p-0 d-flex justify-content-between align-items-center me-3">
                                 <div class="col-md-1 position-relative m-0 p-0">
-                                    <img src="../Image/UNAH.jpg" alt="Escudo_de_la_UNAH" class="w-100">
+                                    <img id="logo-institucion" alt="Logo institución" class="w-100">
                                 </div>
                                 <div class="col-md-11 ps-2 pe-0">
-                                    <small class="mb-1 text-small"><small>Universidad Nacional Autónoma de Honduras (UNAH)</small></small>
+                                    <small class="mb-1 text-small" id="nombre-institucion"></small>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+
+
 
                 <section class="border rounded bg-white general-border-style">
                     <nav>
@@ -289,6 +289,7 @@
         </div>
     </div>  
 
+    <script type="module" src="../JS/infoUser.js"></script>
     <script type="module" src="../JS/jobs.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../JS/loadMenu.js"></script>
