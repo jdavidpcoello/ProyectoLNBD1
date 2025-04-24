@@ -168,10 +168,9 @@ async function updateInfoUser(event) {
     event.preventDefault();
 
     let validez = validateForm(0);
+    asignCountryandCity(locationField.value);
 
     if (validez) {
-        asignCountryandCity(locationField.value);
-
         const data = new UpdateUser(
             nombre.value,
             apellidos.value,
@@ -216,10 +215,14 @@ async function updateInfoUser(event) {
 function asignCountryandCity(locationField) {
     const parts = locationField.split(',').map(p => p.trim());
 
-    if (parts.length === 3) {
-        localStorage.setItem('city', parts[0]);
-        localStorage.setItem('city2', parts[1]);
-        localStorage.setItem('country', parts[2]);
+    if (parts.length >= 3) {
+        const ciudad = parts.slice(0, parts.length - 2).join(', ');
+        const ciudad2 = parts[parts.length - 2];
+        const pais = parts[parts.length - 1];
+
+        localStorage.setItem('city', ciudad);
+        localStorage.setItem('city2', ciudad2);
+        localStorage.setItem('country', pais);
     } else if (parts.length === 2) {
         localStorage.setItem('city', parts[0]);
         localStorage.setItem('city2', '');
@@ -229,8 +232,8 @@ function asignCountryandCity(locationField) {
         localStorage.setItem('city2', '');
         localStorage.setItem('country', parts[0] || '');
     }
-
 }
+
 
 function validateForm(i) {
     if (i === 0) {
