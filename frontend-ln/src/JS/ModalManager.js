@@ -74,6 +74,7 @@ asignCountryandCity(location.value);
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
 const urlJob = 'http://localhost:8080/api/experiencia/nuevo';
+const urlUser = 'http://localhost:8080/api/usuarios/actualizar';
 
 //Funciones
 async function createNewEducation(event){
@@ -172,6 +173,26 @@ async function updateInfoUser(event){
         sector.value,
         codigoUsuario
     );
+
+    try {
+        const response = await fetch(urlUser, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    
+        if (response.ok) {
+            location.reload();
+        } else {
+            const errorData = await response.json();
+            alert("Error al actualizar registro");
+        }
+    } catch (error) {
+        alert("Error en la solicitud. Revisa la consola.");
+        console.error("Error en la solicitud:", error);
+    }
     
 }
 
@@ -191,4 +212,5 @@ function asignCountryandCity(location){
         localStorage.setItem('city2', '');
         localStorage.setItem('country', parts[0] || '');
     }
+
 }
