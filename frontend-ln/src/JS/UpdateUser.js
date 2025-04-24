@@ -1,4 +1,4 @@
-class UpdateUser {
+export default class UpdateUser {
 
     constructor(nombre,apellido,nombreAdicional,titular,ciudad,ciudadPadre,pais,enlace,tipoWeb,textoEnlace,sector,codigoUsuario){
         this.nombre=nombre;

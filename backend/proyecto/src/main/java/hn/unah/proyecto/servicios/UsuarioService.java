@@ -338,6 +338,8 @@ public class UsuarioService {
             sitioWebRepository.save(sitiosWeb);
         }
 
+        usuariosRepository.save(usuariobd);
+
         UsuariosDTO usuariosDTO = new UsuariosDTO();
 
         usuariosDTO.setCodigoUsuario(usuariobd.getCodigoUsuario());

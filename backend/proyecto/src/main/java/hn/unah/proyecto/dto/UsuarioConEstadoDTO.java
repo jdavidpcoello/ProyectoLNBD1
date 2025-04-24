@@ -57,6 +57,5 @@ public class UsuarioConEstadoDTO {
         this.fotoEmpresa = (empresa != null) ? empresa.getFotoEmpresa() : null;
 
         this.nombreInstitucion = (institucion != null) ? institucion.getNombreInstitucion() : null;
-        this.fotoInstitucion = (institucion != null) ? institucion.getFotoInstitucion() : null;
     }
 }

@@ -40,7 +40,7 @@ const nombre = document.querySelector('#nombre');
 const apellidos = document.querySelector('#apellidos');
 const nombreAdicional = document.querySelector('#nombre-adicional');
 const titular = document.querySelector('#titular');
-const location = document.querySelector('#location');
+const locationField = document.querySelector('#location');
 const enlace = document.querySelector('#enlace');
 const textoEnlace = document.querySelector('#texto-enlace');
 const tipoWeb = document.querySelector('#tipo-web');
@@ -54,9 +54,9 @@ titular.value = usuario.titular;
 sector.value = usuario.sector != null ? sector: '';
 
 if (usuario.ciudad.ciudadPadre) {
-    location.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
+    locationField.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
 } else {
-    location.value = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
+    locationField.value = `${usuario.ciudad.nombreCiudad}, ${usuario.pais.nombre}`;
 }
 
 //Informacion de contacto
@@ -69,7 +69,7 @@ educationButton.addEventListener('click',createNewEducation);
 jobButton.addEventListener('click',createNewJob);
 userButton.addEventListener('click',updateInfoUser);
 
-asignCountryandCity(location.value);
+asignCountryandCity(locationField.value);
 
 //Urls
 const urlEducation = 'http://localhost:8080/api/educacion/nuevo';
@@ -185,6 +185,8 @@ async function updateInfoUser(event){
     
         if (response.ok) {
             location.reload();
+            const responseData = await response.json();
+            localStorage.setItem('infoUsuario', JSON.stringify(responseData));
         } else {
             const errorData = await response.json();
             alert("Error al actualizar registro");
