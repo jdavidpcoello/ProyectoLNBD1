@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.unah.proyecto.dto.ActualizarUsuarioDTO;
 import hn.unah.proyecto.dto.NewUserDTO;
 import hn.unah.proyecto.dto.UsuariosDTO;
 import hn.unah.proyecto.entidades.Usuarios;
@@ -52,5 +53,10 @@ public class UsuarioController {
     @PutMapping("/newBackgroundPhoto")
     public UsuariosDTO cambiarFotoPortada(@RequestParam int codigoUsuario, @RequestParam String fotoPortada){
         return usuarioService.cambiarFotoPortada(codigoUsuario, fotoPortada);
+    }
+
+    @PutMapping("/actualizar")
+    public UsuariosDTO actualizarUsuario(@RequestBody ActualizarUsuarioDTO usuario){
+        return usuarioService.actualizarUsuario(usuario);
     }
 }
