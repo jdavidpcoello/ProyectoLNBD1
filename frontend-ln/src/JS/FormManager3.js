@@ -18,7 +18,7 @@ function formValidation(){
     const invalidLocation = document.querySelector('.invalid-location-text');
     invalidLocation.innerHTML = '';
     const datalistLocation = document.querySelector('#location-list');
-    locationField.classList.remove('onvalid-input');
+    locationField.classList.remove('invalid-input');
     if(RegexValidator.isEmpty(locationField.value)){
         locationField.classList.add('invalid-input');
         invalidLocation.innerHTML = 'Introduce tu ubicacion';
