@@ -11,7 +11,12 @@ if (estaLogueado()) {
 
 
     //Asignar valores correspondientes
-    document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
+    if(usuario.nombreAdicional){
+        document.querySelector('.name-title').innerHTML = `${usuario.nombre} (${usuario.nombreAdicional}) ${usuario.apellidos}`;
+    }else{
+        document.querySelector('.name-title').innerHTML = `${usuario.nombre} ${usuario.apellidos}`;
+    }
+
     document.querySelector('title').innerHTML = `${usuario.nombre} ${usuario.apellidos} | LinkedIn`;
     document.querySelector('.description-container').innerHTML = `${usuario.titular}`;
 

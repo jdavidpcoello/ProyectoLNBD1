@@ -49,9 +49,10 @@ const userButton = document.querySelector('#user-btn');
 
 nombre.value = usuario.nombre;
 apellidos.value = usuario.apellidos;
-nombreAdicional.value = usuario.nombreAdicional != null ? nombreAdicional : '';
 titular.value = usuario.titular;
-sector.value = usuario.sector != null ? sector: '';
+nombreAdicional.value = usuario.nombreAdicional != null ? usuario.nombreAdicional : '';
+sector.value = usuario.sector != null ? usuario.sector : '';
+
 
 if (usuario.ciudad.ciudadPadre) {
     locationField.value = `${usuario.ciudad.nombreCiudad}, ${usuario.ciudad.ciudadPadre.nombreCiudad}, ${usuario.pais.nombre}`;
