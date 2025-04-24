@@ -37,6 +37,6 @@ public class Instituciones {
     private List<Educacion> educacion;
 
 
-   // @Column(name = "foto_institucion")
-    //private String fotoInstitucion;
+   @Column(name = "foto_institucion")
+    private String fotoInstitucion;
 }
