@@ -18,7 +18,7 @@ function formValidation(){
     const invalidLocation = document.querySelector('.invalid-location-text');
     invalidLocation.innerHTML = '';
     const datalistLocation = document.querySelector('#location-list');
-    locationField.classList.remove('onvalid-input');
+    locationField.classList.remove('invalid-input');
     if(RegexValidator.isEmpty(locationField.value)){
         locationField.classList.add('invalid-input');
         invalidLocation.innerHTML = 'Introduce tu ubicacion';
@@ -32,16 +32,20 @@ function formValidation(){
 }
 
 
-function asignCountryandCity(location){
-    const parts = location.split(',').map(p => p.trim());
+function asignCountryandCity(locationField) {
+    const parts = locationField.split(',').map(p => p.trim());
 
-    if (parts.length === 3) {
-        localStorage.setItem('city', parts[0]);
-        localStorage.setItem('city2', parts[1]);
-        localStorage.setItem('country', parts[2]);
+    if (parts.length >= 3) {
+        const ciudad = parts.slice(0, parts.length - 2).join(', ');
+        const ciudad2 = parts[parts.length - 2];
+        const pais = parts[parts.length - 1];
+
+        localStorage.setItem('city', ciudad);
+        localStorage.setItem('city2', ciudad2);
+        localStorage.setItem('country', pais);
     } else if (parts.length === 2) {
         localStorage.setItem('city', parts[0]);
-        localStorage.setItem('city2', ''); 
+        localStorage.setItem('city2', '');
         localStorage.setItem('country', parts[1]);
     } else {
         localStorage.setItem('city', '');
