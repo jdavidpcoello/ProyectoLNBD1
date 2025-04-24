@@ -36,7 +36,13 @@ public class Instituciones {
     @OneToMany(mappedBy = "institucionEducativa", fetch = FetchType.LAZY)
     private List<Educacion> educacion;
 
+<<<<<<< HEAD
 
    @Column(name = "foto_institucion")
     private String fotoInstitucion;
+=======
+    @Column(name = "foto_institucion")
+    private String fotoInstitucion;
+
+>>>>>>> a03f15e0a9db26817974fa23a96cb21552484bc7
 }

@@ -40,7 +40,7 @@ function mostrarContactos(contactos, container) {
         const html = `
             <div class="d-flex justify-content-between mb-3" data-conexion-id="${contacto.codigoConexion}">
                 <div class="col-md-1">
-                    <img src="../Image/profile1.jpg" class="img-responsive rounded-circle" alt="#">
+                    <img src="${contacto.fotoPerfil}" class="rounded-circle img-contenedor-mired mt-2" alt="Profile Photo">
                 </div>
                 <div class="col-md-7 d-flex flex-column">
                     <p class="m-0">${contacto.nombre} ${contacto.apellidos}</p>
