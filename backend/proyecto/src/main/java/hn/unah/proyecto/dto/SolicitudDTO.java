@@ -40,6 +40,8 @@ public class SolicitudDTO {
 
         this.nombreInstitucion = (institucion != null) ? institucion.getNombreInstitucion() : null;
         
+        this.fotoInstitucion = (institucion != null) ? institucion.getFotoInstitucion() : null;
+        
         this.codigoConexion = conexion.getCodigoConexion();
     }
     
